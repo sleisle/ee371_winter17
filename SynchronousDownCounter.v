@@ -13,8 +13,8 @@ module SynchronousDownCounter (out, clk, rst);
 	
 	assign nVal[0] = qBar[0];
 	assign nVal[1] = ~ (out[0] ^ out[1]);
-	assign nVal[2] = qBar[2] | (out[0] & out[1]);
-	assign nVal[3] = qBar[3] | (out[0] & out[1] & out[2]);
+	assign nVal[2] = (out[2] & (out[0] | out[1])) | (qBar[2] & (qBar[0] & qBar[1]));
+	assign nVal[3] = (out[3] & (out[0] | out[1] | out[2])) | (qBar[3] & (qBar[0] & qBar[1] & qBar[2]));
 	
 	DFlipFlop qBar0(out[0], qBar[0], nVal[0], clk, rst);
 	DFlipFlop qBar1(out[1], qBar[1], nVal[1], clk, rst);
