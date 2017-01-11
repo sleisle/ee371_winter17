@@ -12,15 +12,15 @@ module SynchronousDownCounter (out, clk, rst);
 	wire [3:0] ands;
 	wire [3:0] xors;
 	
-	assign ands[0] = rst & out[0];
-	assign ands[1] = ands[0] & out[1];
-	assign ands[2] = ands[1] & out[2];
-	assign ands[3] = ands[2] & out[3];
+	assign ands[0] = rst & qBar[0];
+	assign ands[1] = ands[0] & qBar[1];
+	assign ands[2] = ands[1] & qBar[2];
+	assign ands[3] = ands[2] & qBar[3];
 	
-	assign xors[0] = rst ^ out[0];
-	assign xors[1] = ands[0] ^ out[1];
-	assign xors[2] = ands[1] ^ out[2];
-	assign xors[3] = ands[2] ^ out[3];
+	assign xors[0] = rst ^ qBar[0];
+	assign xors[1] = ands[0] ^ qBar[1];
+	assign xors[2] = ands[1] ^ qBar[2];
+	assign xors[3] = ands[2] ^ qBar[3];
 	
 	DFlipFlop q0(out[0], qBar[0], xors[0], clk, rst);
 	DFlipFlop q1(out[1], qBar[1], xors[1], clk, rst);
