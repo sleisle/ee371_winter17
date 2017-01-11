@@ -8,24 +8,18 @@
 module SynchronousDownCounter (out, clk, rst);
 	input clk, rst;
 	output [3:0] out;
-	wire [3:0] q;
-	wire [3:0] ands;
-	wire [3:0] xors;
+	wire [3:0] qBar;
+	wire [3:0] nVal;
 	
-	assign ands[0] = rst & q[0];
-	assign ands[1] = ands[0] & q[1];
-	assign ands[2] = ands[1] & q[2];
-	assign ands[3] = ands[2] & q[3];
+	assign nVal[0] = qBar[0];
+	assign nVal[1] = ~ (out[0] ^ out[1]);
+	assign nVal[2] = qBar[2] | (out[0] & out[1]);
+	assign nVal[3] = qBar[3] | (out[0] & out[1] & out[2]);
 	
-	assign xors[0] = rst ^ out[0];
-	assign xors[1] = ands[0] ^ q[1];
-	assign xors[2] = ands[1] ^ q[2];
-	assign xors[3] = ands[2] ^ q[3];
-	
-	DFlipFlop q0(q[0], out[0], xors[0], clk, rst);
-	DFlipFlop q1(q[1], out[1], xors[1], clk, rst);
-	DFlipFlop q2(q[2], out[2], xors[2], clk, rst);
-	DFlipFlop q3(q[3], out[3], xors[3], clk, rst);
+	DFlipFlop qBar0(out[0], qBar[0], nVal[0], clk, rst);
+	DFlipFlop qBar1(out[1], qBar[1], nVal[1], clk, rst);
+	DFlipFlop qBar2(out[2], qBar[2], nVal[2], clk, rst);
+	DFlipFlop qBar3(out[3], qBar[3], nVal[3], clk, rst);
 	
 endmodule
 	
