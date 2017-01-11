@@ -16,7 +16,7 @@ module Lab1TopLevel (LEDR, CLOCK_50, SW);
 	assign rst = SW[0];
 	parameter whichClock = 23;
 	assign clk = clkMaster[whichClock];
-	clock_divider cdiv (CLOCK_50, clk);
+	clock_divider cdiv (CLOCK_50, clkMaster);
 	assign LEDR[9] = clk;
 	
 	/* Counters:
