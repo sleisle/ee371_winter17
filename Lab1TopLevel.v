@@ -17,7 +17,6 @@ module Lab1TopLevel (LEDR, CLOCK_50, SW);
 	parameter whichClock = 23;
 	assign clk = clkMaster[whichClock];
 	clock_divider cdiv (CLOCK_50, clkMaster);
-	assign LEDR[9] = clk;
 	
 	/* Counters:
 		1. Ripple Down Counter
@@ -29,12 +28,15 @@ module Lab1TopLevel (LEDR, CLOCK_50, SW);
 	*/
 	
 	// Ripple Down Counter
-	// RippleDownCounter counter (LEDR[3:0], clk, rst);
+	//RippleDownCounter counter (LEDR[3:0], clk, rst);
 	
 	// Synchronous Down Counter
-	
+	//SynchronousDownCounter counter (LEDR[3:0], clk, rst);
 	
 	// Synchronous Johnson Down Counter
-	JohnsonSynchronousDownCounter counter (LEDR[3:0], clk, rst);
+	//JohnsonSynchronousDownCounter counter (LEDR[3:0], clk, rst);
+	
+	// Synchronous Down Counter With Schematic Entry
+	SynchronousDownCounterSchematic counter (clk, rst, LEDR[0], LEDR[1], LEDR[2], LEDR[3]);
 	
 endmodule
