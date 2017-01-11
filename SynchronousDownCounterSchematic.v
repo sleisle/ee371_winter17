@@ -15,11 +15,11 @@
 
 // PROGRAM		"Quartus II 64-Bit"
 // VERSION		"Version 14.0.0 Build 200 06/17/2014 SJ Web Edition"
-// CREATED		"Tue Jan 10 20:09:24 2017"
+// CREATED		"Tue Jan 10 20:23:15 2017"
 
 module SynchronousDownCounterSchematic(
-	clk,
 	rst,
+	clk,
 	out0,
 	out1,
 	out2,
@@ -27,8 +27,8 @@ module SynchronousDownCounterSchematic(
 );
 
 
-input wire	clk;
 input wire	rst;
+input wire	clk;
 output wire	out0;
 output wire	out1;
 output wire	out2;
@@ -61,7 +61,7 @@ assign	SYNTHESIZED_WIRE_23 = SYNTHESIZED_WIRE_21 & SYNTHESIZED_WIRE_22;
 
 
 
-DFlipFlop	b2v_inst(
+DFlipFlop	b2v_q0(
 	.D(SYNTHESIZED_WIRE_7),
 	.clk(clk),
 	.rst(rst),
@@ -69,7 +69,7 @@ DFlipFlop	b2v_inst(
 	);
 
 
-DFlipFlop	b2v_inst1(
+DFlipFlop	b2v_q1(
 	.D(SYNTHESIZED_WIRE_8),
 	.clk(clk),
 	.rst(rst),
@@ -77,7 +77,7 @@ DFlipFlop	b2v_inst1(
 	);
 
 
-DFlipFlop	b2v_inst2(
+DFlipFlop	b2v_q2(
 	.D(SYNTHESIZED_WIRE_9),
 	.clk(clk),
 	.rst(rst),
@@ -85,14 +85,14 @@ DFlipFlop	b2v_inst2(
 	);
 
 
-DFlipFlop	b2v_inst3(
+DFlipFlop	b2v_q3(
 	.D(SYNTHESIZED_WIRE_10),
 	.clk(clk),
 	.rst(rst),
 	.q(SYNTHESIZED_WIRE_24)
 	);
 
-assign	SYNTHESIZED_WIRE_7 = SYNTHESIZED_WIRE_18;
+assign	SYNTHESIZED_WIRE_7 = rst ^ SYNTHESIZED_WIRE_18;
 
 assign	SYNTHESIZED_WIRE_8 = SYNTHESIZED_WIRE_19 ^ SYNTHESIZED_WIRE_20;
 
