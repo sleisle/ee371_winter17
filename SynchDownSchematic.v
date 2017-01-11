@@ -15,7 +15,7 @@
 
 // PROGRAM		"Quartus II 64-Bit"
 // VERSION		"Version 14.0.0 Build 200 06/17/2014 SJ Web Edition"
-// CREATED		"Wed Jan 11 10:56:33 2017"
+// CREATED		"Wed Jan 11 11:08:53 2017"
 
 module SynchDownSchematic(
 	clk,
@@ -34,39 +34,43 @@ output wire	out1;
 output wire	out2;
 output wire	out3;
 
-wire	SYNTHESIZED_WIRE_0;
+wire	gdfx_temp0;
+wire	gdfx_temp1;
+wire	SYNTHESIZED_WIRE_9;
 wire	SYNTHESIZED_WIRE_1;
 wire	SYNTHESIZED_WIRE_2;
-wire	SYNTHESIZED_WIRE_3;
+wire	SYNTHESIZED_WIRE_10;
+wire	SYNTHESIZED_WIRE_4;
+wire	SYNTHESIZED_WIRE_5;
+wire	SYNTHESIZED_WIRE_8;
 
-assign	out0 = SYNTHESIZED_WIRE_3;
-assign	out1 = SYNTHESIZED_WIRE_2;
+assign	out0 = SYNTHESIZED_WIRE_10;
 
 
 
 
 DFlipFlop	b2v_ff0(
-	.D(SYNTHESIZED_WIRE_0),
+	.D(SYNTHESIZED_WIRE_9),
 	.clk(clk),
 	.rst(rst),
-	.q(SYNTHESIZED_WIRE_3),
-	.qBar(SYNTHESIZED_WIRE_0));
+	.q(SYNTHESIZED_WIRE_10),
+	.qBar(SYNTHESIZED_WIRE_9));
 
 
 DFlipFlop	b2v_ff1(
 	.D(SYNTHESIZED_WIRE_1),
 	.clk(clk),
 	.rst(rst),
-	.q(SYNTHESIZED_WIRE_2)
-	);
+	.q(gdfx_temp0),
+	.qBar(gdfx_temp0));
 
 
 DFlipFlop	b2v_ff2(
-	
+	.D(SYNTHESIZED_WIRE_2),
 	.clk(clk),
 	.rst(rst),
-	.q(out2)
-	);
+	.q(gdfx_temp1),
+	.qBar(gdfx_temp1));
 
 
 DFlipFlop	b2v_ff3(
@@ -76,7 +80,17 @@ DFlipFlop	b2v_ff3(
 	.q(out3)
 	);
 
-assign	SYNTHESIZED_WIRE_1 = SYNTHESIZED_WIRE_2 ~^ SYNTHESIZED_WIRE_3;
+assign	SYNTHESIZED_WIRE_1 = gdfx_temp0 ~^ SYNTHESIZED_WIRE_10;
 
+assign	SYNTHESIZED_WIRE_2 = SYNTHESIZED_WIRE_4 | SYNTHESIZED_WIRE_5;
+
+assign	SYNTHESIZED_WIRE_8 = SYNTHESIZED_WIRE_10 | gdfx_temp0;
+
+assign	SYNTHESIZED_WIRE_5 = SYNTHESIZED_WIRE_9 & gdfx_temp0 & gdfx_temp1;
+
+assign	SYNTHESIZED_WIRE_4 = SYNTHESIZED_WIRE_8 & gdfx_temp1;
+
+assign	out1 = gdfx_temp0;
+assign	out2 = gdfx_temp1;
 
 endmodule
