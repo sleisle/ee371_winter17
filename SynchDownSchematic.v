@@ -15,7 +15,7 @@
 
 // PROGRAM		"Quartus II 64-Bit"
 // VERSION		"Version 14.0.0 Build 200 06/17/2014 SJ Web Edition"
-// CREATED		"Wed Jan 11 10:53:40 2017"
+// CREATED		"Wed Jan 11 10:56:33 2017"
 
 module SynchDownSchematic(
 	clk,
@@ -35,7 +35,12 @@ output wire	out2;
 output wire	out3;
 
 wire	SYNTHESIZED_WIRE_0;
+wire	SYNTHESIZED_WIRE_1;
+wire	SYNTHESIZED_WIRE_2;
+wire	SYNTHESIZED_WIRE_3;
 
+assign	out0 = SYNTHESIZED_WIRE_3;
+assign	out1 = SYNTHESIZED_WIRE_2;
 
 
 
@@ -44,15 +49,15 @@ DFlipFlop	b2v_ff0(
 	.D(SYNTHESIZED_WIRE_0),
 	.clk(clk),
 	.rst(rst),
-	.q(out0),
+	.q(SYNTHESIZED_WIRE_3),
 	.qBar(SYNTHESIZED_WIRE_0));
 
 
 DFlipFlop	b2v_ff1(
-	
+	.D(SYNTHESIZED_WIRE_1),
 	.clk(clk),
 	.rst(rst),
-	.q(out1)
+	.q(SYNTHESIZED_WIRE_2)
 	);
 
 
@@ -70,6 +75,8 @@ DFlipFlop	b2v_ff3(
 	.rst(rst),
 	.q(out3)
 	);
+
+assign	SYNTHESIZED_WIRE_1 = SYNTHESIZED_WIRE_2 ~^ SYNTHESIZED_WIRE_3;
 
 
 endmodule
