@@ -37,6 +37,6 @@ module Lab1TopLevel (LEDR, CLOCK_50, SW);
 	//JohnsonSynchronousDownCounter counter (LEDR[3:0], clk, rst);
 	
 	// Synchronous Down Counter With Schematic Entry
-	SynchronousDownCounterSchematic counter (clk, rst, LEDR[0], LEDR[1], LEDR[2], LEDR[3]);
+	SynchDownSchematic counter (clk, rst, LEDR[0], LEDR[1], LEDR[2], LEDR[3]);
 	
 endmodule
