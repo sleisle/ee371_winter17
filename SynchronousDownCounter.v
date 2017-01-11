@@ -22,10 +22,10 @@ module SynchronousDownCounter (out, clk, rst);
 	assign xors[2] = ands[1] ^ out[2];
 	assign xors[3] = ands[2] ^ out[3];
 	
-	DFlipFlop q0(out[0], qBar[0], qBar[0], clk, rst);
-	DFlipFlop q1(out[1], qBar[1], qBar[1], out[0], rst);
-	DFlipFlop q2(out[2], qBar[2], qBar[2], out[1], rst);
-	DFlipFlop q3(out[3], qBar[3], qBar[3], out[2], rst);
+	DFlipFlop q0(out[0], qBar[0], xors[0], clk, rst);
+	DFlipFlop q1(out[1], qBar[1], xors[1], clk, rst);
+	DFlipFlop q2(out[2], qBar[2], xors[2], clk, rst);
+	DFlipFlop q3(out[3], qBar[3], xors[3], clk, rst);
 	
 endmodule
 	
