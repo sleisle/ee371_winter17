@@ -4,6 +4,7 @@
 // EE 371
 // Lab 1: 4 stage synchronous Johnson down counter
 // A 4 stage synchronous Johnson down counter with active low reset
+`include "DFlipFlop.v"
 
 module SynchronousDownCounter (out, clk, rst);
 	input clk, rst;
