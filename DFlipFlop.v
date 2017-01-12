@@ -1,3 +1,4 @@
+// Active reset low D Flip-Flop
 module DFlipFlop(q, qBar, D, clk, rst);
 	input D, clk, rst;
 	output q, qBar;
