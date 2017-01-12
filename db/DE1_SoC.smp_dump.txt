@@ -1,0 +1,11 @@
+
+State Machine - |Lab1TopLevel|JohnsonSynchronousDownCounter:counter|ps
+Name ps~6 ps~5 ps~4 ps~3 
+ps.0000 0 0 0 0 
+ps.0001 0 0 0 1 
+ps.0011 0 0 1 1 
+ps.0111 0 1 1 1 
+ps.1000 1 0 0 0 
+ps.1100 1 1 0 0 
+ps.1110 1 1 1 0 
+ps.1111 1 1 1 1 

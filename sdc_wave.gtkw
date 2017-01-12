@@ -1,0 +1,24 @@
+[*]
+[*] GTKWave Analyzer v3.3.73 (w)1999-2016 BSI
+[*] Wed Jan 11 20:53:26 2017
+[*]
+[dumpfile] "/Users/keegangriffee/Downloads/ee371_winter17/SynchronousDownCounter.vcd"
+[dumpfile_mtime] "Wed Jan 11 20:51:40 2017"
+[dumpfile_size] 2961
+[savefile] "/Users/keegangriffee/Downloads/ee371_winter17/sdc_wave.gtkw"
+[timestart] 0
+[size] 1497 600
+[pos] 61 89
+*-6.851869 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 193
+[signals_width] 98
+[sst_expanded] 1
+[sst_vpaned_height] 168
+@28
+SynchronousDownCounterTestBench.clk
+@22
+SynchronousDownCounterTestBench.out[3:0]
+@28
+SynchronousDownCounterTestBench.rst
+[pattern_trace] 1
+[pattern_trace] 0

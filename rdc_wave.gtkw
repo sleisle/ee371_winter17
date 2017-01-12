@@ -1,0 +1,24 @@
+[*]
+[*] GTKWave Analyzer v3.3.73 (w)1999-2016 BSI
+[*] Wed Jan 11 20:43:45 2017
+[*]
+[dumpfile] "/Users/keegangriffee/Downloads/ee371_winter17/RippleDownCounter.vcd"
+[dumpfile_mtime] "Wed Jan 11 20:42:13 2017"
+[dumpfile_size] 2881
+[savefile] "/Users/keegangriffee/Downloads/ee371_winter17/rdc_wave.gtkw"
+[timestart] 0
+[size] 1343 600
+[pos] -1 -1
+*-6.851869 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 193
+[signals_width] 98
+[sst_expanded] 1
+[sst_vpaned_height] 168
+@28
+RippleDownCounterTestBench.clk
+@25
+RippleDownCounterTestBench.out[3:0]
+@28
+RippleDownCounterTestBench.rst
+[pattern_trace] 1
+[pattern_trace] 0

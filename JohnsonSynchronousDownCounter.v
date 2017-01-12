@@ -28,7 +28,7 @@ module JohnsonSynchronousDownCounter (out, clk, rst);
 	
 	assign out = ps;
 	
-	always @(posedge clk)
+	always @(posedge clk or negedge rst)
 	if (~rst)
 		ps <= 4'b0000;
 	else
