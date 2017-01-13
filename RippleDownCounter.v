@@ -4,7 +4,6 @@
 // EE 371
 // Lab 1: 4 stage ripple down counter
 // A 4 stage ripple down counter with active low reset
-`include "DFlipFlop.v"
 
 module RippleDownCounter (out, clk, rst);
 	input clk, rst;

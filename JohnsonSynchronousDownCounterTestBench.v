@@ -25,7 +25,7 @@ module Tester(clk, rst, out);
 	parameter stimDelay = 10;
 	integer i;
 	initial begin
-		clk=0;
+		clk = 0;
 		// Begin running instructions
 		#stimDelay;
 		#stimDelay rst = 0; 
