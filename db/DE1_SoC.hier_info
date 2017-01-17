@@ -1,8 +1,8 @@
 |Lab1TopLevel
-LEDR[0] << SynchDownSchematic:counter.port2
-LEDR[1] << SynchDownSchematic:counter.port3
-LEDR[2] << SynchDownSchematic:counter.port4
-LEDR[3] << SynchDownSchematic:counter.port5
+LEDR[0] << mux4_1:led0.port0
+LEDR[1] << mux4_1:led1.port0
+LEDR[2] << mux4_1:led2.port0
+LEDR[3] << mux4_1:led3.port0
 LEDR[4] << <GND>
 LEDR[5] << <GND>
 LEDR[6] << <GND>
@@ -10,7 +10,7 @@ LEDR[7] << <GND>
 LEDR[8] << <GND>
 LEDR[9] << <GND>
 CLOCK_50 => CLOCK_50.IN1
-SW[0] => rst.IN1
+SW[0] => rst.IN4
 SW[1] => ~NO_FANOUT~
 SW[2] => ~NO_FANOUT~
 SW[3] => ~NO_FANOUT~
@@ -18,8 +18,8 @@ SW[4] => ~NO_FANOUT~
 SW[5] => ~NO_FANOUT~
 SW[6] => ~NO_FANOUT~
 SW[7] => ~NO_FANOUT~
-SW[8] => ~NO_FANOUT~
-SW[9] => ~NO_FANOUT~
+SW[8] => SW[8].IN4
+SW[9] => SW[9].IN4
 
 
 |Lab1TopLevel|clock_divider:cdiv
@@ -89,7 +89,138 @@ divided_clocks[30] <= divided_clocks[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 divided_clocks[31] <= divided_clocks[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Lab1TopLevel|SynchDownSchematic:counter
+|Lab1TopLevel|mux4_1:led0
+out <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+in[0] => Mux0.IN3
+in[1] => Mux0.IN2
+in[2] => Mux0.IN1
+in[3] => Mux0.IN0
+control[0] => Mux0.IN5
+control[1] => Mux0.IN4
+
+
+|Lab1TopLevel|mux4_1:led1
+out <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+in[0] => Mux0.IN3
+in[1] => Mux0.IN2
+in[2] => Mux0.IN1
+in[3] => Mux0.IN0
+control[0] => Mux0.IN5
+control[1] => Mux0.IN4
+
+
+|Lab1TopLevel|mux4_1:led2
+out <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+in[0] => Mux0.IN3
+in[1] => Mux0.IN2
+in[2] => Mux0.IN1
+in[3] => Mux0.IN0
+control[0] => Mux0.IN5
+control[1] => Mux0.IN4
+
+
+|Lab1TopLevel|mux4_1:led3
+out <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+in[0] => Mux0.IN3
+in[1] => Mux0.IN2
+in[2] => Mux0.IN1
+in[3] => Mux0.IN0
+control[0] => Mux0.IN5
+control[1] => Mux0.IN4
+
+
+|Lab1TopLevel|RippleDownCounter:counter0
+out[0] <= out[0].DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out[1].DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= out[2].DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= DFlipFlop:q3.port0
+clk => clk.IN1
+rst => rst.IN4
+
+
+|Lab1TopLevel|RippleDownCounter:counter0|DFlipFlop:q0
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+qBar <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+D => q~reg0.DATAIN
+clk => q~reg0.CLK
+rst => q~reg0.ACLR
+
+
+|Lab1TopLevel|RippleDownCounter:counter0|DFlipFlop:q1
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+qBar <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+D => q~reg0.DATAIN
+clk => q~reg0.CLK
+rst => q~reg0.ACLR
+
+
+|Lab1TopLevel|RippleDownCounter:counter0|DFlipFlop:q2
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+qBar <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+D => q~reg0.DATAIN
+clk => q~reg0.CLK
+rst => q~reg0.ACLR
+
+
+|Lab1TopLevel|RippleDownCounter:counter0|DFlipFlop:q3
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+qBar <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+D => q~reg0.DATAIN
+clk => q~reg0.CLK
+rst => q~reg0.ACLR
+
+
+|Lab1TopLevel|SynchronousDownCounter:counter1
+out[0] <= DFlipFlop:qBar0.port0
+out[1] <= DFlipFlop:qBar1.port0
+out[2] <= DFlipFlop:qBar2.port0
+out[3] <= DFlipFlop:qBar3.port0
+clk => clk.IN4
+rst => rst.IN4
+
+
+|Lab1TopLevel|SynchronousDownCounter:counter1|DFlipFlop:qBar0
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+qBar <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+D => q~reg0.DATAIN
+clk => q~reg0.CLK
+rst => q~reg0.ACLR
+
+
+|Lab1TopLevel|SynchronousDownCounter:counter1|DFlipFlop:qBar1
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+qBar <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+D => q~reg0.DATAIN
+clk => q~reg0.CLK
+rst => q~reg0.ACLR
+
+
+|Lab1TopLevel|SynchronousDownCounter:counter1|DFlipFlop:qBar2
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+qBar <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+D => q~reg0.DATAIN
+clk => q~reg0.CLK
+rst => q~reg0.ACLR
+
+
+|Lab1TopLevel|SynchronousDownCounter:counter1|DFlipFlop:qBar3
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+qBar <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+D => q~reg0.DATAIN
+clk => q~reg0.CLK
+rst => q~reg0.ACLR
+
+
+|Lab1TopLevel|JohnsonSynchronousDownCounter:counter2
+out[0] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+clk => ps~1.DATAIN
+rst => ps~3.DATAIN
+
+
+|Lab1TopLevel|SynchDownSchematic:counter3
 clk => clk.IN4
 rst => rst.IN4
 out0 <= DFlipFlop:b2v_ff0.q
@@ -98,7 +229,7 @@ out2 <= DFlipFlop:b2v_ff2.q
 out3 <= DFlipFlop:b2v_ff3.q
 
 
-|Lab1TopLevel|SynchDownSchematic:counter|DFlipFlop:b2v_ff0
+|Lab1TopLevel|SynchDownSchematic:counter3|DFlipFlop:b2v_ff0
 q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 qBar <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 D => q~reg0.DATAIN
@@ -106,7 +237,7 @@ clk => q~reg0.CLK
 rst => q~reg0.ACLR
 
 
-|Lab1TopLevel|SynchDownSchematic:counter|DFlipFlop:b2v_ff1
+|Lab1TopLevel|SynchDownSchematic:counter3|DFlipFlop:b2v_ff1
 q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 qBar <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 D => q~reg0.DATAIN
@@ -114,7 +245,7 @@ clk => q~reg0.CLK
 rst => q~reg0.ACLR
 
 
-|Lab1TopLevel|SynchDownSchematic:counter|DFlipFlop:b2v_ff2
+|Lab1TopLevel|SynchDownSchematic:counter3|DFlipFlop:b2v_ff2
 q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 qBar <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 D => q~reg0.DATAIN
@@ -122,7 +253,7 @@ clk => q~reg0.CLK
 rst => q~reg0.ACLR
 
 
-|Lab1TopLevel|SynchDownSchematic:counter|DFlipFlop:b2v_ff3
+|Lab1TopLevel|SynchDownSchematic:counter3|DFlipFlop:b2v_ff3
 q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 qBar <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 D => q~reg0.DATAIN

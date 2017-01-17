@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE1_SoC
-Tue Jan 10 18:58:41 2017
+Tue Jan 17 08:30:13 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -13,14 +13,16 @@ Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. General Register Statistics
- 10. Parameter Settings for User Entity Instance: Top-level Entity: |Lab1TopLevel
- 11. Port Connectivity Checks: "clock_divider:cdiv"
- 12. Post-Synthesis Netlist Statistics for Top Partition
- 13. Elapsed Time Per Partition
- 14. Analysis & Synthesis Messages
- 15. Analysis & Synthesis Suppressed Messages
+  8. State Machine - |Lab1TopLevel|JohnsonSynchronousDownCounter:counter2|ps
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: Top-level Entity: |Lab1TopLevel
+ 13. Port Connectivity Checks: "clock_divider:cdiv"
+ 14. Post-Synthesis Netlist Statistics for Top Partition
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
+ 17. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -47,13 +49,13 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Jan 10 18:58:41 2017      ;
+; Analysis & Synthesis Status     ; Successful - Tue Jan 17 08:30:13 2017      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; DE1_SoC                                    ;
 ; Top-level Entity Name           ; Lab1TopLevel                               ;
 ; Family                          ; Cyclone V                                  ;
 ; Logic utilization (in ALMs)     ; N/A                                        ;
-; Total registers                 ; 28                                         ;
+; Total registers                 ; 37                                         ;
 ; Total pins                      ; 21                                         ;
 ; Total virtual pins              ; 0                                          ;
 ; Total block memory bits         ; 0                                          ;
@@ -166,16 +168,20 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                   ;
-+----------------------------------+-----------------+------------------------+------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                     ; Library ;
-+----------------------------------+-----------------+------------------------+------------------------------------------------------------------+---------+
-; RippleDownCounter.v              ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/ee371_winter17/RippleDownCounter.v ;         ;
-; Lab1TopLevel.v                   ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/ee371_winter17/Lab1TopLevel.v      ;         ;
-; DFlipFlop.v                      ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/ee371_winter17/DFlipFlop.v         ;         ;
-; clock_divider.v                  ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/ee371_winter17/clock_divider.v     ;         ;
-+----------------------------------+-----------------+------------------------+------------------------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                               ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                 ; Library ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------+---------+
+; SynchronousDownCounter.v         ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/ee371_winter17/SynchronousDownCounter.v        ;         ;
+; SynchDownSchematic.v             ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/ee371_winter17/SynchDownSchematic.v            ;         ;
+; mux4_1.v                         ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/ee371_winter17/mux4_1.v                        ;         ;
+; JohnsonSynchronousDownCounter.v  ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/ee371_winter17/JohnsonSynchronousDownCounter.v ;         ;
+; RippleDownCounter.v              ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/ee371_winter17/RippleDownCounter.v             ;         ;
+; Lab1TopLevel.v                   ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/ee371_winter17/Lab1TopLevel.v                  ;         ;
+; DFlipFlop.v                      ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/ee371_winter17/DFlipFlop.v                     ;         ;
+; clock_divider.v                  ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/ee371_winter17/clock_divider.v                 ;         ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------+---------+
 
 
 +--------------------------------------------------------------+
@@ -183,50 +189,82 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 14             ;
+; Estimate of Logic utilization (ALMs needed) ; 25             ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 28             ;
+; Combinational ALUT usage for logic          ; 45             ;
 ;     -- 7 input functions                    ; 0              ;
-;     -- 6 input functions                    ; 0              ;
-;     -- 5 input functions                    ; 0              ;
-;     -- 4 input functions                    ; 0              ;
-;     -- <=3 input functions                  ; 28             ;
+;     -- 6 input functions                    ; 4              ;
+;     -- 5 input functions                    ; 3              ;
+;     -- 4 input functions                    ; 7              ;
+;     -- <=3 input functions                  ; 31             ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 28             ;
+; Dedicated logic registers                   ; 37             ;
 ;                                             ;                ;
 ; I/O pins                                    ; 21             ;
 ; Total DSP Blocks                            ; 0              ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
 ; Maximum fan-out                             ; 24             ;
-; Total fan-out                               ; 136            ;
-; Average fan-out                             ; 1.39           ;
+; Total fan-out                               ; 236            ;
+; Average fan-out                             ; 1.90           ;
 +---------------------------------------------+----------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                            ;
-+--------------------------------+-------------------+--------------+-------------------+------------+------+--------------+------------------------------------------------------+--------------+
-; Compilation Hierarchy Node     ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                  ; Library Name ;
-+--------------------------------+-------------------+--------------+-------------------+------------+------+--------------+------------------------------------------------------+--------------+
-; |Lab1TopLevel                  ; 28 (0)            ; 28 (0)       ; 0                 ; 0          ; 21   ; 0            ; |Lab1TopLevel                                        ; work         ;
-;    |RippleDownCounter:counter| ; 4 (0)             ; 4 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|RippleDownCounter:counter              ; work         ;
-;       |DFlipFlop:q0|           ; 1 (1)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|RippleDownCounter:counter|DFlipFlop:q0 ; work         ;
-;       |DFlipFlop:q1|           ; 1 (1)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|RippleDownCounter:counter|DFlipFlop:q1 ; work         ;
-;       |DFlipFlop:q2|           ; 1 (1)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|RippleDownCounter:counter|DFlipFlop:q2 ; work         ;
-;       |DFlipFlop:q3|           ; 1 (1)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|RippleDownCounter:counter|DFlipFlop:q3 ; work         ;
-;    |clock_divider:cdiv|        ; 24 (24)           ; 24 (24)      ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|clock_divider:cdiv                     ; work         ;
-+--------------------------------+-------------------+--------------+-------------------+------------+------+--------------+------------------------------------------------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                  ;
++---------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+---------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                  ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                           ; Library Name ;
++---------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+---------------------------------------------------------------+--------------+
+; |Lab1TopLevel                               ; 45 (0)            ; 37 (0)       ; 0                 ; 0          ; 21   ; 0            ; |Lab1TopLevel                                                 ; work         ;
+;    |JohnsonSynchronousDownCounter:counter2| ; 5 (5)             ; 4 (4)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|JohnsonSynchronousDownCounter:counter2          ; work         ;
+;    |RippleDownCounter:counter0|             ; 4 (0)             ; 4 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|RippleDownCounter:counter0                      ; work         ;
+;       |DFlipFlop:q0|                        ; 1 (1)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|RippleDownCounter:counter0|DFlipFlop:q0         ; work         ;
+;       |DFlipFlop:q1|                        ; 1 (1)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|RippleDownCounter:counter0|DFlipFlop:q1         ; work         ;
+;       |DFlipFlop:q2|                        ; 1 (1)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|RippleDownCounter:counter0|DFlipFlop:q2         ; work         ;
+;       |DFlipFlop:q3|                        ; 1 (1)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|RippleDownCounter:counter0|DFlipFlop:q3         ; work         ;
+;    |SynchDownSchematic:counter3|            ; 2 (1)             ; 4 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|SynchDownSchematic:counter3                     ; work         ;
+;       |DFlipFlop:b2v_ff0|                   ; 1 (1)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|SynchDownSchematic:counter3|DFlipFlop:b2v_ff0   ; work         ;
+;       |DFlipFlop:b2v_ff1|                   ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|SynchDownSchematic:counter3|DFlipFlop:b2v_ff1   ; work         ;
+;       |DFlipFlop:b2v_ff2|                   ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|SynchDownSchematic:counter3|DFlipFlop:b2v_ff2   ; work         ;
+;       |DFlipFlop:b2v_ff3|                   ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|SynchDownSchematic:counter3|DFlipFlop:b2v_ff3   ; work         ;
+;    |SynchronousDownCounter:counter1|        ; 3 (3)             ; 1 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|SynchronousDownCounter:counter1                 ; work         ;
+;       |DFlipFlop:qBar3|                     ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|SynchronousDownCounter:counter1|DFlipFlop:qBar3 ; work         ;
+;    |clock_divider:cdiv|                     ; 24 (24)           ; 24 (24)      ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|clock_divider:cdiv                              ; work         ;
+;    |mux4_1:led0|                            ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|mux4_1:led0                                     ; work         ;
+;    |mux4_1:led1|                            ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|mux4_1:led1                                     ; work         ;
+;    |mux4_1:led2|                            ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|mux4_1:led2                                     ; work         ;
+;    |mux4_1:led3|                            ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Lab1TopLevel|mux4_1:led3                                     ; work         ;
++---------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+---------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+----------------------------------------------------------------+
-; Registers Removed During Synthesis                             ;
-+-------------------------------------------+--------------------+
-; Register name                             ; Reason for Removal ;
-+-------------------------------------------+--------------------+
-; clock_divider:cdiv|divided_clocks[24..31] ; Lost fanout        ;
-; Total Number of Removed Registers = 8     ;                    ;
-+-------------------------------------------+--------------------+
+Encoding Type:  User-Encoded
++-------------------------------------------------------------------------+
+; State Machine - |Lab1TopLevel|JohnsonSynchronousDownCounter:counter2|ps ;
++---------+------+------+------+------------------------------------------+
+; Name    ; ps~7 ; ps~6 ; ps~5 ; ps~4                                     ;
++---------+------+------+------+------------------------------------------+
+; ps.0000 ; 0    ; 0    ; 0    ; 0                                        ;
+; ps.0001 ; 0    ; 0    ; 0    ; 1                                        ;
+; ps.0011 ; 0    ; 0    ; 1    ; 1                                        ;
+; ps.0111 ; 0    ; 1    ; 1    ; 1                                        ;
+; ps.1000 ; 1    ; 0    ; 0    ; 0                                        ;
+; ps.1100 ; 1    ; 1    ; 0    ; 0                                        ;
+; ps.1110 ; 1    ; 1    ; 1    ; 0                                        ;
+; ps.1111 ; 1    ; 1    ; 1    ; 1                                        ;
++---------+------+------+------+------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                              ;
++---------------------------------------------------+-------------------------------------------------------------+
+; Register name                                     ; Reason for Removal                                          ;
++---------------------------------------------------+-------------------------------------------------------------+
+; SynchronousDownCounter:counter1|DFlipFlop:qBar0|q ; Merged with SynchDownSchematic:counter3|DFlipFlop:b2v_ff0|q ;
+; SynchronousDownCounter:counter1|DFlipFlop:qBar1|q ; Merged with SynchDownSchematic:counter3|DFlipFlop:b2v_ff1|q ;
+; SynchronousDownCounter:counter1|DFlipFlop:qBar2|q ; Merged with SynchDownSchematic:counter3|DFlipFlop:b2v_ff2|q ;
+; clock_divider:cdiv|divided_clocks[24..31]         ; Lost fanout                                                 ;
+; Total Number of Removed Registers = 11            ;                                                             ;
++---------------------------------------------------+-------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -234,14 +272,24 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 28    ;
+; Total registers                              ; 37    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 4     ;
+; Number of registers using Asynchronous Clear ; 13    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 0     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Lab1TopLevel|mux4_1:led0|Mux0 ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Lab1TopLevel|mux4_1:led2|Mux0 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
 
 
 +------------------------------------------------------------------------------+
@@ -269,20 +317,25 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 28                          ;
-;     CLR               ; 4                           ;
+; arriav_ff             ; 37                          ;
+;     CLR               ; 13                          ;
 ;     plain             ; 24                          ;
-; arriav_lcell_comb     ; 29                          ;
+; arriav_lcell_comb     ; 46                          ;
 ;     arith             ; 23                          ;
 ;         1 data inputs ; 22                          ;
 ;         2 data inputs ; 1                           ;
-;     normal            ; 6                           ;
+;     normal            ; 23                          ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 5                           ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 1                           ;
+;         3 data inputs ; 1                           ;
+;         4 data inputs ; 7                           ;
+;         5 data inputs ; 3                           ;
+;         6 data inputs ; 4                           ;
 ; boundary_port         ; 21                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 3.20                        ;
-; Average LUT depth     ; 2.21                        ;
+; Average LUT depth     ; 2.03                        ;
 +-----------------------+-----------------------------+
 
 
@@ -301,8 +354,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Tue Jan 10 18:58:39 2017
+    Info: Processing started: Tue Jan 17 08:30:12 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC
+Info (12021): Found 1 design units, including 1 entities, in source file synchronousdowncounter.v
+    Info (12023): Found entity 1: SynchronousDownCounter
+Info (12021): Found 1 design units, including 1 entities, in source file synchdownschematic.v
+    Info (12023): Found entity 1: SynchDownSchematic
+Info (12021): Found 1 design units, including 1 entities, in source file mux4_1.v
+    Info (12023): Found entity 1: mux4_1
+Info (12021): Found 1 design units, including 1 entities, in source file johnsonsynchronousdowncounter.v
+    Info (12023): Found entity 1: JohnsonSynchronousDownCounter
 Info (12021): Found 1 design units, including 1 entities, in source file rippledowncounter.v
     Info (12023): Found entity 1: RippleDownCounter
 Info (12021): Found 1 design units, including 1 entities, in source file lab1toplevel.v
@@ -313,21 +374,25 @@ Info (12021): Found 1 design units, including 1 entities, in source file clock_d
     Info (12023): Found entity 1: clock_divider
 Info (12127): Elaborating entity "Lab1TopLevel" for the top level hierarchy
 Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:cdiv"
-Info (12128): Elaborating entity "RippleDownCounter" for hierarchy "RippleDownCounter:counter"
-Info (12128): Elaborating entity "DFlipFlop" for hierarchy "RippleDownCounter:counter|DFlipFlop:q0"
+Info (12128): Elaborating entity "mux4_1" for hierarchy "mux4_1:led0"
+Info (12128): Elaborating entity "RippleDownCounter" for hierarchy "RippleDownCounter:counter0"
+Info (12128): Elaborating entity "DFlipFlop" for hierarchy "RippleDownCounter:counter0|DFlipFlop:q0"
+Info (12128): Elaborating entity "SynchronousDownCounter" for hierarchy "SynchronousDownCounter:counter1"
+Info (12128): Elaborating entity "JohnsonSynchronousDownCounter" for hierarchy "JohnsonSynchronousDownCounter:counter2"
+Info (12128): Elaborating entity "SynchDownSchematic" for hierarchy "SynchDownSchematic:counter3"
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 8 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file D:/Schoolwork/Winter_17/EE371/ee371_winter17/output_files/DE1_SoC.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 49 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 66 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 11 input pins
     Info (21059): Implemented 10 output pins
-    Info (21061): Implemented 28 logic cells
+    Info (21061): Implemented 45 logic cells
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 628 megabytes
-    Info: Processing ended: Tue Jan 10 18:58:41 2017
-    Info: Elapsed time: 00:00:02
+    Info: Peak virtual memory: 616 megabytes
+    Info: Processing ended: Tue Jan 17 08:30:13 2017
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
 
