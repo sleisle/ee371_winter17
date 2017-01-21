@@ -16,7 +16,7 @@ module lab2TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	output wire [9:0] LEDR; // LEDs
 	
 	wire clk;
-	reg [2:0] outerWaterOnes, outerWaterDec, lockWaterOnes, lockWaterDec, innerWaterOnes, innerWaterDec;
+	reg [3:0] outerWaterOnes, outerWaterDec, lockWaterOnes, lockWaterDec, innerWaterOnes, innerWaterDec;
 	
 	parameter whichClock = 24;
 	
