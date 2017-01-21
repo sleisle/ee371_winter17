@@ -19,7 +19,7 @@ module lab2TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	wire [31:0] clkMain;
 	wire [7:0] outerWaterConv, innerWaterConv, lockWaterConv, outerWaterPre, innerWaterPre, lockWaterPre;
 	
-	parameter whichClock = 24;
+	parameter whichClock = 23;
 	
 	// Initialize clock divider
 	assign clk = clkMain[whichClock];

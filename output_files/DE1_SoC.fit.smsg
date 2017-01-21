@@ -6,8 +6,6 @@ Extra Info (176237): Finished Fast Input/Output/OE register processing
 Extra Info (176238): Start inferring scan chains for DSP blocks
 Extra Info (176239): Inferring scan chains for DSP blocks is complete
 Extra Info (176246): Moving registers into I/O cells, DSP blocks, and RAM blocks to improve timing and density
-Extra Info (176247): Finished moving registers into I/O cells, DSP blocks, and RAM blocks
-Warning (15705): Ignored locations or region assignments to the following nodes
 Warning (332174): Ignored filter at DE1_SoC.sdc(10): CLOCK2_50 could not be matched with a port
 Warning (332049): Ignored create_clock at DE1_SoC.sdc(10): Argument <targets> is an empty collection
 Warning (332174): Ignored filter at DE1_SoC.sdc(11): CLOCK3_50 could not be matched with a port
@@ -107,3 +105,6 @@ Warning (332049): Ignored set_output_delay at DE1_SoC.sdc(93): Argument <targets
 Warning (332049): Ignored set_output_delay at DE1_SoC.sdc(93): Argument -clock is not an object ID
 Warning (332049): Ignored set_output_delay at DE1_SoC.sdc(94): Argument <targets> is an empty collection
 Warning (332049): Ignored set_output_delay at DE1_SoC.sdc(94): Argument -clock is not an object ID
+Warning (332060): Node: clock_divider:cdiv|divided_clocks[23] was determined to be a clock but was found without an associated clock assignment.
+Extra Info (176247): Finished moving registers into I/O cells, DSP blocks, and RAM blocks
+Warning (15705): Ignored locations or region assignments to the following nodes
