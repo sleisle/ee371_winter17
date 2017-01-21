@@ -1,5 +1,5 @@
 Assembler report for DE1_SoC
-Tue Jan 17 08:31:58 2017
+Fri Jan 20 17:34:24 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -10,7 +10,7 @@ Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: D:/Schoolwork/Winter_17/EE371/ee371_winter17/output_files/DE1_SoC.sof
+  5. Assembler Device Options: D:/Schoolwork/Winter_17/EE371/lab2/ee371_winter17/output_files/DE1_SoC.sof
   6. Assembler Messages
 
 
@@ -38,9 +38,9 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Tue Jan 17 08:31:58 2017 ;
+; Assembler Status      ; Successful - Fri Jan 20 17:34:24 2017 ;
 ; Revision Name         ; DE1_SoC                               ;
-; Top-level Entity Name ; Lab1TopLevel                          ;
+; Top-level Entity Name ; lab2TopLevel                          ;
 ; Family                ; Cyclone V                             ;
 ; Device                ; 5CSEMA5F31C6                          ;
 +-----------------------+---------------------------------------+
@@ -53,24 +53,24 @@ agreement for further details.
 +--------+---------+---------------+
 
 
-+-----------------------------------------------------------------------+
-; Assembler Generated Files                                             ;
-+-----------------------------------------------------------------------+
-; File Name                                                             ;
-+-----------------------------------------------------------------------+
-; D:/Schoolwork/Winter_17/EE371/ee371_winter17/output_files/DE1_SoC.sof ;
-+-----------------------------------------------------------------------+
++----------------------------------------------------------------------------+
+; Assembler Generated Files                                                  ;
++----------------------------------------------------------------------------+
+; File Name                                                                  ;
++----------------------------------------------------------------------------+
+; D:/Schoolwork/Winter_17/EE371/lab2/ee371_winter17/output_files/DE1_SoC.sof ;
++----------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------+
-; Assembler Device Options: D:/Schoolwork/Winter_17/EE371/ee371_winter17/output_files/DE1_SoC.sof ;
-+----------------+--------------------------------------------------------------------------------+
-; Option         ; Setting                                                                        ;
-+----------------+--------------------------------------------------------------------------------+
-; Device         ; 5CSEMA5F31C6                                                                   ;
-; JTAG usercode  ; 0x00AFDAF9                                                                     ;
-; Checksum       ; 0x00AFDAF9                                                                     ;
-+----------------+--------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------+
+; Assembler Device Options: D:/Schoolwork/Winter_17/EE371/lab2/ee371_winter17/output_files/DE1_SoC.sof ;
++----------------+-------------------------------------------------------------------------------------+
+; Option         ; Setting                                                                             ;
++----------------+-------------------------------------------------------------------------------------+
+; Device         ; 5CSEMA5F31C6                                                                        ;
+; JTAG usercode  ; 0x00AF8B71                                                                          ;
+; Checksum       ; 0x00AF8B71                                                                          ;
++----------------+-------------------------------------------------------------------------------------+
 
 
 +--------------------+
@@ -79,12 +79,12 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Tue Jan 17 08:31:50 2017
+    Info: Processing started: Fri Jan 20 17:34:17 2017
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off DE1_SoC -c DE1_SoC
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 685 megabytes
-    Info: Processing ended: Tue Jan 17 08:31:58 2017
+    Info: Peak virtual memory: 679 megabytes
+    Info: Processing ended: Fri Jan 20 17:34:25 2017
     Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:08
 

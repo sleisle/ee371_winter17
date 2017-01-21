@@ -6,7 +6,7 @@ module compWater (rtn, water1, water2);
 	always @(*) begin
 		check1 = water1;
 		check2 = water2;
-		check = (check2 - check1) + 3;
+		check = (check2 - check1) + 9'd3;
 		
 		rtn = (check > 0) & (check < 6);
 	end

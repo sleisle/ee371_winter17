@@ -6,9 +6,12 @@ module lockSystem (clk, rst, innerWater, lockWater, outerWater, outputs, inputs)
 	
 	wire matchOuterWater, matchInnerWater;
 	
-	assign outerWater = 73;
-	assign innerWater = 49;
 	parameter lockWaterStart = 52;
+	
+	always @(*) begin
+		outerWater = 8'd73;
+		innerWater = 8'd49;
+	end
 	
 	compWater outerWaterCheck (matchOuterWater, outerWater, lockWater);
 	compWater innerWaterCheck (matchInnerWater, innerWater, lockWater);

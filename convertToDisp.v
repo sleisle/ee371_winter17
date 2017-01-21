@@ -3,8 +3,8 @@ module convertToDisp (out, in);
 	output reg [7:0] out;
 
 	always @(*) begin
-		out[7:4] = in / 10;
-		out[3:0] = in % 10;
+		out[7:4] = in / 4'd10;
+		out[3:0] = in % 4'd10;
 	end
 
 endmodule
