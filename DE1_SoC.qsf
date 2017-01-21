@@ -5,7 +5,7 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSEMA5F31C6
-set_global_assignment -name TOP_LEVEL_ENTITY Lab1TopLevel
+set_global_assignment -name TOP_LEVEL_ENTITY Lab2TopLevel
 set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
 
 
@@ -964,13 +964,9 @@ set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_WE_N
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_RESET_N
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_P
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_N
-set_global_assignment -name VERILOG_FILE SynchronousDownCounter.v
-set_global_assignment -name VERILOG_FILE SynchDownSchematic.v
-set_global_assignment -name VERILOG_FILE mux4_1.v
-set_global_assignment -name VERILOG_FILE JohnsonSynchronousDownCounter.v
-set_global_assignment -name VERILOG_FILE RippleDownCounter.v
-set_global_assignment -name VERILOG_FILE Lab1TopLevel.v
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE seg7.sv
+set_global_assignment -name VERILOG_FILE lockSystem.v
 set_global_assignment -name VERILOG_FILE DFlipFlop.v
 set_global_assignment -name VERILOG_FILE clock_divider.v
-set_global_assignment -name SDC_FILE DE1_SoC.sdc
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name VERILOG_FILE lab2TopLevel.v

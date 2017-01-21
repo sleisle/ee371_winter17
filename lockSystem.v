@@ -4,6 +4,8 @@ module lockSystem (clk, rst, innerWater, lockWater, outerWater, outputs, inputs)
 	output wire [3:0] outputs; // Gondola arriving, Gondola departing, Outer Port Status, Inner Port Status
 	output reg [5:0] innerWater, lockWater, outerWater;
 	
+	
+	// Hey Keitaro
 	parameter outWaterStart = 7.3;
 	parameter inWaterStart = 4.9;
 	parameter lockWaterStart = 5.2;
