@@ -4,10 +4,14 @@ module lockSystem (clk, rst, innerWater, lockWater, outerWater, outputs, inputs)
 	output wire [3:0] outputs; // Gondola arriving, Gondola departing, Outer Port Status, Inner Port Status
 	output reg [7:0] innerWater, lockWater, outerWater;
 	
+	wire matchOuterWater, matchInnerWater;
 	
-	parameter outWaterStart = 7.3;
-	parameter inWaterStart = 4.9;
-	parameter lockWaterStart = 5.2;
+	assign outerWater = 73;
+	assign innerWater = 49;
+	parameter lockWaterStart = 52;
+	
+	compWater outerWaterCheck (matchOuterWater, outerWater, lockWater);
+	compWater innerWaterCheck (matchInnerWater, innerWater, lockWater);
 	
 	
 

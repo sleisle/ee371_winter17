@@ -970,3 +970,4 @@ set_global_assignment -name VERILOG_FILE lockSystem.v
 set_global_assignment -name VERILOG_FILE DFlipFlop.v
 set_global_assignment -name VERILOG_FILE clock_divider.v
 set_global_assignment -name VERILOG_FILE lab2TopLevel.v
+set_global_assignment -name VERILOG_FILE compWater.v

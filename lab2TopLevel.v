@@ -16,7 +16,7 @@ module lab2TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	output wire [9:0] LEDR; // LEDs
 	
 	wire clk;
-	reg [3:0] outerWaterOnes, outerWaterDec, lockWaterOnes, lockWaterDec, innerWaterOnes, innerWaterDec;
+	wire [7:0] outerWaterConv, innerWaterConv, lockWaterConv, outerWaterPre, innerWaterPre, lockWaterPre;
 	
 	parameter whichClock = 24;
 	
@@ -25,12 +25,14 @@ module lab2TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	clock_divider cdiv (CLOCK_50, clkMain);
 
 	// Set up displays for water level
-	seg7 h0 (innerWaterDec, HEX0);
-	seg7 h1 (innerWaterOnes, HEX1);
-	seg7 h2 (lockWaterDec, HEX2);
-	seg7 h3 (lockWaterOnes, HEX3);
-	seg7 h4 (outerWaterDec, HEX4);
-	seg7 h5 (outerWaterOnes, HEX5);
+	
+	
+	seg7 h0 (innerWaterConv[3:0], HEX0);
+	seg7 h1 (innerWaterConv[7:4], HEX1);
+	seg7 h2 (lockWaterConv[3:0], HEX2);
+	seg7 h3 (lockWaterConv[7:4], HEX3);
+	seg7 h4 (outerWaterConv[3:0], HEX4);
+	seg7 h5 (outerWaterConv[7:4], HEX5);
 	
 	lockSystem lock (clk, KEY[0], {innerWaterOnes, innerWaterDec}, {lockWaterOnes, lockWaterDec}, {outerWaterOnes, outerWaterDec}, 
 		{LEDR[0], LEDR[1], LEDR[2], LEDR[3]}, {SW[0], SW[1], SW[2], SW[3], KEY[1], KEY[2]});
