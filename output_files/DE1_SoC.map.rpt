@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE1_SoC
-Sat Jan 21 14:17:54 2017
+Sun Jan 22 20:17:04 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -21,17 +21,11 @@ Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
  13. Parameter Settings for Inferred Entity Instance: convertToDisp:lockConv|lpm_divide:Div0
  14. Port Connectivity Checks: "lockSystem:lock|compWater:innerWaterCheck"
  15. Port Connectivity Checks: "lockSystem:lock|compWater:outerWaterCheck"
- 16. Port Connectivity Checks: "seg7:h5"
- 17. Port Connectivity Checks: "seg7:h4"
- 18. Port Connectivity Checks: "seg7:h3"
- 19. Port Connectivity Checks: "seg7:h2"
- 20. Port Connectivity Checks: "seg7:h1"
- 21. Port Connectivity Checks: "seg7:h0"
- 22. Port Connectivity Checks: "clock_divider:cdiv"
- 23. Post-Synthesis Netlist Statistics for Top Partition
- 24. Elapsed Time Per Partition
- 25. Analysis & Synthesis Messages
- 26. Analysis & Synthesis Suppressed Messages
+ 16. Port Connectivity Checks: "clock_divider:cdiv"
+ 17. Post-Synthesis Netlist Statistics for Top Partition
+ 18. Elapsed Time Per Partition
+ 19. Analysis & Synthesis Messages
+ 20. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -58,14 +52,14 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sat Jan 21 14:17:54 2017      ;
+; Analysis & Synthesis Status     ; Successful - Sun Jan 22 20:17:04 2017      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; DE1_SoC                                    ;
 ; Top-level Entity Name           ; lab2TopLevel                               ;
 ; Family                          ; Cyclone V                                  ;
 ; Logic utilization (in ALMs)     ; N/A                                        ;
 ; Total registers                 ; 34                                         ;
-; Total pins                      ; 61                                         ;
+; Total pins                      ; 67                                         ;
 ; Total virtual pins              ; 0                                          ;
 ; Total block memory bits         ; 0                                          ;
 ; Total DSP Blocks                ; 0                                          ;
@@ -204,23 +198,23 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 87             ;
+; Estimate of Logic utilization (ALMs needed) ; 96             ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 170            ;
+; Combinational ALUT usage for logic          ; 186            ;
 ;     -- 7 input functions                    ; 0              ;
-;     -- 6 input functions                    ; 4              ;
-;     -- 5 input functions                    ; 4              ;
-;     -- 4 input functions                    ; 12             ;
-;     -- <=3 input functions                  ; 150            ;
+;     -- 6 input functions                    ; 5              ;
+;     -- 5 input functions                    ; 11             ;
+;     -- 4 input functions                    ; 14             ;
+;     -- <=3 input functions                  ; 156            ;
 ;                                             ;                ;
 ; Dedicated logic registers                   ; 34             ;
 ;                                             ;                ;
-; I/O pins                                    ; 61             ;
+; I/O pins                                    ; 67             ;
 ; Total DSP Blocks                            ; 0              ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
 ; Maximum fan-out                             ; 24             ;
-; Total fan-out                               ; 602            ;
-; Average fan-out                             ; 1.85           ;
+; Total fan-out                               ; 650            ;
+; Average fan-out                             ; 1.84           ;
 +---------------------------------------------+----------------+
 
 
@@ -229,7 +223,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                  ; Library Name ;
 +-------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |lab2TopLevel                             ; 170 (1)           ; 34 (0)       ; 0                 ; 0          ; 61   ; 0            ; |lab2TopLevel                                                                                                                        ; work         ;
+; |lab2TopLevel                             ; 186 (0)           ; 34 (0)       ; 0                 ; 0          ; 67   ; 0            ; |lab2TopLevel                                                                                                                        ; work         ;
 ;    |clock_divider:cdiv|                   ; 24 (24)           ; 24 (24)      ; 0                 ; 0          ; 0    ; 0            ; |lab2TopLevel|clock_divider:cdiv                                                                                                     ; work         ;
 ;    |convertToDisp:lockConv|               ; 102 (0)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab2TopLevel|convertToDisp:lockConv                                                                                                 ; work         ;
 ;       |lpm_divide:Div0|                   ; 49 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab2TopLevel|convertToDisp:lockConv|lpm_divide:Div0                                                                                 ; work         ;
@@ -240,11 +234,11 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;          |lpm_divide_82m:auto_generated|  ; 53 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab2TopLevel|convertToDisp:lockConv|lpm_divide:Mod0|lpm_divide_82m:auto_generated                                                   ; work         ;
 ;             |sign_div_unsign_bkh:divider| ; 53 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab2TopLevel|convertToDisp:lockConv|lpm_divide:Mod0|lpm_divide_82m:auto_generated|sign_div_unsign_bkh:divider                       ; work         ;
 ;                |alt_u_div_sse:divider|    ; 53 (53)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab2TopLevel|convertToDisp:lockConv|lpm_divide:Mod0|lpm_divide_82m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider ; work         ;
-;    |lockSystem:lock|                      ; 31 (13)           ; 10 (10)      ; 0                 ; 0          ; 0    ; 0            ; |lab2TopLevel|lockSystem:lock                                                                                                        ; work         ;
-;       |compWater:innerWaterCheck|         ; 9 (9)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab2TopLevel|lockSystem:lock|compWater:innerWaterCheck                                                                              ; work         ;
-;       |compWater:outerWaterCheck|         ; 9 (9)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab2TopLevel|lockSystem:lock|compWater:outerWaterCheck                                                                              ; work         ;
-;    |seg7:h2|                              ; 6 (6)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab2TopLevel|seg7:h2                                                                                                                ; work         ;
-;    |seg7:h3|                              ; 6 (6)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab2TopLevel|seg7:h3                                                                                                                ; work         ;
+;    |lockSystem:lock|                      ; 46 (26)           ; 10 (10)      ; 0                 ; 0          ; 0    ; 0            ; |lab2TopLevel|lockSystem:lock                                                                                                        ; work         ;
+;       |compWater:innerWaterCheck|         ; 10 (10)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab2TopLevel|lockSystem:lock|compWater:innerWaterCheck                                                                              ; work         ;
+;       |compWater:outerWaterCheck|         ; 10 (10)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab2TopLevel|lockSystem:lock|compWater:outerWaterCheck                                                                              ; work         ;
+;    |seg7:h2|                              ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab2TopLevel|seg7:h2                                                                                                                ; work         ;
+;    |seg7:h3|                              ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab2TopLevel|seg7:h3                                                                                                                ; work         ;
 +-------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -266,10 +260,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Total registers                              ; 34    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 8     ;
+; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 8     ;
+; Number of registers using Clock Enable       ; 7     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -279,8 +273,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                 ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |lab2TopLevel|lockSystem:lock|lockWater[5] ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |lab2TopLevel|lockSystem:lock|lockWater[7] ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |lab2TopLevel|lockSystem:lock|lockWater[7] ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |lab2TopLevel|lockSystem:lock|lockWater[5] ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
 
 
@@ -366,60 +360,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +--------------+-------+----------+-------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "seg7:h5"                                                                                                                ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                 ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-; leds ; Output ; Warning  ; Output or bidir port (7 bits) is wider than the port expression (6 bits) it drives; bit(s) "leds[6..6]" have no fanouts ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "seg7:h4"                                                                                                                ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                 ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-; leds ; Output ; Warning  ; Output or bidir port (7 bits) is wider than the port expression (6 bits) it drives; bit(s) "leds[6..6]" have no fanouts ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "seg7:h3"                                                                                                                ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                 ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-; leds ; Output ; Warning  ; Output or bidir port (7 bits) is wider than the port expression (6 bits) it drives; bit(s) "leds[6..6]" have no fanouts ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "seg7:h2"                                                                                                                ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                 ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-; leds ; Output ; Warning  ; Output or bidir port (7 bits) is wider than the port expression (6 bits) it drives; bit(s) "leds[6..6]" have no fanouts ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "seg7:h1"                                                                                                                ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                 ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-; leds ; Output ; Warning  ; Output or bidir port (7 bits) is wider than the port expression (6 bits) it drives; bit(s) "leds[6..6]" have no fanouts ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "seg7:h0"                                                                                                                ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                 ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-; leds ; Output ; Warning  ; Output or bidir port (7 bits) is wider than the port expression (6 bits) it drives; bit(s) "leds[6..6]" have no fanouts ;
-+------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
-
-
 +----------------------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "clock_divider:cdiv"                                                                                   ;
 +------------------------+--------+----------+-------------------------------------------------------------------------------------+
@@ -436,30 +376,30 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; arriav_ff             ; 34                          ;
-;     ENA SLD           ; 8                           ;
-;     plain             ; 26                          ;
-; arriav_lcell_comb     ; 171                         ;
-;     arith             ; 104                         ;
+;     ENA               ; 7                           ;
+;     plain             ; 27                          ;
+; arriav_lcell_comb     ; 190                         ;
+;     arith             ; 109                         ;
 ;         0 data inputs ; 18                          ;
-;         1 data inputs ; 45                          ;
-;         2 data inputs ; 13                          ;
+;         1 data inputs ; 57                          ;
+;         2 data inputs ; 6                           ;
 ;         3 data inputs ; 22                          ;
 ;         4 data inputs ; 6                           ;
-;     normal            ; 57                          ;
+;     normal            ; 71                          ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 1                           ;
-;         2 data inputs ; 20                          ;
-;         3 data inputs ; 20                          ;
-;         4 data inputs ; 6                           ;
-;         5 data inputs ; 4                           ;
-;         6 data inputs ; 4                           ;
+;         1 data inputs ; 3                           ;
+;         2 data inputs ; 23                          ;
+;         3 data inputs ; 19                          ;
+;         4 data inputs ; 8                           ;
+;         5 data inputs ; 11                          ;
+;         6 data inputs ; 5                           ;
 ;     shared            ; 10                          ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 8                           ;
-; boundary_port         ; 61                          ;
+; boundary_port         ; 67                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 9.90                        ;
-; Average LUT depth     ; 5.82                        ;
+; Max LUT depth         ; 10.90                       ;
+; Average LUT depth     ; 6.16                        ;
 +-----------------------+-----------------------------+
 
 
@@ -478,7 +418,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Sat Jan 21 14:17:52 2017
+    Info: Processing started: Sun Jan 22 20:17:03 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC
 Info (12021): Found 1 design units, including 1 entities, in source file converttodisp.v
     Info (12023): Found entity 1: convertToDisp
@@ -525,20 +465,19 @@ Info (12133): Instantiated megafunction "convertToDisp:lockConv|lpm_divide:Div0"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_5am.tdf
     Info (12023): Found entity 1: lpm_divide_5am
-Warning (12241): 6 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 8 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file D:/Schoolwork/Winter_17/EE371/lab2/ee371_winter17/output_files/DE1_SoC.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 231 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 253 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
-    Info (21059): Implemented 46 output pins
-    Info (21061): Implemented 170 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 621 megabytes
-    Info: Processing ended: Sat Jan 21 14:17:54 2017
-    Info: Elapsed time: 00:00:02
+    Info (21059): Implemented 52 output pins
+    Info (21061): Implemented 186 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 631 megabytes
+    Info: Processing ended: Sun Jan 22 20:17:04 2017
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:02
 
 
