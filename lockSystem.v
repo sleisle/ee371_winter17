@@ -5,8 +5,8 @@ module lockSystem (clk, rst, innerWater, lockWater, outerWater, outputs, inputs)
 	output wire [7:0] innerWater, outerWater;
 	output reg [7:0] lockWater;
 	
-	wire matchOuterWater, matchInnerWater, gondolaArriving, portReady, gondolaDeparting;
-	reg outerPortStatus, innerPortStatus, gondolaInside, gondolaArrived;
+	wire matchOuterWater, matchInnerWater, gondolaArriving, portReadyIn, gondolaDeparting, portReadyOut;
+	reg outerPortStatus, innerPortStatus, gondolaInside, gondolaArrived, gondolaInsideDirection;
 	reg [3:0] gCount;
 		
 	compWater outerWaterCheck (matchOuterWater, outerWater, lockWater);
@@ -18,13 +18,16 @@ module lockSystem (clk, rst, innerWater, lockWater, outerWater, outputs, inputs)
 	assign outputs[1] = gondolaDeparting;
 	
 	assign gondolaArriving = inputs[0] & ~gondolaArrived;
-	assign portReady = (inputs[6] & ~outerPortStatus) | (~inputs[6] & ~innerPortStatus);
+	assign gondolaDeparting =gondolaInside & portReadyOut & inputs[1];
+	assign portReadyIn = (inputs[6] & ~outerPortStatus) | (~inputs[6] & ~innerPortStatus);
+	assign portReadyOut = (gondolaInsideDirection & ~innerPortStatus) | (~gondolaInsideDirection & ~outerPortStatus);
 	
 	assign outerWater = 8'd73;
 	assign innerWater = 8'd49;
 	
 	always @(posedge clk) begin
 		if (rst) begin
+			gondolaInsideDirection = 1'bx;
 			gondolaInside = 1'b0;
 			gondolaArrived = 1'b0;
 			lockWater = 8'd52;
@@ -32,6 +35,7 @@ module lockSystem (clk, rst, innerWater, lockWater, outerWater, outputs, inputs)
 			innerPortStatus = 1'b1;
 			gCount = 4'b0;
 		end
+		
 		else begin
 			if (inputs[4] & outerPortStatus & innerPortStatus) begin // Increase Water
 				lockWater = lockWater + ((outerWater - innerWater) / 8'd12);
@@ -51,9 +55,14 @@ module lockSystem (clk, rst, innerWater, lockWater, outerWater, outputs, inputs)
 				gCount = 4'b0;
 				gondolaArrived = 1'b1;
 			end
-			if (gondolaArrived & ~gondolaInside & portReady) begin
+			if (gondolaArrived & ~gondolaInside & portReadyIn) begin
 				gondolaArrived = 1'b0;
 				gondolaInside = 1'b1;
+				gondolaInsideDirection = inputs[6];
+			end
+			if (gondolaInside & portReadyOut & inputs[1]) begin
+				gondolaInside = 1'b0;
+				gondolaInsideDirection = 1'bx;
 			end
 
 		end
