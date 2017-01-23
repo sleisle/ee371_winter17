@@ -40,6 +40,6 @@ module lab2TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	seg7 h4 (outerWaterConv[3:0], HEX4);
 	seg7 h5 (outerWaterConv[7:4], HEX5);
 	
-	lockSystem lock (clk, ~KEY[0], innerWaterPre, lockWaterPre, outerWaterPre, {LEDR[0], LEDR[1], LEDR[2], LEDR[3]}, {SW[4], ~KEY[2], ~KEY[1], SW[3], SW[2], SW[1], SW[0]});
+	lockSystem lock (clk, ~KEY[0], innerWaterPre, lockWaterPre, outerWaterPre, {LEDR[4], LEDR[3], LEDR[2], LEDR[1], LEDR[0]}, {SW[4], ~KEY[2], ~KEY[1], SW[3], SW[2], SW[1], SW[0]});
 
 endmodule

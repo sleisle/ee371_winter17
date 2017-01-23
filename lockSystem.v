@@ -1,7 +1,7 @@
 module lockSystem (clk, rst, innerWater, lockWater, outerWater, outputs, inputs);
 	input wire clk, rst;
-	input wire [6:0] inputs; // Gondola arriving, Gondola departing, Outer Port, Inner Port, Increase Water, Decrease Water
-	output wire [3:0] outputs; // Gondola arriving, Gondola departing, Outer Port Status, Inner Port Status
+	input wire [6:0] inputs; // Direction, Gondola arriving, Gondola departing, Outer Port, Inner Port, Increase Water, Decrease Water
+	output wire [4:0] outputs; // Gondola arriving, Gondola departing, Outer Port Status, Inner Port Status
 	output wire [7:0] innerWater, outerWater;
 	output reg [7:0] lockWater;
 	
@@ -13,13 +13,13 @@ module lockSystem (clk, rst, innerWater, lockWater, outerWater, outputs, inputs)
 	compWater innerWaterCheck (matchInnerWater, innerWater, lockWater);
 	assign outputs[2] = outerPortStatus; // 1 means closed
 	assign outputs[3] = innerPortStatus;
-
 	assign outputs[0] = gondolaArriving;
 	assign outputs[1] = gondolaDeparting;
+	assign outputs[4] = gondolaInside;
 	
 	assign gondolaArriving = inputs[0] & ~gondolaArrived;
 	assign gondolaDeparting = gondolaInside & portReadyOut;
-	assign portReadyIn = (inputs[6] & ~outerPortStatus) | (~inputs[6] & ~innerPortStatus);
+	assign portReadyIn = (inputs[6] & ~outerPortStatus) | (~inputs[6] & ~innerPortStatus); // 1 means from outside
 	assign portReadyOut = (gondolaInsideDirection & ~innerPortStatus) | (~gondolaInsideDirection & ~outerPortStatus);
 	
 	assign outerWater = 8'd73;
