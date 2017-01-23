@@ -18,7 +18,7 @@ module lockSystem (clk, rst, innerWater, lockWater, outerWater, outputs, inputs)
 	assign outputs[1] = gondolaDeparting;
 	
 	assign gondolaArriving = inputs[0] & ~gondolaArrived;
-	assign gondolaDeparting =gondolaInside & portReadyOut & inputs[1];
+	assign gondolaDeparting = gondolaInside & portReadyOut;
 	assign portReadyIn = (inputs[6] & ~outerPortStatus) | (~inputs[6] & ~innerPortStatus);
 	assign portReadyOut = (gondolaInsideDirection & ~innerPortStatus) | (~gondolaInsideDirection & ~outerPortStatus);
 	
@@ -26,6 +26,9 @@ module lockSystem (clk, rst, innerWater, lockWater, outerWater, outputs, inputs)
 	assign innerWater = 8'd49;
 	
 	always @(posedge clk) begin
+
+		// $display("gInside: %1b, gDeparting: %1b", gondolaInside, gondolaDeparting);
+
 		if (rst) begin
 			gondolaInsideDirection = 1'bx;
 			gondolaInside = 1'b0;
@@ -41,7 +44,7 @@ module lockSystem (clk, rst, innerWater, lockWater, outerWater, outputs, inputs)
 				lockWater = lockWater + ((outerWater - innerWater) / 8'd12);
 			end
 			else if (inputs[5] & outerPortStatus & innerPortStatus) begin // Decrease Water
-				lockWater = lockWater - ((outerWater - innerWater) / 8'd14);
+				lockWater = lockWater - ((outerWater - innerWater) / 8'd10);
 			end
 			
 			if (matchOuterWater)
