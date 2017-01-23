@@ -1,5 +1,5 @@
 Fitter report for DE1_SoC
-Sun Jan 22 20:17:38 2017
+Sun Jan 22 20:24:01 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -65,7 +65,7 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Fitter Summary                                                               ;
 +---------------------------------+--------------------------------------------+
-; Fitter Status                   ; Successful - Sun Jan 22 20:17:37 2017      ;
+; Fitter Status                   ; Successful - Sun Jan 22 20:24:01 2017      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; DE1_SoC                                    ;
 ; Top-level Entity Name           ; lab2TopLevel                               ;
@@ -906,12 +906,12 @@ The pin-out file can be found in D:/Schoolwork/Winter_17/EE371/lab2/ee371_winter
 +-------------------------------------------------------------+--------------------+-------+
 ; Logic utilization (ALMs needed / total ALMs on device)      ; 96 / 32,070        ; < 1 % ;
 ; ALMs needed [=A-B+C]                                        ; 96                 ;       ;
-;     [A] ALMs used in final placement [=a+b+c+d]             ; 98 / 32,070        ; < 1 % ;
+;     [A] ALMs used in final placement [=a+b+c+d]             ; 99 / 32,070        ; < 1 % ;
 ;         [a] ALMs used for LUT logic and registers           ; 17                 ;       ;
-;         [b] ALMs used for LUT logic                         ; 80                 ;       ;
+;         [b] ALMs used for LUT logic                         ; 81                 ;       ;
 ;         [c] ALMs used for registers                         ; 1                  ;       ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0                  ;       ;
-;     [B] Estimate of ALMs recoverable by dense packing       ; 2 / 32,070         ; < 1 % ;
+;     [B] Estimate of ALMs recoverable by dense packing       ; 3 / 32,070         ; < 1 % ;
 ;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 32,070         ; 0 %   ;
 ;         [a] Due to location constrained logic               ; 0                  ;       ;
 ;         [b] Due to LAB-wide signal conflicts                ; 0                  ;       ;
@@ -989,11 +989,11 @@ The pin-out file can be found in D:/Schoolwork/Winter_17/EE371/lab2/ee371_winter
 ; Remote update blocks                                        ; 0 / 1              ; 0 %   ;
 ; Impedance control blocks                                    ; 0 / 4              ; 0 %   ;
 ; Hard Memory Controllers                                     ; 0 / 2              ; 0 %   ;
-; Average interconnect usage (total/H/V)                      ; 0.1% / 0.1% / 0.0% ;       ;
-; Peak interconnect usage (total/H/V)                         ; 0.8% / 0.9% / 0.7% ;       ;
+; Average interconnect usage (total/H/V)                      ; 0.1% / 0.1% / 0.1% ;       ;
+; Peak interconnect usage (total/H/V)                         ; 0.6% / 0.7% / 0.5% ;       ;
 ; Maximum fan-out                                             ; 23                 ;       ;
 ; Highest non-global fan-out                                  ; 15                 ;       ;
-; Total fan-out                                               ; 652                ;       ;
+; Total fan-out                                               ; 654                ;       ;
 ; Average fan-out                                             ; 1.83               ;       ;
 +-------------------------------------------------------------+--------------------+-------+
 
@@ -1005,12 +1005,12 @@ The pin-out file can be found in D:/Schoolwork/Winter_17/EE371/lab2/ee371_winter
 +-------------------------------------------------------------+----------------------+--------------------------------+
 ; Logic utilization (ALMs needed / total ALMs on device)      ; 96 / 32070 ( < 1 % ) ; 0 / 32070 ( 0 % )              ;
 ; ALMs needed [=A-B+C]                                        ; 96                   ; 0                              ;
-;     [A] ALMs used in final placement [=a+b+c+d]             ; 98 / 32070 ( < 1 % ) ; 0 / 32070 ( 0 % )              ;
+;     [A] ALMs used in final placement [=a+b+c+d]             ; 99 / 32070 ( < 1 % ) ; 0 / 32070 ( 0 % )              ;
 ;         [a] ALMs used for LUT logic and registers           ; 17                   ; 0                              ;
-;         [b] ALMs used for LUT logic                         ; 80                   ; 0                              ;
+;         [b] ALMs used for LUT logic                         ; 81                   ; 0                              ;
 ;         [c] ALMs used for registers                         ; 1                    ; 0                              ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0                    ; 0                              ;
-;     [B] Estimate of ALMs recoverable by dense packing       ; 2 / 32070 ( < 1 % )  ; 0 / 32070 ( 0 % )              ;
+;     [B] Estimate of ALMs recoverable by dense packing       ; 3 / 32070 ( < 1 % )  ; 0 / 32070 ( 0 % )              ;
 ;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 32070 ( 0 % )    ; 0 / 32070 ( 0 % )              ;
 ;         [a] Due to location constrained logic               ; 0                    ; 0                              ;
 ;         [b] Due to LAB-wide signal conflicts                ; 0                    ; 0                              ;
@@ -1057,8 +1057,8 @@ The pin-out file can be found in D:/Schoolwork/Winter_17/EE371/lab2/ee371_winter
 ;     -- Registered Output Connections                        ; 0                    ; 0                              ;
 ;                                                             ;                      ;                                ;
 ; Internal Connections                                        ;                      ;                                ;
-;     -- Total Connections                                    ; 660                  ; 0                              ;
-;     -- Registered Connections                               ; 118                  ; 0                              ;
+;     -- Total Connections                                    ; 662                  ; 0                              ;
+;     -- Registered Connections                               ; 119                  ; 0                              ;
 ;                                                             ;                      ;                                ;
 ; External Connections                                        ;                      ;                                ;
 ;     -- Top                                                  ; 0                    ; 0                              ;
@@ -1091,12 +1091,12 @@ The pin-out file can be found in D:/Schoolwork/Winter_17/EE371/lab2/ee371_winter
 ; Name     ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Termination ; Termination Control Block ; Location assigned by ;
 +----------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+
 ; CLOCK_50 ; AF14  ; 3B       ; 32           ; 0            ; 0            ; 24                    ; 0                  ; yes    ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ;
-; KEY[0]   ; AA14  ; 3B       ; 36           ; 0            ; 0            ; 11                    ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ;
-; KEY[1]   ; AA15  ; 3B       ; 36           ; 0            ; 17           ; 0                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ;
-; KEY[2]   ; W15   ; 3B       ; 40           ; 0            ; 0            ; 0                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ;
+; KEY[0]   ; AA14  ; 3B       ; 36           ; 0            ; 0            ; 12                    ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ;
+; KEY[1]   ; AA15  ; 3B       ; 36           ; 0            ; 17           ; 9                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ;
+; KEY[2]   ; W15   ; 3B       ; 40           ; 0            ; 0            ; 2                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ;
 ; KEY[3]   ; Y16   ; 3B       ; 40           ; 0            ; 17           ; 0                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ;
-; SW[0]    ; AB12  ; 3A       ; 12           ; 0            ; 17           ; 2                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ;
-; SW[1]    ; AC12  ; 3A       ; 16           ; 0            ; 0            ; 9                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ;
+; SW[0]    ; AB12  ; 3A       ; 12           ; 0            ; 17           ; 0                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ;
+; SW[1]    ; AC12  ; 3A       ; 16           ; 0            ; 0            ; 0                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ;
 ; SW[2]    ; AF9   ; 3A       ; 8            ; 0            ; 34           ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ;
 ; SW[3]    ; AF10  ; 3A       ; 4            ; 0            ; 51           ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ;
 ; SW[4]    ; AD11  ; 3A       ; 2            ; 0            ; 40           ; 0                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ;
@@ -2100,7 +2100,7 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +-------------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                ; ALMs needed [=A-B+C] ; [A] ALMs used in final placement ; [B] Estimate of ALMs recoverable by dense packing ; [C] Estimate of ALMs unavailable ; ALMs used for memory ; Combinational ALUTs ; Dedicated Logic Registers ; I/O Registers ; Block Memory Bits ; M10Ks ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                  ; Library Name ;
 +-------------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |lab2TopLevel                             ; 96.0 (0.5)           ; 96.5 (0.5)                       ; 0.5 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 187 (1)             ; 34 (0)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 67   ; 0            ; |lab2TopLevel                                                                                                                        ; work         ;
+; |lab2TopLevel                             ; 96.0 (0.5)           ; 97.5 (0.5)                       ; 1.5 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 187 (1)             ; 34 (0)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 67   ; 0            ; |lab2TopLevel                                                                                                                        ; work         ;
 ;    |clock_divider:cdiv|                   ; 12.0 (12.0)          ; 12.5 (12.5)                      ; 0.5 (0.5)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 24 (24)             ; 24 (24)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |lab2TopLevel|clock_divider:cdiv                                                                                                     ; work         ;
 ;    |convertToDisp:lockConv|               ; 50.5 (0.0)           ; 50.5 (0.0)                       ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 102 (0)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |lab2TopLevel|convertToDisp:lockConv                                                                                                 ; work         ;
 ;       |lpm_divide:Div0|                   ; 24.5 (0.0)           ; 24.5 (0.0)                       ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 49 (0)              ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |lab2TopLevel|convertToDisp:lockConv|lpm_divide:Div0                                                                                 ; work         ;
@@ -2111,7 +2111,7 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 ;          |lpm_divide_82m:auto_generated|  ; 26.0 (0.0)           ; 26.0 (0.0)                       ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 53 (0)              ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |lab2TopLevel|convertToDisp:lockConv|lpm_divide:Mod0|lpm_divide_82m:auto_generated                                                   ; work         ;
 ;             |sign_div_unsign_bkh:divider| ; 26.0 (0.0)           ; 26.0 (0.0)                       ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 53 (0)              ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |lab2TopLevel|convertToDisp:lockConv|lpm_divide:Mod0|lpm_divide_82m:auto_generated|sign_div_unsign_bkh:divider                       ; work         ;
 ;                |alt_u_div_sse:divider|    ; 26.0 (26.0)          ; 26.0 (26.0)                      ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 53 (53)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |lab2TopLevel|convertToDisp:lockConv|lpm_divide:Mod0|lpm_divide_82m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider ; work         ;
-;    |lockSystem:lock|                      ; 26.0 (16.0)          ; 26.0 (16.0)                      ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 46 (26)             ; 10 (10)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |lab2TopLevel|lockSystem:lock                                                                                                        ; work         ;
+;    |lockSystem:lock|                      ; 26.0 (16.0)          ; 27.0 (17.0)                      ; 1.0 (1.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 46 (26)             ; 10 (10)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |lab2TopLevel|lockSystem:lock                                                                                                        ; work         ;
 ;       |compWater:innerWaterCheck|         ; 5.3 (5.3)            ; 5.3 (5.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 10 (10)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |lab2TopLevel|lockSystem:lock|compWater:innerWaterCheck                                                                              ; work         ;
 ;       |compWater:outerWaterCheck|         ; 4.7 (4.7)            ; 4.7 (4.7)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 10 (10)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |lab2TopLevel|lockSystem:lock|compWater:outerWaterCheck                                                                              ; work         ;
 ;    |seg7:h2|                              ; 3.5 (3.5)            ; 3.5 (3.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |lab2TopLevel|seg7:h2                                                                                                                ; work         ;
@@ -2167,8 +2167,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; HEX5[4]  ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
 ; HEX5[5]  ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
 ; HEX5[6]  ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
-; KEY[1]   ; Input    ; -- ; --   ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; KEY[2]   ; Input    ; -- ; --   ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; KEY[3]   ; Input    ; -- ; --   ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; LEDR[0]  ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
 ; LEDR[1]  ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
@@ -2180,6 +2178,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; LEDR[7]  ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
 ; LEDR[8]  ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
 ; LEDR[9]  ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
+; SW[0]    ; Input    ; -- ; --   ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; SW[1]    ; Input    ; -- ; --   ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; SW[4]    ; Input    ; -- ; --   ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; SW[5]    ; Input    ; -- ; --   ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; SW[6]    ; Input    ; -- ; --   ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
@@ -2187,10 +2187,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; SW[8]    ; Input    ; -- ; --   ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; SW[9]    ; Input    ; -- ; --   ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; KEY[0]   ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; SW[1]    ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; SW[0]    ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; SW[2]    ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; KEY[1]   ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; KEY[2]   ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; SW[3]    ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; SW[2]    ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; CLOCK_50 ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 +----------+----------+----+------+------+----+------+-------+--------+------------------------+--------------------------+
 
@@ -2200,9 +2200,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------------------+---------+
 ; Source Pin / Fanout                          ; Pad To Core Index ; Setting ;
 +----------------------------------------------+-------------------+---------+
-; KEY[1]                                       ;                   ;         ;
-; KEY[2]                                       ;                   ;         ;
 ; KEY[3]                                       ;                   ;         ;
+; SW[0]                                        ;                   ;         ;
+; SW[1]                                        ;                   ;         ;
 ; SW[4]                                        ;                   ;         ;
 ; SW[5]                                        ;                   ;         ;
 ; SW[6]                                        ;                   ;         ;
@@ -2221,38 +2221,39 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;      - lockSystem:lock|lockWater~6           ; 0                 ; 0       ;
 ;      - lockSystem:lock|lockWater~7           ; 0                 ; 0       ;
 ;      - lockSystem:lock|lockWater~8           ; 0                 ; 0       ;
-; SW[1]                                        ;                   ;         ;
+;      - LEDR[8]~output                        ; 0                 ; 0       ;
+; KEY[1]                                       ;                   ;         ;
+;      - lockSystem:lock|lockWater~0           ; 0                 ; 0       ;
+;      - lockSystem:lock|lockWater~1           ; 0                 ; 0       ;
+;      - lockSystem:lock|lockWater[7]~2        ; 0                 ; 0       ;
+;      - lockSystem:lock|lockWater~3           ; 0                 ; 0       ;
+;      - lockSystem:lock|lockWater~4           ; 0                 ; 0       ;
+;      - lockSystem:lock|lockWater~5           ; 0                 ; 0       ;
+;      - lockSystem:lock|lockWater~6           ; 0                 ; 0       ;
+;      - lockSystem:lock|lockWater~7           ; 0                 ; 0       ;
+;      - lockSystem:lock|lockWater~8           ; 0                 ; 0       ;
+; KEY[2]                                       ;                   ;         ;
 ;      - lockSystem:lock|lockWater~0           ; 1                 ; 0       ;
-;      - lockSystem:lock|lockWater~1           ; 1                 ; 0       ;
 ;      - lockSystem:lock|lockWater[7]~2        ; 1                 ; 0       ;
-;      - lockSystem:lock|lockWater~3           ; 1                 ; 0       ;
-;      - lockSystem:lock|lockWater~4           ; 1                 ; 0       ;
-;      - lockSystem:lock|lockWater~5           ; 1                 ; 0       ;
-;      - lockSystem:lock|lockWater~6           ; 1                 ; 0       ;
-;      - lockSystem:lock|lockWater~7           ; 1                 ; 0       ;
-;      - lockSystem:lock|lockWater~8           ; 1                 ; 0       ;
-; SW[0]                                        ;                   ;         ;
-;      - lockSystem:lock|lockWater~0           ; 1                 ; 0       ;
-;      - lockSystem:lock|lockWater[7]~2        ; 1                 ; 0       ;
-; SW[2]                                        ;                   ;         ;
-;      - lockSystem:lock|innerPortStatus~0     ; 0                 ; 0       ;
 ; SW[3]                                        ;                   ;         ;
-;      - lockSystem:lock|outerPortStatus~0     ; 0                 ; 0       ;
+;      - lockSystem:lock|innerPortStatus~0     ; 0                 ; 0       ;
+; SW[2]                                        ;                   ;         ;
+;      - lockSystem:lock|outerPortStatus~0     ; 1                 ; 0       ;
 ; CLOCK_50                                     ;                   ;         ;
 ;      - clock_divider:cdiv|divided_clocks[23] ; 0                 ; 0       ;
 +----------------------------------------------+-------------------+---------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Control Signals                                                                                                                                                     ;
-+---------------------------------------+---------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
-; Name                                  ; Location            ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+---------------------------------------+---------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
-; CLOCK_50                              ; PIN_AF14            ; 2       ; Clock        ; no     ; --                   ; --               ; --                        ;
-; CLOCK_50                              ; PIN_AF14            ; 23      ; Clock        ; yes    ; Global Clock         ; GCLK6            ; --                        ;
-; clock_divider:cdiv|divided_clocks[23] ; FF_X35_Y13_N50      ; 11      ; Clock        ; no     ; --                   ; --               ; --                        ;
-; lockSystem:lock|lockWater[7]~2        ; MLABCELL_X34_Y13_N9 ; 7       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-+---------------------------------------+---------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                                                                                    ;
++---------------------------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
+; Name                                  ; Location           ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++---------------------------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
+; CLOCK_50                              ; PIN_AF14           ; 2       ; Clock        ; no     ; --                   ; --               ; --                        ;
+; CLOCK_50                              ; PIN_AF14           ; 23      ; Clock        ; yes    ; Global Clock         ; GCLK6            ; --                        ;
+; clock_divider:cdiv|divided_clocks[23] ; FF_X42_Y13_N50     ; 12      ; Clock        ; no     ; --                   ; --               ; --                        ;
+; lockSystem:lock|lockWater[7]~2        ; LABCELL_X40_Y13_N9 ; 7       ; Clock enable ; no     ; --                   ; --               ; --                        ;
++---------------------------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------+
@@ -2270,9 +2271,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Name                                                                                                                                              ; Fan-Out ;
 +---------------------------------------------------------------------------------------------------------------------------------------------------+---------+
 ; convertToDisp:lockConv|lpm_divide:Div0|lpm_divide_5am:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider|op_6~1                     ; 15      ;
+; KEY[0]~input                                                                                                                                      ; 12      ;
+; clock_divider:cdiv|divided_clocks[23]                                                                                                             ; 12      ;
 ; convertToDisp:lockConv|lpm_divide:Div0|lpm_divide_5am:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider|op_5~1                     ; 12      ;
-; KEY[0]~input                                                                                                                                      ; 11      ;
-; clock_divider:cdiv|divided_clocks[23]                                                                                                             ; 11      ;
 ; convertToDisp:lockConv|lpm_divide:Div0|lpm_divide_5am:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider|op_7~1                     ; 11      ;
 ; lockSystem:lock|lockWater[6]                                                                                                                      ; 10      ;
 ; lockSystem:lock|lockWater[5]                                                                                                                      ; 10      ;
@@ -2282,7 +2283,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; lockSystem:lock|lockWater[1]                                                                                                                      ; 10      ;
 ; convertToDisp:lockConv|lpm_divide:Div0|lpm_divide_5am:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider|add_sub_3_result_int[4]~1  ; 10      ;
 ; convertToDisp:lockConv|lpm_divide:Mod0|lpm_divide_82m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider|add_sub_3_result_int[4]~1  ; 10      ;
-; SW[1]~input                                                                                                                                       ; 9       ;
+; KEY[1]~input                                                                                                                                      ; 9       ;
 ; lockSystem:lock|lockWater[7]                                                                                                                      ; 8       ;
 ; lockSystem:lock|always0~0                                                                                                                         ; 8       ;
 ; convertToDisp:lockConv|lpm_divide:Mod0|lpm_divide_82m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider|op_5~1                     ; 8       ;
@@ -2298,7 +2299,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; lockSystem:lock|innerPortStatus                                                                                                                   ; 4       ;
 ; convertToDisp:lockConv|lpm_divide:Mod0|lpm_divide_82m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider|StageOut[38]~6             ; 4       ;
 ; convertToDisp:lockConv|lpm_divide:Mod0|lpm_divide_82m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider|op_8~1                     ; 4       ;
-; SW[0]~input                                                                                                                                       ; 2       ;
+; KEY[2]~input                                                                                                                                      ; 2       ;
 ; clock_divider:cdiv|divided_clocks[0]                                                                                                              ; 2       ;
 ; convertToDisp:lockConv|lpm_divide:Div0|lpm_divide_5am:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider|StageOut[20]~11            ; 2       ;
 ; convertToDisp:lockConv|lpm_divide:Div0|lpm_divide_5am:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider|StageOut[16]~5             ; 2       ;
@@ -2332,8 +2333,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; convertToDisp:lockConv|lpm_divide:Mod0|lpm_divide_82m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider|op_6~5                     ; 2       ;
 ; convertToDisp:lockConv|lpm_divide:Mod0|lpm_divide_82m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider|op_7~5                     ; 2       ;
 ; CLOCK_50~input                                                                                                                                    ; 1       ;
-; SW[3]~input                                                                                                                                       ; 1       ;
 ; SW[2]~input                                                                                                                                       ; 1       ;
+; SW[3]~input                                                                                                                                       ; 1       ;
 ; clock_divider:cdiv|divided_clocks[0]~0                                                                                                            ; 1       ;
 ; clock_divider:cdiv|divided_clocks[1]                                                                                                              ; 1       ;
 ; clock_divider:cdiv|divided_clocks[2]                                                                                                              ; 1       ;
@@ -2595,14 +2596,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------------+-------------------------+
 ; Routing Resource Type                       ; Usage                   ;
 +---------------------------------------------+-------------------------+
-; Block interconnects                         ; 150 / 289,320 ( < 1 % ) ;
-; C12 interconnects                           ; 9 / 13,420 ( < 1 % )    ;
-; C2 interconnects                            ; 36 / 119,108 ( < 1 % )  ;
-; C4 interconnects                            ; 30 / 56,300 ( < 1 % )   ;
+; Block interconnects                         ; 162 / 289,320 ( < 1 % ) ;
+; C12 interconnects                           ; 17 / 13,420 ( < 1 % )   ;
+; C2 interconnects                            ; 43 / 119,108 ( < 1 % )  ;
+; C4 interconnects                            ; 27 / 56,300 ( < 1 % )   ;
 ; DQS bus muxes                               ; 0 / 25 ( 0 % )          ;
 ; DQS-18 I/O buses                            ; 0 / 25 ( 0 % )          ;
 ; DQS-9 I/O buses                             ; 0 / 25 ( 0 % )          ;
-; Direct links                                ; 20 / 289,320 ( < 1 % )  ;
+; Direct links                                ; 19 / 289,320 ( < 1 % )  ;
 ; Global clocks                               ; 1 / 16 ( 6 % )          ;
 ; HPS SDRAM PLL inputs                        ; 0 / 1 ( 0 % )           ;
 ; HPS SDRAM PLL outputs                       ; 0 / 1 ( 0 % )           ;
@@ -2658,12 +2659,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; HPS_INTERFACE_TPIU_TRACE_INPUTs             ; 0 / 2 ( 0 % )           ;
 ; HPS_INTERFACE_TPIU_TRACE_OUTPUTs            ; 0 / 33 ( 0 % )          ;
 ; Horizontal periphery clocks                 ; 0 / 72 ( 0 % )          ;
-; Local interconnects                         ; 79 / 84,580 ( < 1 % )   ;
+; Local interconnects                         ; 76 / 84,580 ( < 1 % )   ;
 ; Quadrant clocks                             ; 0 / 66 ( 0 % )          ;
-; R14 interconnects                           ; 31 / 12,676 ( < 1 % )   ;
-; R14/C12 interconnect drivers                ; 35 / 20,720 ( < 1 % )   ;
-; R3 interconnects                            ; 75 / 130,992 ( < 1 % )  ;
-; R6 interconnects                            ; 119 / 266,960 ( < 1 % ) ;
+; R14 interconnects                           ; 44 / 12,676 ( < 1 % )   ;
+; R14/C12 interconnect drivers                ; 54 / 20,720 ( < 1 % )   ;
+; R3 interconnects                            ; 85 / 130,992 ( < 1 % )  ;
+; R6 interconnects                            ; 111 / 266,960 ( < 1 % ) ;
 ; Spine clocks                                ; 1 / 360 ( < 1 % )       ;
 ; Wire stub REs                               ; 0 / 15,858 ( 0 % )      ;
 +---------------------------------------------+-------------------------+
@@ -2769,8 +2770,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; HEX5[4]            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; HEX5[5]            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; HEX5[6]            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
-; KEY[1]             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
-; KEY[2]             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; KEY[3]             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; LEDR[0]            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; LEDR[1]            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
@@ -2782,6 +2781,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; LEDR[7]            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; LEDR[8]            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; LEDR[9]            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
+; SW[0]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
+; SW[1]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; SW[4]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; SW[5]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; SW[6]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
@@ -2789,10 +2790,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; SW[8]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; SW[9]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; KEY[0]             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
-; SW[1]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
-; SW[0]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
-; SW[2]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
+; KEY[1]             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
+; KEY[2]             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; SW[3]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
+; SW[2]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; CLOCK_50           ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 +--------------------+-----------+--------------+-----------+--------------+--------------+-----------+-----------+--------------+-----------+-----------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
 
@@ -2853,30 +2854,30 @@ This will disable optimization of problematic paths and expose them for further 
 +---------------------------------------+---------------------------------------+-------------------+
 ; Source Register                       ; Destination Register                  ; Delay Added in ns ;
 +---------------------------------------+---------------------------------------+-------------------+
-; clock_divider:cdiv|divided_clocks[0]  ; clock_divider:cdiv|divided_clocks[23] ; 0.434             ;
-; clock_divider:cdiv|divided_clocks[22] ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[21] ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[20] ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[19] ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[18] ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[17] ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[16] ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[15] ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[14] ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[13] ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[12] ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[11] ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[10] ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[9]  ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[8]  ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[7]  ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[6]  ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[5]  ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[4]  ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[3]  ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[2]  ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[1]  ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
-; clock_divider:cdiv|divided_clocks[23] ; clock_divider:cdiv|divided_clocks[23] ; 0.036             ;
+; clock_divider:cdiv|divided_clocks[0]  ; clock_divider:cdiv|divided_clocks[23] ; 0.755             ;
+; clock_divider:cdiv|divided_clocks[22] ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[21] ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[20] ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[19] ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[18] ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[17] ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[16] ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[15] ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[14] ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[13] ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[12] ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[11] ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[10] ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[9]  ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[8]  ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[7]  ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[6]  ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[5]  ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[4]  ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[3]  ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[2]  ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[1]  ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
+; clock_divider:cdiv|divided_clocks[23] ; clock_divider:cdiv|divided_clocks[23] ; 0.186             ;
 +---------------------------------------+---------------------------------------+-------------------+
 Note: This table only shows the top 24 path(s) that have the largest delay added for hold.
 
@@ -2924,8 +2925,8 @@ Info (334004): Delay annotation completed successfully
 Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:04
 Info (144001): Generated suppressed messages file D:/Schoolwork/Winter_17/EE371/lab2/ee371_winter17/output_files/DE1_SoC.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 1644 megabytes
-    Info: Processing ended: Sun Jan 22 20:17:38 2017
+    Info: Peak virtual memory: 1601 megabytes
+    Info: Processing ended: Sun Jan 22 20:24:02 2017
     Info: Elapsed time: 00:00:32
     Info: Total CPU time (on all processors): 00:00:32
 
