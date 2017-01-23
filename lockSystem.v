@@ -5,7 +5,7 @@ module lockSystem (clk, rst, innerWater, lockWater, outerWater, outputs, inputs)
 	output wire [7:0] innerWater, outerWater;
 	output reg [7:0] lockWater;
 	
-	wire matchOuterWater, matchInnerWater, gondolaArriving, portReady;
+	wire matchOuterWater, matchInnerWater, gondolaArriving, portReady, gondolaDeparting;
 	reg outerPortStatus, innerPortStatus, gondolaInside, gondolaArrived;
 	reg [3:0] gCount;
 		
@@ -13,6 +13,9 @@ module lockSystem (clk, rst, innerWater, lockWater, outerWater, outputs, inputs)
 	compWater innerWaterCheck (matchInnerWater, innerWater, lockWater);
 	assign outputs[2] = outerPortStatus; // 1 means closed
 	assign outputs[3] = innerPortStatus;
+
+	assign outputs[0] = gondolaArriving;
+	assign outputs[1] = gondolaDeparting;
 	
 	assign gondolaArriving = inputs[0] & ~gondolaArrived;
 	assign portReady = (inputs[6] & ~outerPortStatus) | (~inputs[6] & ~innerPortStatus);
@@ -22,6 +25,8 @@ module lockSystem (clk, rst, innerWater, lockWater, outerWater, outputs, inputs)
 	
 	always @(posedge clk) begin
 		if (rst) begin
+			gondolaInside = 1'b0;
+			gondolaArrived = 1'b0;
 			lockWater = 8'd52;
 			outerPortStatus = 1'b1;
 			innerPortStatus = 1'b1;
@@ -42,7 +47,7 @@ module lockSystem (clk, rst, innerWater, lockWater, outerWater, outputs, inputs)
 				
 			if (gondolaArriving | (gCount[0] | gCount[1] | gCount[2] | gCount[3]))
 				gCount = gCount + 1;
-			if (gCount == 4'b1001) begin // Counter to hit five minutes
+			if (gCount == 4'b1010) begin // Counter to hit five minutes
 				gCount = 4'b0;
 				gondolaArrived = 1'b1;
 			end
