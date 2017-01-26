@@ -3,9 +3,25 @@
 
 int main()
 {
+    int int1 = 1;
+    int int2 = 2;
+    float f1 = 1.0;
+    float f2 = 2.0;
+    char c1 = 'a';
+    char c2 = 'b';
+
+    int *ip = &int1;
+    float *fp = &f1;
+    char *cp = &c1;
+    printf("%d, %f, %c\n", *ip, *fp, *cp);
+    ip = &int2;
+    fp = &f2;
+    cp = &c2;
+    printf("%d, %f, %c\n", *ip, *fp, *cp);
+
     // Integers defined
     int A = 22;
-    int B = 17;
+    int B = 22;
     int C = 6;
     int D = 4;
     int E = 9;
