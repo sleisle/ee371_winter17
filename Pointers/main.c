@@ -3,6 +3,7 @@
 
 int main()
 {
+    // Two variables of each type
     int int1 = 1;
     int int2 = 2;
     float f1 = 1.0;
@@ -10,10 +11,13 @@ int main()
     char c1 = 'a';
     char c2 = 'b';
 
+    // One pointer of each type, print it dereferenced
     int *ip = &int1;
     float *fp = &f1;
     char *cp = &c1;
     printf("%d, %f, %c\n", *ip, *fp, *cp);
+    
+    // Switch pointer values, print dereferenced again
     ip = &int2;
     fp = &f2;
     cp = &c2;
