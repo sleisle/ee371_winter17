@@ -2,8 +2,8 @@ module seg7 (bcd, leds);
 	 input wire [3:0] bcd;
 	 output reg [6:0] leds;
 
-	 always_comb
-		 case (bcd)
+	 always @(*)
+		  case (bcd)
 			 //          Light: 6543210
 			 4'b0000: leds = ~(7'b0111111); // 0
 			 4'b0001: leds = ~(7'b0000110); // 1
