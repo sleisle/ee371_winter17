@@ -5,7 +5,7 @@ module compWaterTest;
 	reg clk, rst;
 	reg [6:0] inputs;
 	wire [7:0] innerWater, lockWater, outerWater;
-	wire [3:0] outputs;
+	wire [4:0] outputs;
 
 	parameter ClockDelay = 10;
 
@@ -19,6 +19,7 @@ module compWaterTest;
 	integer i;
 
 	initial begin
+		
 		$display("%2d %2d %2d %4b", innerWater, lockWater, outerWater, outputs);
 		inputs <= 7'b0000000;
 		rst <= 1'b1;	@(posedge clk);

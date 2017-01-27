@@ -23,15 +23,8 @@ module Tester(in, out);
 	parameter stimDelay = 10;
 	integer i;
 	initial begin
-		// Begin running instructions
-		#stimDelay;
-		#stimDelay in = 8'b0; 
-		// Run long enough to see all states of the counter
-		for (i=0; i<36; i=i+1) begin
-			#stimDelay;
-			in = in + 8'b1;
-		end
-		#stimDelay;
+		in = 8'b00001100;
+		#stimDelay in = 8'b01010101;
 		#stimDelay;
 		$finish;
 	end

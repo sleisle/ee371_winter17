@@ -25,15 +25,12 @@ module Tester(water1, water2, rtn);
 	integer i;
 	initial begin
 		// Begin running instructions
+		water1 = 8'd50;
+		water2 = 8'd45;
 		#stimDelay;
-		#stimDelay water1 = 8'b0; 
-		water2 = 8'b1;
-		// Run long enough to see all states of the counter
-		for (i=0; i<36; i=i+1) begin
-			#stimDelay;
-		end 
-		#stimDelay water1 = 8'b1;
-		#stimDelay;
+		#stimDelay water2 = 8'd48;
+		#stimDelay water2 = 8'd51;
+		#stimDelay water2 = 8'd58;
 		#stimDelay;
 		$finish;
 	end
