@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1485897258 source:u:\ee371_winter17\temperatures\main.c
+	<stdio.h>
+	<stdlib.h>
+

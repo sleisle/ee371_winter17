@@ -23,13 +23,10 @@ int main()
     // Scale output temperature is in
     int dest = 0;
 
-    // Value of the input temperature
-    float temp = 0.0;
-
     printf("Welcome to the temperature conversion program!\n");
-    printf("What scale is are you trying to convert from? > ");
+    printf("What scale is are you trying to convert from?\n");
     changeScale(&source);
-    printf("What scale is are you trying to convert to? > ");
+    printf("What scale is are you trying to convert to?\n");
     changeScale(&dest);
 
     while (running) {
@@ -37,47 +34,62 @@ int main()
         int choice = 0;
         if (scanf("%d", &choice) == 1) {
             switch (choice) {
-                case 1: changeExchange(&currentRate); break;
-                case 2: dollarToForeign(currentRate); break;
-                case 3: foreignToDollar(currentRate); break;
+                case 1: convertTemp(source, dest); break;
+                case 2: changeScale(&source); break;
+                case 3: changeScale(&dest); break;
                 case 4: running = 0; break;
-                default: running = 0; break;
-            }
-        }
-        getchar();
-        printf("What value temperature are you trying to convert? > ");
-        if (scanf("%f", &temp) == 1) {
-            printf("What scale is that value in? > ");
-            if (fgets(source, 20, stdin) != NULL) {
-                printf("What scale would you like to convert to? >")
-                if (fgets(dest, 20, stdin) != NULL) {
-
-                }
+                default: continue; break;
             }
         } else {
             getchar();
-            printf("Please enter a float!\n");
         }
     }
-
     return 0;
 }
 
-void changeScale(int *scale) {
-    printf("What is the new scale? Please enter 1, 2, or 3.\n");
-    printf("1) Fahrenheit\n");
-    printf("2) Celsius\n");
-    printf("3) Kelvin\n> ");
-    int newScale = 0;
-    if (scanf("%d", &newSource) == 1) {
-        *scale = newScale;
+void convertTemp(int source, int dest) {
+    float temp = 0.0;
+    printf("What value temperature are you trying to convert? > ");
+    if (scanf("%f", &temp) == 1) {
+        if (source == dest) {
+        } else if (source == 1 && dest == 2) {
+            temp = (temp - 32) * 5.0 / 9;
+        } else if (source == 1 && dest == 3) {
+            temp = (temp + 459.67) * 5.0 / 9;
+        } else if (source == 2 && dest == 1) {
+            temp = temp * 9.0 / 5 + 32;
+        } else if (source == 2 && dest == 3) {
+            temp += 273.15;
+        } else if (source == 3 && dest == 1) {
+            temp = temp / 5.0 / 9 - 459.67;
+        } else if (source == 3 && dest == 2) {
+            temp -= 273.15;
+        }
+        printf("Your converted temperature is %f\n", temp);
+    } else {
+        getchar();
+        printf("Please enter a float!\n");
     }
-    getchar();
+}
+
+void changeScale(int *scale) {
+    int newScale = 0;
+    do {
+        printf("What is the new scale? Please enter 1, 2, or 3.\n");
+        printf("1) Fahrenheit\n");
+        printf("2) Celsius\n");
+        printf("3) Kelvin\n> ");
+        if (scanf("%d", &newScale) == 1) {
+            *scale = newScale;
+        } else {
+            getchar();
+        }
+    } while (newScale < 1 || newScale > 3);
 }
 
 void showMenu(int source, int dest) {
-    char source_scale[20];
-    char dest_scale[20];
+    char *source_scale;
+    char *dest_scale;
 
     switch (source) {
         case 1: source_scale = "Fahrenheit"; break;
