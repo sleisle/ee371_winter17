@@ -14,7 +14,7 @@ module lab3TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	
 	// Initialize clock divider
 	assign LEDR[9] = clk;
-	assign LEDR[8] = ~KEY[0]; 
+	assign LEDR[8] = ~KEY[0];
 	assign clk = clkMain[whichClock];
 	clock_divider cdiv (CLOCK_50, clkMain);
 

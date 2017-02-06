@@ -1,12 +1,11 @@
-module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut, localScannerOut);
+module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut, localScannerOut, dataBuffer);
 	input wire clk, rst, dataIn, readyForTransferIn;
 	output reg readyForTransferOut;
 	output reg [1:0] localScannerOut;
+	output reg [7:0] dataBuffer;
 	reg [7:0] byteIn;
-	reg [7:0] dataBuffer;
 	reg [2:0] byteCounter;
 	reg readData;
-	
 	
 	// Sequential
 	always @(posedge clk) begin: dataComingIn
@@ -32,13 +31,16 @@ module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut
 	always @(*) begin: dealWithData
 		if (byteCounter == 7) begin
 			if (readData) begin
-			
-				// DO SOMETHING WITH DATA AND SET readData TO 0
+				dataBuffer = byteIn;
+				
+				// IF DATA DONE, readData = 1'b0; FIND WAY TO TELL IF DATA IS DONE SENDING
+				readData = 1'b0;
 			
 			end
 			else
 				case(byteIn)
 					8'd1: // Buffer 50%
+						readyForTransferOut = 1'b0;
 						localScannerOut = 2'b10; // Tell local scanner to flush if waiting
 					
 					8'd2: // Buffer 80%
@@ -52,15 +54,17 @@ module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut
 						readyForTransferOut = readyForTransferIn;
 					
 					8'd5: // Flush the Buffer?
-						readyForTransferOut = readyForTransferIn;
+					
 						
 					8'd6: // Ready?
 					
 					
 					8'd7: // Binary Data Follows
+						readyForTransferOut = readyForTransferIn;
 						readData = 1'b1;
 					
 					8'd8: // ASCII Data Follows
+						readyForTransferOut = readyForTransferIn;
 						readData = 1'b1;
 					
 				endcase
