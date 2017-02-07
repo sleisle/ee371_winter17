@@ -35,10 +35,14 @@ module scannerTest;
 
 		$display("%b %b %2b %4b %3b", clkOut, dataOut, ps, dataBuffer, slowCount);
 		@(posedge clk);
-		localTransferInput <= 2'b10; @(posedge clk); $display("%b %b %2b %4b %3b", clkOut, dataOut, ps, dataBuffer, slowCount);
+		readyForTransferIn <= 1'b1; @(posedge clk); $display("%b %b %2b %4b %3b", clkOut, dataOut, ps, dataBuffer, slowCount);
+
+		for (i = 0; i < 16; i = i + 1) begin
+			@(posedge clk); $display("%b %b %2b %4b %3b", clkOut, dataOut, ps, dataBuffer, slowCount);
+		end
 
 		@(posedge clk); $display("%b %b %2b %4b %3b", clkOut, dataOut, ps, dataBuffer, slowCount);
-		
+
 		$stop;
 	end
 endmodule
