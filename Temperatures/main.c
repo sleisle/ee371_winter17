@@ -24,9 +24,9 @@ int main()
     int dest = 0;
 
     printf("Welcome to the temperature conversion program!\n");
-    printf("What scale is are you trying to convert from?\n");
+    printf("What scale are you trying to convert from?\n");
     changeScale(&source);
-    printf("What scale is are you trying to convert to?\n");
+    printf("What scale are you trying to convert to?\n");
     changeScale(&dest);
 
     while (running) {
