@@ -1,8 +1,8 @@
-module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOut);
+module scanner (ps, clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOut);
 	input wire clk, rst, readyForTransferIn;
 	input wire [1:0] localTransferInput;
 	output reg clkOut, dataOut;
-	reg [1:0] ps;
+	output reg [1:0] ps;
 	wire [1:0] ns;
 	reg [3:0] dataBuffer;
 	reg [2:0] slowCount, dataBitCounter;
@@ -16,14 +16,15 @@ module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOu
 	// Comb
 	always @(*) begin: Comb
 		case(ps)
-			IDLE: 
-				readyToOutput = 2'b0;
+			IDLE: begin
+				readyToOutput = 2'b00;
 				if (localTransferInput == 2'b01) // 01 means start scanning
 					ns = ACTIVE;
 				else
 					ns = IDLE;
+			end
 			
-			ACTIVE: 
+			ACTIVE: begin
 				if (dataBuffer == 7) begin // 80% Full
 					ns = ACTIVE;
 					
@@ -55,25 +56,27 @@ module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOu
 				else begin
 					ns = ACTIVE;
 				end
+			end
 			
-			STANDBY: 
+			STANDBY: begin
 				if (readyForTransferIn)
 					ns = TRANSFER;
 				else if (localTransferInput == 2'b10) // 10 means other buffer is at 50%
 					ns = TRANSFER;
 				else
 					ns = STANDBY;
-			
-			TRANSFER: 
-				outputDataBuffer = {4'b00000, dataBuffer}; // Setup an output for data
+			end
+
+			TRANSFER: begin
+				outputDataBuffer = {5'b0, dataBuffer}; // Setup an output for data
 				if (localTransferInput == 2'b10) // OTHER BUFFER REACHED 50%
 					dataBuffer = 4'b0;
 				else begin
 					// TRANSFER THE DATA
 					outputBuffer = 8'd7;
 					readyToOutput = 2'b10; // 2 means data transfer
-					
 				end
+			end
 		endcase
 	end
 	
@@ -104,7 +107,7 @@ module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOu
 			else if (readyToOutput[1]) begin // Output Data
 				if (~commandDoneBit)
 					dataOut <= outputBuffer[dataBitCounter];
-					commandDoneBit <= (dataBitCounter == 7); // THIS MAY NOT WORK?
+					commandDoneBit <= (dataBitCounter == 2'd7); // THIS MAY NOT WORK?
 				else
 					dataOut <= outputDataBuffer[dataBitCounter];
 			end
