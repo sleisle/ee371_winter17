@@ -3,7 +3,7 @@ module scanner (ps, clk, rst, readyForTransferIn, localTransferInput, clkOut, da
 	input wire [1:0] localTransferInput;
 	output reg clkOut, dataOut;
 	output reg [1:0] ps;
-	wire [1:0] ns;
+	reg [1:0] ns;
 	reg [3:0] dataBuffer;
 	reg [2:0] slowCount, dataBitCounter;
 	reg slowClk, commandDoneBit;
@@ -105,14 +105,16 @@ module scanner (ps, clk, rst, readyForTransferIn, localTransferInput, clkOut, da
 				dataOut <= outputBuffer[dataBitCounter];
 			end
 			else if (readyToOutput[1]) begin // Output Data
-				if (~commandDoneBit)
+				if (~commandDoneBit) begin
 					dataOut <= outputBuffer[dataBitCounter];
-					commandDoneBit <= (dataBitCounter == 2'd7); // THIS MAY NOT WORK?
-				else
+					commandDoneBit <= (& dataBitCounter); // THIS MAY NOT WORK?
+				end
+				else begin
 					dataOut <= outputDataBuffer[dataBitCounter];
+				end
 			end
 		end
-		else
+		else begin
 			clkOut <= 1'b0;
 		end
 		

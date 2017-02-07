@@ -7,6 +7,8 @@ module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut
 	reg [2:0] byteCounter;
 	reg readData;
 	
+	integer i;
+	
 	// Sequential
 	always @(posedge clk) begin: dataComingIn
 		if (rst) begin
@@ -17,7 +19,6 @@ module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut
 		else begin
 			byteIn[0] <= dataIn;
 		
-			integer i;
 			for (i = 0; i < 7; i = i + 1) begin // Shift Register
 				byteIn[i + 1] <= byteIn[i];
 			end
@@ -37,40 +38,48 @@ module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut
 				readData = 1'b0;
 			
 			end
-			else
+			else begin
 				case(byteIn)
-					8'd1: // Buffer 50%
+					8'd1: begin // Buffer 50%
 						readyForTransferOut = 1'b0;
 						localScannerOut = 2'b10; // Tell local scanner to flush if waiting
+					end
 					
-					8'd2: // Buffer 80%
+					8'd2: begin // Buffer 80%
 						readyForTransferOut = readyForTransferIn;
+					end
 					
-					8'd3: // Buffer 90%
+					8'd3: begin // Buffer 90%
 						readyForTransferOut = readyForTransferIn;
 						localScannerOut = 2'b01; // Tell local scanner to start scanning
+					end
 					
-					8'd4: // Buffer Full
+					8'd4: begin // Buffer Full
 						readyForTransferOut = readyForTransferIn;
+					end
 					
-					8'd5: // Flush the Buffer?
+					8'd5: begin // Flush the Buffer?
 					
-						
-					8'd6: // Ready?
+					end
 					
+					8'd6: begin // Ready?
 					
-					8'd7: // Binary Data Follows
+					end
+					
+					8'd7: begin// Binary Data Follows
 						readyForTransferOut = readyForTransferIn;
 						readData = 1'b1;
+					end
 					
-					8'd8: // ASCII Data Follows
+					8'd8: begin // ASCII Data Follows
 						readyForTransferOut = readyForTransferIn;
 						readData = 1'b1;
+					end
 					
 				endcase
 			end
 		end
-		else
+		else begin
 			localScannerOut = 2'b00;
 		end
 	
