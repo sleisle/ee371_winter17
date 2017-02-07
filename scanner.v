@@ -70,9 +70,10 @@ module scanner (slowCount, dataBuffer, ps, clk, rst, readyForTransferIn, localTr
 
 			TRANSFER: begin
 				outputDataBuffer = {5'b0, dataBuffer}; // Setup an output for data
-				if (localTransferInput == 2'b10) // OTHER BUFFER REACHED 50%
+				if (localTransferInput == 2'b10) begin // OTHER BUFFER REACHED 50%
 					dataBuffer = 4'b0;
 					ns = IDLE;
+				end
 				else begin
 					// TRANSFER THE DATA
 					outputBuffer = 8'd7;
