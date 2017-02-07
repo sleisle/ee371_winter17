@@ -1,11 +1,12 @@
-module scanner (ps, clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOut);
+module scanner (slowCount, dataBuffer, ps, clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOut);
 	input wire clk, rst, readyForTransferIn;
 	input wire [1:0] localTransferInput;
 	output reg clkOut, dataOut;
 	output reg [1:0] ps;
 	reg [1:0] ns;
-	reg [3:0] dataBuffer;
-	reg [2:0] slowCount, dataBitCounter;
+	output reg [3:0] dataBuffer;
+	output reg [2:0] slowCount; 
+	reg [2:0] dataBitCounter;
 	reg slowClk, commandDoneBit;
 	reg [7:0] outputBuffer, outputDataBuffer;
 	reg [1:0] readyToOutput;
@@ -71,6 +72,7 @@ module scanner (ps, clk, rst, readyForTransferIn, localTransferInput, clkOut, da
 				outputDataBuffer = {5'b0, dataBuffer}; // Setup an output for data
 				if (localTransferInput == 2'b10) // OTHER BUFFER REACHED 50%
 					dataBuffer = 4'b0;
+					ns = IDLE;
 				else begin
 					// TRANSFER THE DATA
 					outputBuffer = 8'd7;
