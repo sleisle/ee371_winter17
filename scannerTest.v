@@ -21,28 +21,28 @@ module scannerTest;
 	integer i;
 
 	initial begin
-		rst <= 1'b1; @(posedge clk); $display("%b %b %2b %4b %3b %3b %1b", clkOut, dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
-		rst <= 1'b0; @(posedge clk); $display("%b %b %2b %4b %3b %3b %1b", clkOut, dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
-		localTransferInput <= 2'b01; @(posedge clk); $display("%b %b %2b %4b %3b %3b %1b", clkOut, dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
+		rst <= 1'b1; @(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
+		rst <= 1'b0; @(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
+		localTransferInput <= 2'b01; @(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
 		
 		for (i = 0; i < 50; i = i + 1) begin
-			@(posedge clk);
+			@(posedge clk);$display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
 		end
 
-		@(posedge clk); $display("%b %b %2b %4b %3b %3b %1b", clkOut, dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
+		@(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
 		for (i = 0; ~ps[1]; i = i + 1) begin
-			@(posedge clk);
+			@(posedge clk);$display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
 		end
 
-		$display("%b %b %2b %4b %3b %3b %1b", clkOut, dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
+		$display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
 		@(posedge clk);
-		readyForTransferIn <= 1'b1; @(posedge clk); $display("%b %b %2b %4b %3b %3b %1b", clkOut, dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
+		readyForTransferIn <= 1'b1; @(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
 
 		for (i = 0; i < 16; i = i + 1) begin
-			@(posedge clk); $display("%b %b %2b %4b %3b %3b %1b", clkOut, dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
+			@(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
 		end
 
-		@(posedge clk); $display("%b %b %2b %4b %3b %3b %1b", clkOut, dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
+		@(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
 
 		$stop;
 	end
