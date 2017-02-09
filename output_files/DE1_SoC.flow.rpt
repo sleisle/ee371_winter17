@@ -1,5 +1,5 @@
 Flow report for DE1_SoC
-Wed Feb 08 18:41:13 2017
+Wed Feb 08 18:41:50 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -41,25 +41,25 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Flow Summary                                                                 ;
 +---------------------------------+--------------------------------------------+
-; Flow Status                     ; Successful - Wed Feb 08 18:41:13 2017      ;
+; Flow Status                     ; Successful - Wed Feb 08 18:41:50 2017      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; DE1_SoC                                    ;
 ; Top-level Entity Name           ; lab3TopLevel                               ;
 ; Family                          ; Cyclone V                                  ;
 ; Device                          ; 5CSEMA5F31C6                               ;
 ; Timing Models                   ; Final                                      ;
-; Logic utilization (in ALMs)     ; N/A                                        ;
+; Logic utilization (in ALMs)     ; 13 / 32,070 ( < 1 % )                      ;
 ; Total registers                 ; 24                                         ;
-; Total pins                      ; 67                                         ;
+; Total pins                      ; 67 / 457 ( 15 % )                          ;
 ; Total virtual pins              ; 0                                          ;
-; Total block memory bits         ; 0                                          ;
-; Total DSP Blocks                ; 0                                          ;
+; Total block memory bits         ; 0 / 4,065,280 ( 0 % )                      ;
+; Total DSP Blocks                ; 0 / 87 ( 0 % )                             ;
 ; Total HSSI RX PCSs              ; 0                                          ;
 ; Total HSSI PMA RX Deserializers ; 0                                          ;
 ; Total HSSI TX PCSs              ; 0                                          ;
 ; Total HSSI PMA TX Serializers   ; 0                                          ;
-; Total PLLs                      ; 0                                          ;
-; Total DLLs                      ; 0                                          ;
+; Total PLLs                      ; 0 / 6 ( 0 % )                              ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                              ;
 +---------------------------------+--------------------------------------------+
 
 
@@ -103,7 +103,9 @@ agreement for further details.
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Analysis & Synthesis ; 00:00:01     ; 1.0                     ; 649 MB              ; 00:00:01                           ;
-; Total                ; 00:00:01     ; --                      ; --                  ; 00:00:01                           ;
+; Fitter               ; 00:00:24     ; 1.6                     ; 2132 MB             ; 00:00:37                           ;
+; Assembler            ; 00:00:09     ; 1.0                     ; 701 MB              ; 00:00:08                           ;
+; Total                ; 00:00:34     ; --                      ; --                  ; 00:00:46                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -113,6 +115,8 @@ agreement for further details.
 ; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +----------------------+------------------+-----------+------------+----------------+
 ; Analysis & Synthesis ; BigBlackNextGen  ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter               ; BigBlackNextGen  ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler            ; BigBlackNextGen  ; Windows 7 ; 6.2        ; x86_64         ;
 +----------------------+------------------+-----------+------------+----------------+
 
 
@@ -120,6 +124,8 @@ agreement for further details.
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC
+quartus_fit --read_settings_files=off --write_settings_files=off DE1_SoC -c DE1_SoC
+quartus_asm --read_settings_files=off --write_settings_files=off DE1_SoC -c DE1_SoC
 
 
 
