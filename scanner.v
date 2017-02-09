@@ -5,8 +5,7 @@ module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOu
 	reg [1:0] ps;
 	reg [1:0] ns;
 	reg [3:0] dataBuffer;
-	reg [2:0] slowCount; 
-	reg [2:0] dataBitCounter;
+	reg [2:0] slowCount, dataBitCounter;
 	reg slowClk;
 	reg commandDoneBit;
 	reg [7:0] outputBuffer, outputDataBuffer;
