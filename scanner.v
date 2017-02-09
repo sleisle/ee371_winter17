@@ -116,12 +116,13 @@ module scanner (slowCount, dataBuffer, ps, clk, rst, readyForTransferIn, localTr
 				end
 				else begin
 					dataOut <= outputDataBuffer[dataBitCounter];
-					commandDoneBit <= ~(& dataBitCounter);
+					commandDoneBit <= (& dataBitCounter);
 				end
 			end
 		end
 		else begin
 			clkOut <= 1'b0;
+			commandDoneBit <= 3'b0;
 		end
 		
 	end
