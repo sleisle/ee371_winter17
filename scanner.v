@@ -116,7 +116,7 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 			ps <= 2'b0;
 			dataBuffer <= 4'b0;
 			slowCount <= 3'b0;
-			dataBitCounter <= 3'b0;
+			dataBitCounter <= 3'b7;
 			commandDoneBit <= 1'b0;
 		end
 		else begin
@@ -130,7 +130,7 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 			
 		if (readyToOutput[0] | readyToOutput[1]) begin // Output Data Logic
 			clkOut <= clk;
-			dataBitCounter <= dataBitCounter + 1'b1;
+			dataBitCounter <= dataBitCounter - 1'b1;
 		end
 		else begin
 			clkOut <= 1'b0;
