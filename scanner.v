@@ -130,7 +130,7 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 			
 		if (readyToOutput[0] | readyToOutput[1]) begin // Output Data Logic
 			clkOut <= clk;
-			dataBitCounter <= dataBitCounter - 1'b1;
+			dataBitCounter <= dataBitCounter + 1'b1;
 		end
 		else begin
 			clkOut <= 1'b0;
