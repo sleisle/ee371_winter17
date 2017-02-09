@@ -70,7 +70,6 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 			end
 
 			TRANSFER: begin
-				commandDoneBit = (& dataBitCounter);
 				outputDataBuffer = {5'b0, dataBuffer}; // Setup an output for data
 				if (localTransferInput == 2'b10) begin // OTHER BUFFER REACHED 50%
 					dataBuffer = 4'b0;
@@ -81,8 +80,25 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 					outputBuffer = 8'd7;
 					readyToOutput = 2'b10; // 2 means data transfer
 				end
+				
+				if (readyToOutput[0]) begin // Output a Command
+				dataOut = outputBuffer[dataBitCounter];
+				end
+				
+				else if (readyToOutput[1]) begin // Output Data
+					if (~commandDoneBit) begin
+						dataOut = outputBuffer[dataBitCounter];
+						commandDoneBit = (& dataBitCounter);
+					end
+					else begin
+						dataOut = outputDataBuffer[dataBitCounter];
+						commandDoneBit = ~(& dataBitCounter);
+					end
+				end
+				
 			end
 		endcase
+		
 	end
 	
 	// Sequential
@@ -106,19 +122,6 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 		if (readyToOutput[0] | readyToOutput[1]) begin // Output Data Logic
 			clkOut <= clk;
 			dataBitCounter <= dataBitCounter + 1'b1;
-			
-			if (readyToOutput[0]) begin // Output a Command
-				dataOut <= outputBuffer[dataBitCounter];
-			end
-			else if (readyToOutput[1]) begin // Output Data
-				if (~commandDoneBit) begin
-					dataOut <= outputBuffer[dataBitCounter];
-				end
-				else begin
-					dataOut <= outputDataBuffer[dataBitCounter];
-					commandDoneBit <= ~(& dataBitCounter);
-				end
-			end
 		end
 		else begin
 			clkOut <= 1'b0;
