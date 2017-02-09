@@ -10,7 +10,7 @@ module transferCenter (byteCounter, byteIn, clk, rst, dataIn, readyForTransferIn
 	integer i;
 	
 	// Sequential
-	always @(posedge clk) begin: dataComingIn
+	always @(posedge clk or posedge rst) begin: dataComingIn
 		if (rst) begin
 			byteIn <= 8'b0;
 			dataBuffer <= 8'b0;
