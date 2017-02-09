@@ -116,7 +116,7 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 			ps <= 2'b0;
 			dataBuffer <= 4'b0;
 			slowCount <= 3'b0;
-			dataBitCounter <= 3'd7;
+			dataBitCounter <= 3'b0;
 			commandDoneBit <= 1'b0;
 		end
 		else begin
