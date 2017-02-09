@@ -55,9 +55,25 @@ module transferCenterTest;
 
 		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
 		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		dataIn <= 1'b1;		
+		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		dataIn <= 1'b0;
+		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
 
-
-
+		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
 
 		$stop;
 	end
