@@ -31,10 +31,10 @@ module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut
 	// Comb
 	always @(*) begin: dealWithData
 		if (byteCounter == 7) begin
-			if (readData) begin
+			if (readData) begin // Store transferred data from the scanner
 				dataBuffer = byteIn;
 				
-				// IF DATA DONE, readData = 1'b0; FIND WAY TO TELL IF DATA IS DONE SENDING
+				// We have finished transfering the data to the control station
 				readData = 1'b0;
 			
 			end
