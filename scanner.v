@@ -90,6 +90,7 @@ module scanner (slowCount, dataBuffer, ps, clk, rst, readyForTransferIn, localTr
 			dataBuffer <= 4'b0;
 			slowCount <= 3'b0;
 			dataBitCounter <= 3'b0;
+			commandDoneBit <= 1'b0;
 		end
 		else begin
 			ps <= ns;
@@ -104,6 +105,7 @@ module scanner (slowCount, dataBuffer, ps, clk, rst, readyForTransferIn, localTr
 		if (readyToOutput[0] | readyToOutput[1]) begin // Output Data Logic
 			clkOut <= clk;
 			dataBitCounter <= dataBitCounter + 1'b1;
+			
 			if (readyToOutput[0]) begin // Output a Command
 				dataOut <= outputBuffer[dataBitCounter];
 			end
@@ -114,6 +116,7 @@ module scanner (slowCount, dataBuffer, ps, clk, rst, readyForTransferIn, localTr
 				end
 				else begin
 					dataOut <= outputDataBuffer[dataBitCounter];
+					commandDoneBit <= ~(& dataBitCounter);
 				end
 			end
 		end
