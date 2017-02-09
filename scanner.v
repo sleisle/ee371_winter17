@@ -88,7 +88,6 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 				if (readyToOutput[0]) begin // Output a Command
 				dataOut = outputBuffer[dataBitCounter];
 				end
-				
 				else if (readyToOutput[1]) begin // Output Data
 					if (~commandDoneBit) begin
 						dataOut = outputBuffer[dataBitCounter];
@@ -97,8 +96,14 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 					else begin
 						dataOut = outputDataBuffer[dataBitCounter];
 						commandDoneBit = ~(& dataBitCounter);
+						if (~(& dataBitCounter))
+							ns = IDLE;
+						else
+							ns = TRANSFER;
 					end
 				end
+				else
+					ns = IDLE;
 				
 			end
 		endcase
