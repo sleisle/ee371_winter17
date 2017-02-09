@@ -30,7 +30,7 @@ module transferCenter (byteCounter, byteIn, clk, rst, dataIn, readyForTransferIn
 	
 	// Comb
 	always @(*) begin: dealWithData
-		if (byteCounter == 7) begin
+		if (byteCounter == 3'd7) begin
 			if (readData) begin // Store transferred data from the scanner
 				dataBuffer = byteIn;
 				
@@ -39,6 +39,7 @@ module transferCenter (byteCounter, byteIn, clk, rst, dataIn, readyForTransferIn
 			
 			end
 			else begin
+				$display("Case");
 				case(byteIn)
 					8'd1: begin // Buffer 50%
 						readyForTransferOut = 1'b0;
@@ -69,6 +70,7 @@ module transferCenter (byteCounter, byteIn, clk, rst, dataIn, readyForTransferIn
 					8'd7: begin// Binary Data Follows
 						readyForTransferOut = readyForTransferIn;
 						readData = 1'b1;
+						$display("7");
 					end
 					
 					8'd8: begin // ASCII Data Follows
