@@ -29,7 +29,7 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 			ACTIVE: begin
 				if (dataBuffer == 7) begin // 80% Full
 					ns = ACTIVE;
-					dataOut = outputBuffer[dataBitCounter];
+					dataOut = outputBuffer[7 - dataBitCounter];
 					
 					// SEND READY_TO_TRANSFER TO OUTPUT DRIVER
 					outputBuffer = 8'd2;
@@ -38,7 +38,7 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 				end
 				else if (dataBuffer == 8) begin // 90% Full
 					ns = ACTIVE;
-					dataOut = outputBuffer[dataBitCounter];
+					dataOut = outputBuffer[7 - dataBitCounter];
 					
 					// SEND START_SCANNING TO OUTPUT DRIVER
 					outputBuffer = 8'd3;
@@ -52,7 +52,7 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 					else begin
 						ns = STANDBY;
 					end
-					dataOut = outputBuffer[dataBitCounter];
+					dataOut = outputBuffer[7 - dataBitCounter];
 					
 					outputBuffer = 8'd4;
 					readyToOutput = 2'b01; // 1 means command transfer
@@ -64,7 +64,7 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 			end
 			
 			STANDBY: begin
-				dataOut = outputBuffer[dataBitCounter];
+				dataOut = outputBuffer[7 - dataBitCounter];
 				if (readyForTransferIn)
 					ns = TRANSFER;
 				else if (localTransferInput == 2'b10) // 10 means other buffer is at 50%
@@ -86,15 +86,15 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 				end
 				
 				if (readyToOutput[0]) begin // Output a Command
-					dataOut = outputBuffer[dataBitCounter];
+					dataOut = outputBuffer[7 - dataBitCounter];
 				end
 				else if (readyToOutput[1]) begin // Output Data
 					if (~commandDoneBit) begin
-						dataOut = outputBuffer[dataBitCounter];
+						dataOut = outputBuffer[7 - dataBitCounter];
 						commandDoneBit = (& dataBitCounter);
 					end
 					else begin
-						dataOut = outputDataBuffer[dataBitCounter];
+						dataOut = outputDataBuffer[7 - dataBitCounter];
 						commandDoneBit = ~(& dataBitCounter);
 						if (~commandDoneBit)
 							ns = IDLE;
@@ -142,7 +142,7 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 	// Slow Clock Internals
 	always @(posedge slowClk) begin: otherClocked
 		ps <= ns;
-		if (ps == ACTIVE) begin // Fake Data Counter
+		if (ps == ACTIVE && dataBuffer < 4'd8) begin // Fake Data Counter
 			dataBuffer <= dataBuffer + 1'b1;
 		end
 	end
