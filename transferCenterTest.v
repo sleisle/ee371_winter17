@@ -12,7 +12,7 @@ module transferCenterTest;
 
 	parameter ClockDelay = 10;
 
-	transferCenter dut (byteCounter, byteIn, clk, rst, dataIn, readyForTransferIn, readyForTransferOut, localScannerOut, dataBuffer);
+	transferCenter dut (byteIn, byteCounter, clk, rst, dataIn, readyForTransferIn, readyForTransferOut, localScannerOut, dataBuffer);
 	
 	initial begin // Set up the clock
 		clk <= 0;

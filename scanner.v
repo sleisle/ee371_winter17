@@ -1,14 +1,14 @@
-module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOut, dataBuffer);
+module scanner (ps, outputDataBuffer, outputBuffer, clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOut, dataBuffer);
 	input wire clk, rst, readyForTransferIn;
 	input wire [1:0] localTransferInput;
 	output reg clkOut, dataOut;
-	reg [1:0] ps;
+	output reg [1:0] ps;
 	reg [1:0] ns;
 	output reg [3:0] dataBuffer;
 	reg [2:0] slowCount, dataBitCounter;
 	reg slowClk;
 	reg commandDoneBit;
-	reg [7:0] outputBuffer, outputDataBuffer;
+	output reg [7:0] outputBuffer, outputDataBuffer;
 	reg [1:0] readyToOutput;
 	
 	// States of Scanner

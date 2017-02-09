@@ -1,10 +1,10 @@
-module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut, localScannerOut, dataBuffer);
+module transferCenter (byteIn, byteCounter, clk, rst, dataIn, readyForTransferIn, readyForTransferOut, localScannerOut, dataBuffer);
 	input wire clk, rst, dataIn, readyForTransferIn;
 	output reg readyForTransferOut;
 	output reg [1:0] localScannerOut;
 	output reg [7:0] dataBuffer;
-	reg [7:0] byteIn;
-	reg [2:0] byteCounter;
+	output reg [7:0] byteIn;
+	output reg [2:0] byteCounter;
 	reg readData;
 	
 	integer i;
@@ -14,6 +14,8 @@ module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut
 		if (rst) begin
 			byteIn <= 8'b0;
 			byteCounter <= 3'b0;
+			readData <= 1'b0;
+			localScannerOut <= 2'b00;
 		end
 		else begin
 			byteIn[0] <= dataIn;
@@ -80,7 +82,13 @@ module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut
 				endcase
 			end
 		end
+<<<<<<< HEAD
 	
+=======
+		else begin
+			localScannerOut = 2'b00;
+		end
+>>>>>>> a70fca52e706e6e7e076c14d2baf645d5e96444f
 	end
 
 endmodule
