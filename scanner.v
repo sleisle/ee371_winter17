@@ -70,6 +70,7 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 			end
 
 			TRANSFER: begin
+				commandDoneBit = (& dataBitCounter);
 				outputDataBuffer = {5'b0, dataBuffer}; // Setup an output for data
 				if (localTransferInput == 2'b10) begin // OTHER BUFFER REACHED 50%
 					dataBuffer = 4'b0;
@@ -112,7 +113,6 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 			else if (readyToOutput[1]) begin // Output Data
 				if (~commandDoneBit) begin
 					dataOut <= outputBuffer[dataBitCounter];
-					commandDoneBit <= (& dataBitCounter); // THIS MAY NOT WORK?
 				end
 				else begin
 					dataOut <= outputDataBuffer[dataBitCounter];
