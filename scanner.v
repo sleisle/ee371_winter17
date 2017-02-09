@@ -29,6 +29,7 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 			ACTIVE: begin
 				if (dataBuffer == 7) begin // 80% Full
 					ns = ACTIVE;
+					dataOut = outputBuffer[dataBitCounter];
 					
 					// SEND READY_TO_TRANSFER TO OUTPUT DRIVER
 					outputBuffer = 8'd2;
@@ -37,6 +38,7 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 				end
 				else if (dataBuffer == 8) begin // 90% Full
 					ns = ACTIVE;
+					dataOut = outputBuffer[dataBitCounter];
 					
 					// SEND START_SCANNING TO OUTPUT DRIVER
 					outputBuffer = 8'd3;
@@ -50,6 +52,7 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 					else begin
 						ns = STANDBY;
 					end
+					dataOut = outputBuffer[dataBitCounter];
 					
 					outputBuffer = 8'd4;
 					readyToOutput = 2'b01; // 1 means command transfer
@@ -61,6 +64,7 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 			end
 			
 			STANDBY: begin
+				dataOut = outputBuffer[dataBitCounter];
 				if (readyForTransferIn)
 					ns = TRANSFER;
 				else if (localTransferInput == 2'b10) // 10 means other buffer is at 50%
