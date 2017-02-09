@@ -60,6 +60,23 @@ module Tester(clk, rst, dataIn, readyForTransferIn, readyForTransferOut, localSc
 		dataIn = 1'b1;
 		for (i=0; i<2; i=i+1) begin
 			#stimDelay;
+		end
+		readyForTransferIn = 1'b1;
+		dataIn = 1'b0;
+		for (i=0; i<12; i=i+1) begin
+			#stimDelay;
+		end 
+		dataIn = 1'b1;
+		for (i=0; i<4; i=i+1) begin
+			#stimDelay;
+		end  
+		dataIn = 1'b0;
+		for (i=0; i<10; i=i+1) begin
+			#stimDelay;
+		end 
+		dataIn = 1'b1;
+		for (i=0; i<6; i=i+1) begin
+			#stimDelay;
 		end 
 		#stimDelay;
 		#stimDelay rst = 1'b1;

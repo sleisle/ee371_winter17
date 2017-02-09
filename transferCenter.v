@@ -16,6 +16,7 @@ module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut
 			dataBuffer <= 8'b0;
 			byteCounter <= 3'b0;
 			readData <= 1'b0;
+			localScannerOut <= 2'b00;
 		end
 		else begin
 			byteIn[0] <= dataIn;
@@ -85,7 +86,6 @@ module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut
 		else begin
 			localScannerOut = 2'b00;
 		end
-	
 	end
 
 endmodule
