@@ -1,10 +1,10 @@
-module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut, localScannerOut, dataBuffer);
+module transferCenter (byteIn, byteCounter, clk, rst, dataIn, readyForTransferIn, readyForTransferOut, localScannerOut, dataBuffer);
 	input wire clk, rst, dataIn, readyForTransferIn;
 	output reg readyForTransferOut;
 	output reg [1:0] localScannerOut;
 	output reg [7:0] dataBuffer;
-	reg [7:0] byteIn;
-	reg [2:0] byteCounter;
+	output reg [7:0] byteIn;
+	output reg [2:0] byteCounter;
 	reg readData;
 	
 	integer i;
