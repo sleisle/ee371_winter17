@@ -29,6 +29,8 @@ module scannerTest;
 			@(posedge clk);$display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
 		end
 
+		$display("POST FORLOOP");
+
 		@(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
 		for (i = 0; ~ps[1]; i = i + 1) begin
 			@(posedge clk);$display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
@@ -41,6 +43,22 @@ module scannerTest;
 		for (i = 0; i < 16; i = i + 1) begin
 			@(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
 		end
+
+		@(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
+
+		@(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
+
+		@(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
+
+		@(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
+
+		@(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
+
+		@(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
+
+		@(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
+
+		@(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
 
 		@(posedge clk); $display("%b %2b %4b %3b %3b %1b", dataOut, ps, dataBuffer, slowCount, dataBitCounter, commandDoneBit);
 
