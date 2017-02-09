@@ -7,7 +7,8 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 	output reg [3:0] dataBuffer;
 	output reg [2:0] slowCount; 
 	output reg [2:0] dataBitCounter;
-	reg slowClk, commandDoneBit;
+	reg slowClk;
+	output reg commandDoneBit;
 	reg [7:0] outputBuffer, outputDataBuffer;
 	reg [1:0] readyToOutput;
 	
