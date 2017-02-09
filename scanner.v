@@ -117,7 +117,7 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 				end
 				else begin
 					dataOut <= outputDataBuffer[dataBitCounter];
-					commandDoneBit <= (& dataBitCounter);
+					commandDoneBit <= ~(& dataBitCounter);
 				end
 			end
 		end
