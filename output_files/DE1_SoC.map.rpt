@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE1_SoC
-Wed Feb 08 18:41:13 2017
+Thu Feb 09 11:13:51 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -13,14 +13,19 @@ Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. General Register Statistics
- 10. Parameter Settings for User Entity Instance: Top-level Entity: |lab3TopLevel
- 11. Port Connectivity Checks: "clock_divider:cdiv"
- 12. Post-Synthesis Netlist Statistics for Top Partition
- 13. Elapsed Time Per Partition
- 14. Analysis & Synthesis Messages
- 15. Analysis & Synthesis Suppressed Messages
+  8. State Machine - |lab3TopLevel|scanner:localScanner|ps
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Top-level Entity: |lab3TopLevel
+ 14. Parameter Settings for User Entity Instance: scanner:localScanner
+ 15. Port Connectivity Checks: "transferCenter:localTransfer"
+ 16. Port Connectivity Checks: "clock_divider:cdiv"
+ 17. Post-Synthesis Netlist Statistics for Top Partition
+ 18. Elapsed Time Per Partition
+ 19. Analysis & Synthesis Messages
+ 20. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -47,14 +52,14 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Feb 08 18:41:13 2017      ;
+; Analysis & Synthesis Status     ; Successful - Thu Feb 09 11:13:51 2017      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; DE1_SoC                                    ;
 ; Top-level Entity Name           ; lab3TopLevel                               ;
 ; Family                          ; Cyclone V                                  ;
 ; Logic utilization (in ALMs)     ; N/A                                        ;
-; Total registers                 ; 24                                         ;
-; Total pins                      ; 67                                         ;
+; Total registers                 ; 49                                         ;
+; Total pins                      ; 99                                         ;
 ; Total virtual pins              ; 0                                          ;
 ; Total block memory bits         ; 0                                          ;
 ; Total DSP Blocks                ; 0                                          ;
@@ -172,14 +177,17 @@ agreement for further details.
 +----------------------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                    ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                      ; Library ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------------------+---------+
-; lab3TopLevel.v                   ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/lab3/ee371_winter17/lab3TopLevel.v  ;         ;
-; clock_divider.v                  ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/lab3/ee371_winter17/clock_divider.v ;         ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                     ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                       ; Library ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------------+---------+
+; seg7.v                           ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/lab3/ee371_winter17/seg7.v           ;         ;
+; scanner.v                        ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/lab3/ee371_winter17/scanner.v        ;         ;
+; lab3TopLevel.v                   ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/lab3/ee371_winter17/lab3TopLevel.v   ;         ;
+; clock_divider.v                  ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/lab3/ee371_winter17/clock_divider.v  ;         ;
+; transferCenter.v                 ; yes             ; User Verilog HDL File  ; D:/Schoolwork/Winter_17/EE371/lab3/ee371_winter17/transferCenter.v ;         ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------------+---------+
 
 
 +--------------------------------------------------------------+
@@ -187,35 +195,74 @@ agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 12             ;
+; Estimate of Logic utilization (ALMs needed) ; 58             ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 24             ;
-;     -- 7 input functions                    ; 0              ;
-;     -- 6 input functions                    ; 0              ;
-;     -- 5 input functions                    ; 0              ;
-;     -- 4 input functions                    ; 0              ;
-;     -- <=3 input functions                  ; 24             ;
+; Combinational ALUT usage for logic          ; 99             ;
+;     -- 7 input functions                    ; 2              ;
+;     -- 6 input functions                    ; 14             ;
+;     -- 5 input functions                    ; 13             ;
+;     -- 4 input functions                    ; 20             ;
+;     -- <=3 input functions                  ; 50             ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 24             ;
+; Dedicated logic registers                   ; 49             ;
 ;                                             ;                ;
-; I/O pins                                    ; 67             ;
+; I/O pins                                    ; 99             ;
 ; Total DSP Blocks                            ; 0              ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
 ; Maximum fan-out                             ; 24             ;
-; Total fan-out                               ; 164            ;
-; Average fan-out                             ; 0.90           ;
+; Total fan-out                               ; 629            ;
+; Average fan-out                             ; 1.66           ;
 +---------------------------------------------+----------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                    ;
-+----------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name              ; Library Name ;
-+----------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------+--------------+
-; |lab3TopLevel              ; 24 (0)            ; 24 (0)       ; 0                 ; 0          ; 67   ; 0            ; |lab3TopLevel                    ; work         ;
-;    |clock_divider:cdiv|    ; 24 (24)           ; 24 (24)      ; 0                 ; 0          ; 0    ; 0            ; |lab3TopLevel|clock_divider:cdiv ; work         ;
-+----------------------------+-------------------+--------------+-------------------+------------+------+--------------+----------------------------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                     ;
++-----------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------+--------------+
+; Compilation Hierarchy Node        ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                        ; Library Name ;
++-----------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------+--------------+
+; |lab3TopLevel                     ; 99 (0)            ; 49 (0)       ; 0                 ; 0          ; 99   ; 0            ; |lab3TopLevel                              ; work         ;
+;    |clock_divider:cdiv|           ; 24 (24)           ; 24 (24)      ; 0                 ; 0          ; 0    ; 0            ; |lab3TopLevel|clock_divider:cdiv           ; work         ;
+;    |scanner:localScanner|         ; 38 (38)           ; 14 (14)      ; 0                 ; 0          ; 0    ; 0            ; |lab3TopLevel|scanner:localScanner         ; work         ;
+;    |seg7:h0|                      ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab3TopLevel|seg7:h0                      ; work         ;
+;    |seg7:h2|                      ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab3TopLevel|seg7:h2                      ; work         ;
+;    |transferCenter:localTransfer| ; 23 (23)           ; 11 (11)      ; 0                 ; 0          ; 0    ; 0            ; |lab3TopLevel|transferCenter:localTransfer ; work         ;
++-----------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  User-Encoded
++-------------------------------------------------------+
+; State Machine - |lab3TopLevel|scanner:localScanner|ps ;
++-------------+------+----------------------------------+
+; Name        ; ps~5 ; ps~4                             ;
++-------------+------+----------------------------------+
+; ps.IDLE     ; 0    ; 0                                ;
+; ps.ACTIVE   ; 0    ; 1                                ;
+; ps.STANDBY  ; 1    ; 0                                ;
+; ps.TRANSFER ; 1    ; 1                                ;
++-------------+------+----------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                       ;
++-----------------------------------------------------+--------------------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal                        ; Free of Timing Hazards ;
++-----------------------------------------------------+--------------------------------------------+------------------------+
+; transferCenter:localTransfer|dataBuffer[0]          ; transferCenter:localTransfer|dataBuffer[7] ; yes                    ;
+; transferCenter:localTransfer|dataBuffer[1]          ; transferCenter:localTransfer|dataBuffer[7] ; yes                    ;
+; transferCenter:localTransfer|dataBuffer[2]          ; transferCenter:localTransfer|dataBuffer[7] ; yes                    ;
+; transferCenter:localTransfer|dataBuffer[3]          ; transferCenter:localTransfer|dataBuffer[7] ; yes                    ;
+; transferCenter:localTransfer|readData               ; transferCenter:localTransfer|Equal0        ; yes                    ;
+; transferCenter:localTransfer|localScannerOut[1]     ; transferCenter:localTransfer|readData      ; yes                    ;
+; transferCenter:localTransfer|localScannerOut[0]     ; transferCenter:localTransfer|readData      ; yes                    ;
+; scanner:localScanner|commandDoneBit                 ; scanner:localScanner|ps.TRANSFER           ; yes                    ;
+; scanner:localScanner|outputBuffer[2]                ; scanner:localScanner|ps.STANDBY            ; yes                    ;
+; scanner:localScanner|outputBuffer[1]                ; scanner:localScanner|ps.STANDBY            ; yes                    ;
+; scanner:localScanner|outputBuffer[0]                ; scanner:localScanner|ps.STANDBY            ; yes                    ;
+; transferCenter:localTransfer|readyForTransferOut    ; transferCenter:localTransfer|Equal0        ; yes                    ;
+; Number of user-specified and inferred latches = 12  ;                                            ;                        ;
++-----------------------------------------------------+--------------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
 +----------------------------------------------------------------+
@@ -233,14 +280,27 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 24    ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Total registers                              ; 49    ;
+; Number of registers using Synchronous Clear  ; 2     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Clear ; 17    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 3     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |lab3TopLevel|scanner:localScanner|dataBuffer[1]         ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |lab3TopLevel|scanner:localScanner|dataBitCounter[2]     ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |lab3TopLevel|transferCenter:localTransfer|dataBuffer[1] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab3TopLevel|scanner:localScanner|commandDoneBit        ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab3TopLevel|scanner:localScanner|Selector5             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------+
@@ -251,6 +311,28 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; whichClock     ; 23    ; Signed Integer                                      ;
 +----------------+-------+-----------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: scanner:localScanner ;
++----------------+-------+------------------------------------------+
+; Parameter Name ; Value ; Type                                     ;
++----------------+-------+------------------------------------------+
+; IDLE           ; 00    ; Unsigned Binary                          ;
+; ACTIVE         ; 01    ; Unsigned Binary                          ;
+; STANDBY        ; 10    ; Unsigned Binary                          ;
+; TRANSFER       ; 11    ; Unsigned Binary                          ;
++----------------+-------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "transferCenter:localTransfer"                                                                                                       ;
++------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                                                                       ;
++------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------+
+; dataBuffer ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (4 bits) it drives; bit(s) "dataBuffer[7..4]" have no fanouts ;
++------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------+
@@ -268,19 +350,30 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 24                          ;
-;     plain             ; 24                          ;
-; arriav_lcell_comb     ; 26                          ;
+; arriav_ff             ; 49                          ;
+;     CLR               ; 17                          ;
+;     ENA               ; 3                           ;
+;     SCLR              ; 2                           ;
+;     plain             ; 27                          ;
+; arriav_io_obuf        ; 32                          ;
+; arriav_lcell_comb     ; 103                         ;
 ;     arith             ; 23                          ;
 ;         1 data inputs ; 22                          ;
 ;         2 data inputs ; 1                           ;
-;     normal            ; 3                           ;
+;     extend            ; 2                           ;
+;         7 data inputs ; 2                           ;
+;     normal            ; 78                          ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 2                           ;
-; boundary_port         ; 67                          ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 5                           ;
+;         3 data inputs ; 19                          ;
+;         4 data inputs ; 20                          ;
+;         5 data inputs ; 13                          ;
+;         6 data inputs ; 14                          ;
+; boundary_port         ; 99                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 3.20                        ;
-; Average LUT depth     ; 2.34                        ;
+; Average LUT depth     ; 1.84                        ;
 +-----------------------+-----------------------------+
 
 
@@ -299,7 +392,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Wed Feb 08 18:41:12 2017
+    Info: Processing started: Thu Feb 09 11:13:50 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC
 Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
 Info (12021): Found 1 design units, including 1 entities, in source file seg7.v
@@ -316,18 +409,73 @@ Info (12021): Found 1 design units, including 1 entities, in source file transfe
     Info (12023): Found entity 1: transferCenter
 Info (12127): Elaborating entity "lab3TopLevel" for the top level hierarchy
 Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:cdiv"
+Info (12128): Elaborating entity "seg7" for hierarchy "seg7:h0"
+Info (12128): Elaborating entity "scanner" for hierarchy "scanner:localScanner"
+Warning (10240): Verilog HDL Always Construct warning at scanner.v(18): inferring latch(es) for variable "outputBuffer", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at scanner.v(18): inferring latch(es) for variable "commandDoneBit", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "commandDoneBit" at scanner.v(18)
+Info (10041): Inferred latch for "outputBuffer[0]" at scanner.v(18)
+Info (10041): Inferred latch for "outputBuffer[1]" at scanner.v(18)
+Info (10041): Inferred latch for "outputBuffer[2]" at scanner.v(18)
+Info (10041): Inferred latch for "outputBuffer[3]" at scanner.v(18)
+Info (10041): Inferred latch for "outputBuffer[4]" at scanner.v(18)
+Info (10041): Inferred latch for "outputBuffer[5]" at scanner.v(18)
+Info (10041): Inferred latch for "outputBuffer[6]" at scanner.v(18)
+Info (10041): Inferred latch for "outputBuffer[7]" at scanner.v(18)
+Info (12128): Elaborating entity "transferCenter" for hierarchy "transferCenter:localTransfer"
+Warning (10240): Verilog HDL Always Construct warning at transferCenter.v(31): inferring latch(es) for variable "dataBuffer", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at transferCenter.v(31): inferring latch(es) for variable "readyForTransferOut", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at transferCenter.v(31): inferring latch(es) for variable "readData", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at transferCenter.v(31): inferring latch(es) for variable "localScannerOut", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "localScannerOut[0]" at transferCenter.v(94)
+Info (10041): Inferred latch for "localScannerOut[1]" at transferCenter.v(94)
+Info (10041): Inferred latch for "readData" at transferCenter.v(94)
+Info (10041): Inferred latch for "readyForTransferOut" at transferCenter.v(94)
+Info (10041): Inferred latch for "dataBuffer[0]" at transferCenter.v(94)
+Info (10041): Inferred latch for "dataBuffer[1]" at transferCenter.v(94)
+Info (10041): Inferred latch for "dataBuffer[2]" at transferCenter.v(94)
+Info (10041): Inferred latch for "dataBuffer[3]" at transferCenter.v(94)
+Info (10041): Inferred latch for "dataBuffer[4]" at transferCenter.v(94)
+Info (10041): Inferred latch for "dataBuffer[5]" at transferCenter.v(94)
+Info (10041): Inferred latch for "dataBuffer[6]" at transferCenter.v(94)
+Info (10041): Inferred latch for "dataBuffer[7]" at transferCenter.v(94)
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13034): The following nodes have both tri-state and non-tri-state drivers
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[0]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[1]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[2]" and its non-tri-state driver.
+Warning (13039): The following bidir pins have no drivers
+Warning (13012): Latch transferCenter:localTransfer|dataBuffer[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal transferCenter:localTransfer|readData
+Warning (13012): Latch transferCenter:localTransfer|dataBuffer[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal transferCenter:localTransfer|readData
+Warning (13012): Latch transferCenter:localTransfer|dataBuffer[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal transferCenter:localTransfer|readData
+Warning (13012): Latch transferCenter:localTransfer|dataBuffer[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal transferCenter:localTransfer|readData
+Warning (13012): Latch scanner:localScanner|outputBuffer[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal scanner:localScanner|ps~4
+Warning (13012): Latch scanner:localScanner|outputBuffer[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal scanner:localScanner|ps~4
+Warning (13012): Latch scanner:localScanner|outputBuffer[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal scanner:localScanner|ps~4
+Warning (13009): TRI or OPNDRN buffers permanently enabled
+    Warning (13010): Node "GPIO_0[0]~synth"
+    Warning (13010): Node "GPIO_0[1]~synth"
+    Warning (13010): Node "GPIO_0[2]~synth"
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 8 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file D:/Schoolwork/Winter_17/EE371/lab3/ee371_winter17/output_files/DE1_SoC.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 91 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 206 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 52 output pins
-    Info (21061): Implemented 24 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 649 megabytes
-    Info: Processing ended: Wed Feb 08 18:41:13 2017
+    Info (21060): Implemented 32 bidirectional pins
+    Info (21061): Implemented 107 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 30 warnings
+    Info: Peak virtual memory: 661 megabytes
+    Info: Processing ended: Thu Feb 09 11:13:51 2017
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
