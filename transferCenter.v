@@ -15,6 +15,7 @@ module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut
 			byteIn <= 8'b0;
 			dataBuffer <= 8'b0;
 			byteCounter <= 3'b0;
+			readData <= 1'b0;
 		end
 		else begin
 			byteIn[0] <= dataIn;

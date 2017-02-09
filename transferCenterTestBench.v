@@ -35,6 +35,7 @@ module Tester(clk, rst, dataIn, readyForTransferIn, readyForTransferOut, localSc
 	initial begin
 		// Begin running instructions
 		clk = 0;
+		readyForTransferIn = 1'b0;
 		dataIn = 1'b0;		
 		#stimDelay;
 		#stimDelay rst = 1'b0;
@@ -49,7 +50,15 @@ module Tester(clk, rst, dataIn, readyForTransferIn, readyForTransferOut, localSc
 			#stimDelay;
 		end 
 
-		for (i=0; i<18; i=i+1) begin
+		for (i=0; i<20; i=i+1) begin
+			#stimDelay;
+		end 
+		dataIn = 1'b0;
+		for (i=0; i<14; i=i+1) begin
+			#stimDelay;
+		end 
+		dataIn = 1'b1;
+		for (i=0; i<2; i=i+1) begin
 			#stimDelay;
 		end 
 		#stimDelay;
