@@ -93,7 +93,6 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 			commandDoneBit <= 1'b0;
 		end
 		else begin
-			ps <= ns;
 			slowCount <= slowCount + 1'b1;
 		end
 		
@@ -129,6 +128,7 @@ module scanner (commandDoneBit, dataBitCounter, slowCount, dataBuffer, ps, clk, 
 	
 	// Slow Clock Internals
 	always @(posedge slowClk) begin: otherClocked
+		ps <= ns;
 		if (ps == ACTIVE) begin // Fake Data Counter
 			dataBuffer <= dataBuffer + 1'b1;
 		end
