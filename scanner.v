@@ -19,9 +19,6 @@ module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOu
 		case(ps)
 			IDLE: begin
 				readyToOutput = 2'b00;
-				dataOut = 1'b0;
-				outputBuffer = 8'b0;
-				outputDataBuffer = 8'b0;
 				if (localTransferInput == 2'b01) // 01 means start scanning
 					ns = ACTIVE;
 				else
@@ -29,7 +26,6 @@ module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOu
 			end
 			
 			ACTIVE: begin
-				outputDataBuffer = 8'b0;
 				if (dataBuffer == 7) begin // 80% Full
 					ns = ACTIVE;
 					dataOut = outputBuffer[7 - dataBitCounter];
@@ -63,15 +59,10 @@ module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOu
 				end
 				else begin
 					ns = ACTIVE;
-					readyToOutput = 2'b0;
-					dataOut = 1'b0;
-					outputBuffer = 8'b0;
 				end
 			end
 			
 			STANDBY: begin
-				outputDataBuffer = 8'b0;
-				readyToOutput = 2'b00;
 				dataOut = outputBuffer[7 - dataBitCounter];
 				if (readyForTransferIn)
 					ns = TRANSFER;
@@ -84,15 +75,13 @@ module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOu
 			TRANSFER: begin
 				outputDataBuffer = {4'b0, dataBuffer}; // Setup an output for data
 				if (localTransferInput == 2'b10) begin // OTHER BUFFER REACHED 50%
+					dataBuffer = 4'b0;
 					ns = IDLE;
-					readyToOutput = 2'b00;
-					outputBuffer = 8'b0;
 				end
 				else begin
 					// TRANSFER THE DATA
 					outputBuffer = 8'd7;
 					readyToOutput = 2'b10; // 2 means data transfer
-					ns = TRANSFER;
 				end
 				
 				if (readyToOutput[0]) begin // Output a Command
@@ -112,11 +101,8 @@ module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOu
 							ns = TRANSFER;
 					end
 				end
-				else begin
+				else
 					ns = IDLE;
-					dataOut = 1'b0;
-					commandDoneBit <= 1'b0;
-				end
 				
 			end
 		endcase
@@ -126,8 +112,11 @@ module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOu
 	// Sequential
 	always @(posedge clk) begin: States
 		if (rst) begin // State Logic
+			ps <= 2'b0;
+			dataBuffer <= 4'b0;
 			slowCount <= 3'b0;
 			dataBitCounter <= 3'b0;
+			commandDoneBit <= 1'b0;
 		end
 		else begin
 			slowCount <= slowCount + 1'b1;
@@ -144,25 +133,17 @@ module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOu
 		end
 		else begin
 			clkOut <= 1'b0;
+			commandDoneBit <= 3'b0;
 		end
 		
 	end
 	
 	// Slow Clock Internals
-	always @(posedge slowClk or posedge rst) begin: otherClocked
-		if (rst) begin
-			ps <= 2'b0;
-			dataBuffer <= 4'b0;
+	always @(posedge slowClk) begin: otherClocked
+		ps <= ns;
+		if (ps == ACTIVE && dataBuffer < 4'd9) begin // Fake Data Counter
+			dataBuffer <= dataBuffer + 1'b1;
 		end
-		else begin
-			ps <= ns;
-			if (ps == ACTIVE && dataBuffer < 4'd9) begin // Fake Data Counter
-				dataBuffer <= dataBuffer + 1'b1;
-			end
-			else if (dataBuffer > 4'd9)
-				dataBuffer <= 4'b0;
-		end
-		
 	end
 	
 	
