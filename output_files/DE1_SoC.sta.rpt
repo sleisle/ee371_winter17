@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for DE1_SoC
-Thu Feb 09 11:14:38 2017
+Thu Feb 09 11:50:55 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -131,7 +131,7 @@ agreement for further details.
 +---------------+--------+--------------------------+
 ; SDC File Path ; Status ; Read at                  ;
 +---------------+--------+--------------------------+
-; DE1_SoC.sdc   ; OK     ; Thu Feb 09 11:14:33 2017 ;
+; DE1_SoC.sdc   ; OK     ; Thu Feb 09 11:50:51 2017 ;
 +---------------+--------+--------------------------+
 
 
@@ -149,7 +149,7 @@ agreement for further details.
 +------------+-----------------+------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
 +------------+-----------------+------------+------+
-; 288.18 MHz ; 288.18 MHz      ; CLOCK_50   ;      ;
+; 275.33 MHz ; 275.33 MHz      ; CLOCK_50   ;      ;
 +------------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -165,7 +165,7 @@ HTML report is unavailable in plain text report export.
 +----------+--------+-----------------+
 ; Clock    ; Slack  ; End Point TNS   ;
 +----------+--------+-----------------+
-; CLOCK_50 ; 16.530 ; 0.000           ;
+; CLOCK_50 ; 16.368 ; 0.000           ;
 +----------+--------+-----------------+
 
 
@@ -174,7 +174,7 @@ HTML report is unavailable in plain text report export.
 +----------+-------+-----------------+
 ; Clock    ; Slack ; End Point TNS   ;
 +----------+-------+-----------------+
-; CLOCK_50 ; 0.390 ; 0.000           ;
+; CLOCK_50 ; 0.389 ; 0.000           ;
 +----------+-------+-----------------+
 
 
@@ -195,18 +195,18 @@ No paths to report.
 +----------+-------+--------------------------------+
 ; Clock    ; Slack ; End Point TNS                  ;
 +----------+-------+--------------------------------+
-; CLOCK_50 ; 8.764 ; 0.000                          ;
+; CLOCK_50 ; 8.856 ; 0.000                          ;
 +----------+-------+--------------------------------+
 
 
-+-----------------------------------------------------------------------+
-; Clock to Output Times                                                 ;
-+-----------+------------+-------+-------+------------+-----------------+
-; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
-+-----------+------------+-------+-------+------------+-----------------+
-; LEDR[*]   ; CLOCK_50   ; 9.347 ; 9.709 ; Rise       ; CLOCK_50        ;
-;  LEDR[9]  ; CLOCK_50   ; 9.347 ; 9.709 ; Rise       ; CLOCK_50        ;
-+-----------+------------+-------+-------+------------+-----------------+
++-------------------------------------------------------------------------+
+; Clock to Output Times                                                   ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; LEDR[*]   ; CLOCK_50   ; 10.362 ; 11.445 ; Rise       ; CLOCK_50        ;
+;  LEDR[9]  ; CLOCK_50   ; 10.362 ; 11.445 ; Rise       ; CLOCK_50        ;
++-----------+------------+--------+--------+------------+-----------------+
 
 
 +-----------------------------------------------------------------------+
@@ -214,8 +214,8 @@ No paths to report.
 +-----------+------------+-------+-------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +-----------+------------+-------+-------+------------+-----------------+
-; LEDR[*]   ; CLOCK_50   ; 8.424 ; 8.658 ; Rise       ; CLOCK_50        ;
-;  LEDR[9]  ; CLOCK_50   ; 8.424 ; 8.658 ; Rise       ; CLOCK_50        ;
+; LEDR[*]   ; CLOCK_50   ; 9.242 ; 9.909 ; Rise       ; CLOCK_50        ;
+;  LEDR[9]  ; CLOCK_50   ; 9.242 ; 9.909 ; Rise       ; CLOCK_50        ;
 +-----------+------------+-------+-------+------------+-----------------+
 
 
@@ -224,7 +224,7 @@ No paths to report.
 +------------+-------------+----+-------+-------+----+
 ; Input Port ; Output Port ; RR ; RF    ; FR    ; FF ;
 +------------+-------------+----+-------+-------+----+
-; KEY[0]     ; LEDR[8]     ;    ; 7.207 ; 7.853 ;    ;
+; KEY[0]     ; LEDR[8]     ;    ; 7.204 ; 7.849 ;    ;
 +------------+-------------+----+-------+-------+----+
 
 
@@ -233,7 +233,7 @@ No paths to report.
 +------------+-------------+----+-------+-------+----+
 ; Input Port ; Output Port ; RR ; RF    ; FR    ; FF ;
 +------------+-------------+----+-------+-------+----+
-; KEY[0]     ; LEDR[8]     ;    ; 6.710 ; 7.332 ;    ;
+; KEY[0]     ; LEDR[8]     ;    ; 6.707 ; 7.328 ;    ;
 +------------+-------------+----+-------+-------+----+
 
 
@@ -243,13 +243,13 @@ No paths to report.
 No synchronizer chains to report.
 
 
-+--------------------------------------------------+
-; Slow 1100mV 0C Model Fmax Summary                ;
-+------------+-----------------+------------+------+
-; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
-+------------+-----------------+------------+------+
-; 269.83 MHz ; 269.83 MHz      ; CLOCK_50   ;      ;
-+------------+-----------------+------------+------+
++-------------------------------------------------+
+; Slow 1100mV 0C Model Fmax Summary               ;
++-----------+-----------------+------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
++-----------+-----------------+------------+------+
+; 258.2 MHz ; 258.2 MHz       ; CLOCK_50   ;      ;
++-----------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
@@ -258,7 +258,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------+--------+----------------+
 ; Clock    ; Slack  ; End Point TNS  ;
 +----------+--------+----------------+
-; CLOCK_50 ; 16.294 ; 0.000          ;
+; CLOCK_50 ; 16.127 ; 0.000          ;
 +----------+--------+----------------+
 
 
@@ -267,7 +267,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------+-------+----------------+
 ; Clock    ; Slack ; End Point TNS  ;
 +----------+-------+----------------+
-; CLOCK_50 ; 0.406 ; 0.000          ;
+; CLOCK_50 ; 0.404 ; 0.000          ;
 +----------+-------+----------------+
 
 
@@ -288,18 +288,18 @@ No paths to report.
 +----------+-------+-------------------------------+
 ; Clock    ; Slack ; End Point TNS                 ;
 +----------+-------+-------------------------------+
-; CLOCK_50 ; 8.758 ; 0.000                         ;
+; CLOCK_50 ; 8.859 ; 0.000                         ;
 +----------+-------+-------------------------------+
 
 
-+-----------------------------------------------------------------------+
-; Clock to Output Times                                                 ;
-+-----------+------------+-------+-------+------------+-----------------+
-; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
-+-----------+------------+-------+-------+------------+-----------------+
-; LEDR[*]   ; CLOCK_50   ; 8.806 ; 9.177 ; Rise       ; CLOCK_50        ;
-;  LEDR[9]  ; CLOCK_50   ; 8.806 ; 9.177 ; Rise       ; CLOCK_50        ;
-+-----------+------------+-------+-------+------------+-----------------+
++------------------------------------------------------------------------+
+; Clock to Output Times                                                  ;
++-----------+------------+-------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+--------+------------+-----------------+
+; LEDR[*]   ; CLOCK_50   ; 9.792 ; 10.807 ; Rise       ; CLOCK_50        ;
+;  LEDR[9]  ; CLOCK_50   ; 9.792 ; 10.807 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+--------+------------+-----------------+
 
 
 +-----------------------------------------------------------------------+
@@ -307,8 +307,8 @@ No paths to report.
 +-----------+------------+-------+-------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +-----------+------------+-------+-------+------------+-----------------+
-; LEDR[*]   ; CLOCK_50   ; 7.925 ; 8.189 ; Rise       ; CLOCK_50        ;
-;  LEDR[9]  ; CLOCK_50   ; 7.925 ; 8.189 ; Rise       ; CLOCK_50        ;
+; LEDR[*]   ; CLOCK_50   ; 8.715 ; 9.394 ; Rise       ; CLOCK_50        ;
+;  LEDR[9]  ; CLOCK_50   ; 8.715 ; 9.394 ; Rise       ; CLOCK_50        ;
 +-----------+------------+-------+-------+------------+-----------------+
 
 
@@ -317,7 +317,7 @@ No paths to report.
 +------------+-------------+----+-------+-------+----+
 ; Input Port ; Output Port ; RR ; RF    ; FR    ; FF ;
 +------------+-------------+----+-------+-------+----+
-; KEY[0]     ; LEDR[8]     ;    ; 6.835 ; 7.517 ;    ;
+; KEY[0]     ; LEDR[8]     ;    ; 6.832 ; 7.513 ;    ;
 +------------+-------------+----+-------+-------+----+
 
 
@@ -326,7 +326,7 @@ No paths to report.
 +------------+-------------+----+-------+-------+----+
 ; Input Port ; Output Port ; RR ; RF    ; FR    ; FF ;
 +------------+-------------+----+-------+-------+----+
-; KEY[0]     ; LEDR[8]     ;    ; 6.357 ; 7.002 ;    ;
+; KEY[0]     ; LEDR[8]     ;    ; 6.354 ; 6.998 ;    ;
 +------------+-------------+----+-------+-------+----+
 
 
@@ -341,7 +341,7 @@ No synchronizer chains to report.
 +----------+--------+-----------------+
 ; Clock    ; Slack  ; End Point TNS   ;
 +----------+--------+-----------------+
-; CLOCK_50 ; 18.000 ; 0.000           ;
+; CLOCK_50 ; 17.928 ; 0.000           ;
 +----------+--------+-----------------+
 
 
@@ -350,7 +350,7 @@ No synchronizer chains to report.
 +----------+-------+-----------------+
 ; Clock    ; Slack ; End Point TNS   ;
 +----------+-------+-----------------+
-; CLOCK_50 ; 0.190 ; 0.000           ;
+; CLOCK_50 ; 0.189 ; 0.000           ;
 +----------+-------+-----------------+
 
 
@@ -371,7 +371,7 @@ No paths to report.
 +----------+-------+--------------------------------+
 ; Clock    ; Slack ; End Point TNS                  ;
 +----------+-------+--------------------------------+
-; CLOCK_50 ; 8.732 ; 0.000                          ;
+; CLOCK_50 ; 8.801 ; 0.000                          ;
 +----------+-------+--------------------------------+
 
 
@@ -380,8 +380,8 @@ No paths to report.
 +-----------+------------+-------+-------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +-----------+------------+-------+-------+------------+-----------------+
-; LEDR[*]   ; CLOCK_50   ; 5.737 ; 6.147 ; Rise       ; CLOCK_50        ;
-;  LEDR[9]  ; CLOCK_50   ; 5.737 ; 6.147 ; Rise       ; CLOCK_50        ;
+; LEDR[*]   ; CLOCK_50   ; 6.578 ; 7.574 ; Rise       ; CLOCK_50        ;
+;  LEDR[9]  ; CLOCK_50   ; 6.578 ; 7.574 ; Rise       ; CLOCK_50        ;
 +-----------+------------+-------+-------+------------+-----------------+
 
 
@@ -390,8 +390,8 @@ No paths to report.
 +-----------+------------+-------+-------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +-----------+------------+-------+-------+------------+-----------------+
-; LEDR[*]   ; CLOCK_50   ; 5.187 ; 5.487 ; Rise       ; CLOCK_50        ;
-;  LEDR[9]  ; CLOCK_50   ; 5.187 ; 5.487 ; Rise       ; CLOCK_50        ;
+; LEDR[*]   ; CLOCK_50   ; 5.880 ; 6.543 ; Rise       ; CLOCK_50        ;
+;  LEDR[9]  ; CLOCK_50   ; 5.880 ; 6.543 ; Rise       ; CLOCK_50        ;
 +-----------+------------+-------+-------+------------+-----------------+
 
 
@@ -400,7 +400,7 @@ No paths to report.
 +------------+-------------+----+-------+-------+----+
 ; Input Port ; Output Port ; RR ; RF    ; FR    ; FF ;
 +------------+-------------+----+-------+-------+----+
-; KEY[0]     ; LEDR[8]     ;    ; 4.375 ; 5.373 ;    ;
+; KEY[0]     ; LEDR[8]     ;    ; 4.375 ; 5.370 ;    ;
 +------------+-------------+----+-------+-------+----+
 
 
@@ -409,7 +409,7 @@ No paths to report.
 +------------+-------------+----+-------+-------+----+
 ; Input Port ; Output Port ; RR ; RF    ; FR    ; FF ;
 +------------+-------------+----+-------+-------+----+
-; KEY[0]     ; LEDR[8]     ;    ; 4.130 ; 5.103 ;    ;
+; KEY[0]     ; LEDR[8]     ;    ; 4.129 ; 5.100 ;    ;
 +------------+-------------+----+-------+-------+----+
 
 
@@ -424,7 +424,7 @@ No synchronizer chains to report.
 +----------+--------+----------------+
 ; Clock    ; Slack  ; End Point TNS  ;
 +----------+--------+----------------+
-; CLOCK_50 ; 17.993 ; 0.000          ;
+; CLOCK_50 ; 17.929 ; 0.000          ;
 +----------+--------+----------------+
 
 
@@ -433,7 +433,7 @@ No synchronizer chains to report.
 +----------+-------+----------------+
 ; Clock    ; Slack ; End Point TNS  ;
 +----------+-------+----------------+
-; CLOCK_50 ; 0.179 ; 0.000          ;
+; CLOCK_50 ; 0.181 ; 0.000          ;
 +----------+-------+----------------+
 
 
@@ -454,7 +454,7 @@ No paths to report.
 +----------+-------+-------------------------------+
 ; Clock    ; Slack ; End Point TNS                 ;
 +----------+-------+-------------------------------+
-; CLOCK_50 ; 8.717 ; 0.000                         ;
+; CLOCK_50 ; 8.777 ; 0.000                         ;
 +----------+-------+-------------------------------+
 
 
@@ -463,8 +463,8 @@ No paths to report.
 +-----------+------------+-------+-------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +-----------+------------+-------+-------+------------+-----------------+
-; LEDR[*]   ; CLOCK_50   ; 5.199 ; 5.548 ; Rise       ; CLOCK_50        ;
-;  LEDR[9]  ; CLOCK_50   ; 5.199 ; 5.548 ; Rise       ; CLOCK_50        ;
+; LEDR[*]   ; CLOCK_50   ; 5.972 ; 6.747 ; Rise       ; CLOCK_50        ;
+;  LEDR[9]  ; CLOCK_50   ; 5.972 ; 6.747 ; Rise       ; CLOCK_50        ;
 +-----------+------------+-------+-------+------------+-----------------+
 
 
@@ -473,8 +473,8 @@ No paths to report.
 +-----------+------------+-------+-------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +-----------+------------+-------+-------+------------+-----------------+
-; LEDR[*]   ; CLOCK_50   ; 4.684 ; 4.949 ; Rise       ; CLOCK_50        ;
-;  LEDR[9]  ; CLOCK_50   ; 4.684 ; 4.949 ; Rise       ; CLOCK_50        ;
+; LEDR[*]   ; CLOCK_50   ; 5.322 ; 5.859 ; Rise       ; CLOCK_50        ;
+;  LEDR[9]  ; CLOCK_50   ; 5.322 ; 5.859 ; Rise       ; CLOCK_50        ;
 +-----------+------------+-------+-------+------------+-----------------+
 
 
@@ -483,7 +483,7 @@ No paths to report.
 +------------+-------------+----+-------+-------+----+
 ; Input Port ; Output Port ; RR ; RF    ; FR    ; FF ;
 +------------+-------------+----+-------+-------+----+
-; KEY[0]     ; LEDR[8]     ;    ; 3.989 ; 5.020 ;    ;
+; KEY[0]     ; LEDR[8]     ;    ; 3.987 ; 5.016 ;    ;
 +------------+-------------+----+-------+-------+----+
 
 
@@ -492,7 +492,7 @@ No paths to report.
 +------------+-------------+----+-------+-------+----+
 ; Input Port ; Output Port ; RR ; RF    ; FR    ; FF ;
 +------------+-------------+----+-------+-------+----+
-; KEY[0]     ; LEDR[8]     ;    ; 3.755 ; 4.756 ;    ;
+; KEY[0]     ; LEDR[8]     ;    ; 3.754 ; 4.753 ;    ;
 +------------+-------------+----+-------+-------+----+
 
 
@@ -507,21 +507,21 @@ No synchronizer chains to report.
 +------------------+--------+-------+----------+---------+---------------------+
 ; Clock            ; Setup  ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
 +------------------+--------+-------+----------+---------+---------------------+
-; Worst-case Slack ; 16.294 ; 0.179 ; N/A      ; N/A     ; 8.717               ;
-;  CLOCK_50        ; 16.294 ; 0.179 ; N/A      ; N/A     ; 8.717               ;
+; Worst-case Slack ; 16.127 ; 0.181 ; N/A      ; N/A     ; 8.777               ;
+;  CLOCK_50        ; 16.127 ; 0.181 ; N/A      ; N/A     ; 8.777               ;
 ; Design-wide TNS  ; 0.0    ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
 ;  CLOCK_50        ; 0.000  ; 0.000 ; N/A      ; N/A     ; 0.000               ;
 +------------------+--------+-------+----------+---------+---------------------+
 
 
-+-----------------------------------------------------------------------+
-; Clock to Output Times                                                 ;
-+-----------+------------+-------+-------+------------+-----------------+
-; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
-+-----------+------------+-------+-------+------------+-----------------+
-; LEDR[*]   ; CLOCK_50   ; 9.347 ; 9.709 ; Rise       ; CLOCK_50        ;
-;  LEDR[9]  ; CLOCK_50   ; 9.347 ; 9.709 ; Rise       ; CLOCK_50        ;
-+-----------+------------+-------+-------+------------+-----------------+
++-------------------------------------------------------------------------+
+; Clock to Output Times                                                   ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; LEDR[*]   ; CLOCK_50   ; 10.362 ; 11.445 ; Rise       ; CLOCK_50        ;
+;  LEDR[9]  ; CLOCK_50   ; 10.362 ; 11.445 ; Rise       ; CLOCK_50        ;
++-----------+------------+--------+--------+------------+-----------------+
 
 
 +-----------------------------------------------------------------------+
@@ -529,8 +529,8 @@ No synchronizer chains to report.
 +-----------+------------+-------+-------+------------+-----------------+
 ; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
 +-----------+------------+-------+-------+------------+-----------------+
-; LEDR[*]   ; CLOCK_50   ; 4.684 ; 4.949 ; Rise       ; CLOCK_50        ;
-;  LEDR[9]  ; CLOCK_50   ; 4.684 ; 4.949 ; Rise       ; CLOCK_50        ;
+; LEDR[*]   ; CLOCK_50   ; 5.322 ; 5.859 ; Rise       ; CLOCK_50        ;
+;  LEDR[9]  ; CLOCK_50   ; 5.322 ; 5.859 ; Rise       ; CLOCK_50        ;
 +-----------+------------+-------+-------+------------+-----------------+
 
 
@@ -539,7 +539,7 @@ No synchronizer chains to report.
 +------------+-------------+----+-------+-------+----+
 ; Input Port ; Output Port ; RR ; RF    ; FR    ; FF ;
 +------------+-------------+----+-------+-------+----+
-; KEY[0]     ; LEDR[8]     ;    ; 7.207 ; 7.853 ;    ;
+; KEY[0]     ; LEDR[8]     ;    ; 7.204 ; 7.849 ;    ;
 +------------+-------------+----+-------+-------+----+
 
 
@@ -548,7 +548,7 @@ No synchronizer chains to report.
 +------------+-------------+----+-------+-------+----+
 ; Input Port ; Output Port ; RR ; RF    ; FR    ; FF ;
 +------------+-------------+----+-------+-------+----+
-; KEY[0]     ; LEDR[8]     ;    ; 3.755 ; 4.756 ;    ;
+; KEY[0]     ; LEDR[8]     ;    ; 3.754 ; 4.753 ;    ;
 +------------+-------------+----+-------+-------+----+
 
 
@@ -1105,11 +1105,11 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Property                        ; Setup ; Hold ;
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
-; Unconstrained Clocks            ; 6     ; 6    ;
+; Unconstrained Clocks            ; 7     ; 7    ;
 ; Unconstrained Input Ports       ; 4     ; 4    ;
-; Unconstrained Input Port Paths  ; 27    ; 27   ;
+; Unconstrained Input Port Paths  ; 30    ; 30   ;
 ; Unconstrained Output Ports      ; 19    ; 19   ;
-; Unconstrained Output Port Paths ; 69    ; 69   ;
+; Unconstrained Output Port Paths ; 55    ; 55   ;
 +---------------------------------+-------+------+
 
 
@@ -1119,90 +1119,93 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Thu Feb 09 11:14:31 2017
+    Info: Processing started: Thu Feb 09 11:50:48 2017
 Info: Command: quartus_sta DE1_SoC -c DE1_SoC
 Info: qsta_default_script.tcl version: #1
 Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
-Warning (335093): TimeQuest Timing Analyzer is analyzing 12 combinational loops as latches.
+Warning (335093): TimeQuest Timing Analyzer is analyzing 17 combinational loops as latches.
 Info (332104): Reading SDC File: 'DE1_SoC.sdc'
 Info (332151): Clock uncertainty is not calculated until you update the timing netlist.
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "localTransfer|readData~1|combout"
+    Warning (332126): Node "localTransfer|readData~1|dataa"
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
-Info (332146): Worst-case setup slack is 16.530
+Info (332146): Worst-case setup slack is 16.368
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    16.530               0.000 CLOCK_50 
-Info (332146): Worst-case hold slack is 0.390
+    Info (332119):    16.368               0.000 CLOCK_50 
+Info (332146): Worst-case hold slack is 0.389
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.390               0.000 CLOCK_50 
+    Info (332119):     0.389               0.000 CLOCK_50 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332146): Worst-case minimum pulse width slack is 8.764
+Info (332146): Worst-case minimum pulse width slack is 8.856
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     8.764               0.000 CLOCK_50 
+    Info (332119):     8.856               0.000 CLOCK_50 
 Info: Analyzing Slow 1100mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
-Info (332146): Worst-case setup slack is 16.294
+Info (332146): Worst-case setup slack is 16.127
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    16.294               0.000 CLOCK_50 
-Info (332146): Worst-case hold slack is 0.406
+    Info (332119):    16.127               0.000 CLOCK_50 
+Info (332146): Worst-case hold slack is 0.404
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.406               0.000 CLOCK_50 
+    Info (332119):     0.404               0.000 CLOCK_50 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332146): Worst-case minimum pulse width slack is 8.758
+Info (332146): Worst-case minimum pulse width slack is 8.859
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     8.758               0.000 CLOCK_50 
+    Info (332119):     8.859               0.000 CLOCK_50 
 Info: Analyzing Fast 1100mV 85C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
-Info (332146): Worst-case setup slack is 18.000
+Info (332146): Worst-case setup slack is 17.928
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    18.000               0.000 CLOCK_50 
-Info (332146): Worst-case hold slack is 0.190
+    Info (332119):    17.928               0.000 CLOCK_50 
+Info (332146): Worst-case hold slack is 0.189
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.190               0.000 CLOCK_50 
+    Info (332119):     0.189               0.000 CLOCK_50 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332146): Worst-case minimum pulse width slack is 8.732
+Info (332146): Worst-case minimum pulse width slack is 8.801
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     8.732               0.000 CLOCK_50 
+    Info (332119):     8.801               0.000 CLOCK_50 
 Info: Analyzing Fast 1100mV 0C Model
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
-Info (332146): Worst-case setup slack is 17.993
+Info (332146): Worst-case setup slack is 17.929
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    17.993               0.000 CLOCK_50 
-Info (332146): Worst-case hold slack is 0.179
+    Info (332119):    17.929               0.000 CLOCK_50 
+Info (332146): Worst-case hold slack is 0.181
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.179               0.000 CLOCK_50 
+    Info (332119):     0.181               0.000 CLOCK_50 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332146): Worst-case minimum pulse width slack is 8.717
+Info (332146): Worst-case minimum pulse width slack is 8.777
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     8.717               0.000 CLOCK_50 
+    Info (332119):     8.777               0.000 CLOCK_50 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info (144001): Generated suppressed messages file D:/Schoolwork/Winter_17/EE371/lab3/ee371_winter17/output_files/DE1_SoC.sta.smsg
-Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 979 megabytes
-    Info: Processing ended: Thu Feb 09 11:14:38 2017
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 975 megabytes
+    Info: Processing ended: Thu Feb 09 11:50:55 2017
     Info: Elapsed time: 00:00:07
     Info: Total CPU time (on all processors): 00:00:07
 

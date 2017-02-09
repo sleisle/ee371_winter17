@@ -18,6 +18,7 @@ module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOu
 	always @(*) begin: Comb
 		case(ps)
 			IDLE: begin
+				commandDoneBit = 1'b0;
 				readyToOutput = 2'b00;
 				if (localTransferInput == 2'b01) // 01 means start scanning
 					ns = ACTIVE;
@@ -26,6 +27,7 @@ module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOu
 			end
 			
 			ACTIVE: begin
+				commandDoneBit = 1'b0;
 				if (dataBuffer == 7) begin // 80% Full
 					ns = ACTIVE;
 					dataOut = outputBuffer[7 - dataBitCounter];
@@ -63,6 +65,7 @@ module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOu
 			end
 			
 			STANDBY: begin
+				commandDoneBit = 1'b0;
 				dataOut = outputBuffer[7 - dataBitCounter];
 				if (readyForTransferIn)
 					ns = TRANSFER;
@@ -75,7 +78,6 @@ module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOu
 			TRANSFER: begin
 				outputDataBuffer = {4'b0, dataBuffer}; // Setup an output for data
 				if (localTransferInput == 2'b10) begin // OTHER BUFFER REACHED 50%
-					dataBuffer = 4'b0;
 					ns = IDLE;
 				end
 				else begin
@@ -110,39 +112,47 @@ module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOu
 	end
 	
 	// Sequential
-	always @(posedge clk) begin: States
+	always @(posedge clk or posedge rst) begin: States
 		if (rst) begin // State Logic
-			ps <= 2'b0;
-			dataBuffer <= 4'b0;
 			slowCount <= 3'b0;
 			dataBitCounter <= 3'b0;
-			commandDoneBit <= 1'b0;
 		end
 		else begin
 			slowCount <= slowCount + 1'b1;
-		end
 		
-		if (slowCount < 4) // Clk Divider for data buffer vs communication clk
-			slowClk <= 1'b1;
-		else
-			slowClk <= 1'b0;
-			
-		if (readyToOutput[0] | readyToOutput[1]) begin // Output Data Logic
-			clkOut <= clk;
-			dataBitCounter <= dataBitCounter + 1'b1;
+			if (slowCount < 4) // Clk Divider for data buffer vs communication clk
+				slowClk <= 1'b1;
+			else
+				slowClk <= 1'b0;
+				
+			if (readyToOutput[0] | readyToOutput[1]) begin // Output Data Logic
+				clkOut <= clk;
+				dataBitCounter <= dataBitCounter + 1'b1;
+			end
+			else begin
+				clkOut <= 1'b0;
+			end
 		end
-		else begin
-			clkOut <= 1'b0;
-			commandDoneBit <= 3'b0;
-		end
-		
 	end
 	
 	// Slow Clock Internals
-	always @(posedge slowClk) begin: otherClocked
-		ps <= ns;
-		if (ps == ACTIVE && dataBuffer < 4'd9) begin // Fake Data Counter
-			dataBuffer <= dataBuffer + 1'b1;
+	always @(posedge slowClk or posedge rst) begin: otherClocked
+		if (rst) begin
+			ps <= 2'b0;
+			dataBuffer <= 4'b0;
+		end
+		else begin
+			ps <= ns;
+			
+			if (ps == ACTIVE && dataBuffer < 4'd9) begin // Fake Data Counter
+				dataBuffer <= dataBuffer + 1'b1;
+			end
+			else if (ps == TRANSFER && localTransferInput == 2'b10) begin
+				dataBuffer = 4'b0;
+			end
+			else begin
+				dataBuffer <= dataBuffer;
+			end
 		end
 	end
 	

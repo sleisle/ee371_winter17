@@ -13,7 +13,6 @@ module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut
 	always @(posedge clk or posedge rst) begin: dataComingIn
 		if (rst) begin
 			byteIn <= 8'b0;
-			dataBuffer <= 8'b0;
 			byteCounter <= 3'b0;
 		end
 		else begin
@@ -23,7 +22,7 @@ module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut
 				byteIn[i + 1] <= byteIn[i];
 			end
 			
-			byteCounter <= byteCounter + 1;
+			byteCounter <= byteCounter + 1'b1;
 			
 		end
 	end
@@ -80,9 +79,6 @@ module transferCenter (clk, rst, dataIn, readyForTransferIn, readyForTransferOut
 					
 				endcase
 			end
-		end
-		else begin
-			localScannerOut = 2'b00;
 		end
 	
 	end
