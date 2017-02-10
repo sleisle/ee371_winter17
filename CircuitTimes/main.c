@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
             // Do time calculation
             double time = 0.0;
             time += gates * 5;
-            time += (gates - 1) * .18;
+            time += (gates - 1) * .18 * .1;
 
             // Print time in nanoseconds
             printf("Total delay: %f nanoseconds\n", time);
