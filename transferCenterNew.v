@@ -1,11 +1,11 @@
-module transferCenterNew (bitCounter, clk, rst, dataIn, readyForTransferIn, readyForTransferOut, localScannerOut, dataBuffer, commandBuffer);
+module transferCenterNew (bitCounter, clk, rst, dataIn, readyForTransferIn, readyForTransferOut, localScannerOut, dataBuffer, commandBuffer, shiftReg);
 	input wire clk, rst, dataIn, readyForTransferIn;
 	output wire readyForTransferOut;
 	output reg [1:0] localScannerOut;
 	output reg [7:0] dataBuffer;
 	output reg [7:0] commandBuffer;
 	output reg [2:0] bitCounter;
-	reg [7:0] shiftReg;
+	output reg [7:0] shiftReg;
 	reg dataNext;
 	
 	assign readyForTransferOut = readyForTransferIn;
@@ -76,6 +76,7 @@ module transferCenterNew (bitCounter, clk, rst, dataIn, readyForTransferIn, read
 				
 				8'd7: begin //binary
 					dataNext = 1'b1;
+					localScannerOut = 2'b00;
 					
 				end
 				
@@ -93,6 +94,3 @@ module transferCenterNew (bitCounter, clk, rst, dataIn, readyForTransferIn, read
 	end
 
 endmodule
-
-
-
