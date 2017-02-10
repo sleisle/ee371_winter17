@@ -11,9 +11,9 @@ module scannerTestBench;
 	wire [7:0] outputBuffer, outputDataBuffer;
 
 	// declare an instance of the counter module
-	scanner dut(ps, outputDataBuffer, outputBuffer, clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOut, dataBuffer);
+	scanner dut(clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOut, dataBuffer);
 	// declare an instance of the Tester module
-	Tester aTester (ps, outputDataBuffer, outputBuffer, clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOut, dataBuffer);
+	Tester aTester (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOut, dataBuffer);
 	// file for gtkwave
 	initial
 		begin
@@ -23,7 +23,7 @@ module scannerTestBench;
 	end
 endmodule 
 
-module Tester(ps, outputDataBuffer, outputBuffer, clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOut, dataBuffer);
+module Tester(clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOut, dataBuffer);
 	output reg clk, rst, readyForTransferIn;
 	output reg [1:0] localTransferInput;
 
@@ -34,8 +34,6 @@ module Tester(ps, outputDataBuffer, outputBuffer, clk, rst, readyForTransferIn, 
 	// Testing variables
 	input wire [1:0] ps;
 	input wire [7:0] outputBuffer, outputDataBuffer;
-
-
 
 	// Clock speed
 	parameter stimDelay = 5;
@@ -57,29 +55,19 @@ module Tester(ps, outputDataBuffer, outputBuffer, clk, rst, readyForTransferIn, 
 		for (i=0; i<20; i=i+1) begin
 			#stimDelay;
 		end 
-
+		// Run long enough to fill the buffer
 		for (i=0; i<140; i=i+1) begin
 			#stimDelay;
 		end 
-
+		// Set signals telling the scanner
+		// to flush it's buffer when full
 		readyForTransferIn = 1'b1;
 		localTransferInput = 2'b10;
 
-		for (i=0; i<12; i=i+1) begin
+		for (i=0; i<32; i=i+1) begin
 			#stimDelay;
 		end 
-
-		for (i=0; i<4; i=i+1) begin
-			#stimDelay;
-		end  
-
-		for (i=0; i<10; i=i+1) begin
-			#stimDelay;
-		end 
-
-		for (i=0; i<6; i=i+1) begin
-			#stimDelay;
-		end 
+		// Reset system
 		#stimDelay;
 		#stimDelay rst = 1'b1;
 		#stimDelay;
