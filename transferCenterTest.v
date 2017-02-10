@@ -12,7 +12,7 @@ module transferCenterTest;
 
 	parameter ClockDelay = 10;
 
-	transferCenter dut (byteIn, byteCounter, clk, rst, dataIn, readyForTransferIn, readyForTransferOut, localScannerOut, dataBuffer);
+	transferCenter dut (clk, rst, dataIn, readyForTransferIn, readyForTransferOut, localScannerOut, dataBuffer);
 	
 	initial begin // Set up the clock
 		clk <= 0;
@@ -25,55 +25,66 @@ module transferCenterTest;
 		dataIn <= 1'b0;
 
 		@(posedge clk);
-		rst <= 1'b1; @(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		rst <= 1'b0; $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		rst <= 1'b1; @(posedge clk); 
+		rst <= 1'b0; 
+		dataIn <= 1'b0;
+		@(posedge clk); 
+		@(posedge clk); 
+		@(posedge clk); 
+		@(posedge clk); 
 		
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
 
 		dataIn <= 1'b1;
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); 
+		@(posedge clk); 
+		@(posedge clk);
+		$display("sent 7");
 
-		dataIn <= 1'b1;
-
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		
+		@(posedge clk); 
+		@(posedge clk); 
+		@(posedge clk); 
+		@(posedge clk); 
 
 		dataIn <= 1'b0;
 
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); 
+		@(posedge clk); 
+		@(posedge clk); 
+		@(posedge clk); 
+		$display("Sent F");
 
-
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk);
+		@(posedge clk); 	
+		
+		@(posedge clk); 
+		
+		@(posedge clk); 
+		
+		@(posedge clk); 
+		
+		@(posedge clk); 
+		
 		dataIn <= 1'b1;		
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); 
+		
+		@(posedge clk); 
+		
 		dataIn <= 1'b0;
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); 
+		
+		@(posedge clk); 
+		@(posedge clk); 
+		@(posedge clk); 
+		@(posedge clk); 
+		@(posedge clk); 
+		@(posedge clk); 
+		dataIn <= 1'b1;
+		@(posedge clk); 
+		@(posedge clk); 
 
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
-		@(posedge clk); $display("%b %b %2b %8b %8b %3b", readyForTransferOut, dataIn, localScannerOut, dataBuffer, byteIn, byteCounter);
+		@(posedge clk); 
+		@(posedge clk); 
 
 		$stop;
 	end

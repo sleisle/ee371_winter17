@@ -1,14 +1,15 @@
-module scanner (ps, outputDataBuffer, outputBuffer, clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOut, dataBuffer);
+module scanner (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOut, dataBuffer);
 	input wire clk, rst, readyForTransferIn;
 	input wire [1:0] localTransferInput;
-	output reg clkOut, dataOut;
-	output reg [1:0] ps;
+	output reg dataOut;
+	output reg clkOut;
+	reg [1:0] ps;
 	reg [1:0] ns;
 	output reg [3:0] dataBuffer;
 	reg [2:0] slowCount, dataBitCounter;
-	reg slowClk;
+	reg slowClk, setOutClk;
 	reg commandDoneBit;
-	output reg [7:0] outputBuffer, outputDataBuffer;
+	reg [7:0] outputBuffer, outputDataBuffer;
 	reg [1:0] readyToOutput;
 	
 	// States of Scanner
@@ -16,8 +17,11 @@ module scanner (ps, outputDataBuffer, outputBuffer, clk, rst, readyForTransferIn
 	
 	// Comb
 	always @(*) begin: Comb
+		if (rst)
+			ns = ACTIVE;
 		case(ps)
 			IDLE: begin
+				clkOut = 1'b0;
 				commandDoneBit = 1'b0;
 				readyToOutput = 2'b00;
 				if (localTransferInput == 2'b01) // 01 means start scanning
@@ -29,48 +33,70 @@ module scanner (ps, outputDataBuffer, outputBuffer, clk, rst, readyForTransferIn
 			ACTIVE: begin
 				commandDoneBit = 1'b0;
 				if (dataBuffer == 7) begin // 80% Full
-					ns = ACTIVE;
-					dataOut = outputBuffer[7 - dataBitCounter];
-					
-					// SEND READY_TO_TRANSFER TO OUTPUT DRIVER
-					outputBuffer = 8'd2;
-					readyToOutput = 2'b01; // 1 means command transfer
+					if (localTransferInput == 2'b10) begin // OTHER BUFFER REACHED 50%
+						ns = IDLE;
+					end
+					else begin
+						ns = ACTIVE;
+						
+						// SEND READY_TO_TRANSFER TO OUTPUT DRIVER
+						outputBuffer = 8'd2;
+						dataOut = outputBuffer[7 - dataBitCounter];
+						readyToOutput = 2'b01; // 1 means command transfer
+						clkOut = clk;
+					end
 					
 				end
 				else if (dataBuffer == 8) begin // 90% Full
-					ns = ACTIVE;
-					dataOut = outputBuffer[7 - dataBitCounter];
-					
-					// SEND START_SCANNING TO OUTPUT DRIVER
-					outputBuffer = 8'd3;
-					readyToOutput = 2'b01; // 1 means command transfer
+					if (localTransferInput == 2'b10) begin // OTHER BUFFER REACHED 50%
+						ns = IDLE;
+					end
+					else begin
+						ns = ACTIVE;
+						// SEND START_SCANNING TO OUTPUT DRIVER
+						outputBuffer = 8'd3;
+						dataOut = outputBuffer[7 - dataBitCounter];
+						readyToOutput = 2'b01; // 1 means command transfer
+						clkOut = clk;
+					end
 					
 				end
 				else if (dataBuffer == 9) begin // 100% Full
-					if (readyForTransferIn) begin
-						ns = TRANSFER;
+					if (localTransferInput == 2'b10) begin // OTHER BUFFER REACHED 50%
+						ns = IDLE;
 					end
 					else begin
-						ns = STANDBY;
-					end
-					dataOut = outputBuffer[7 - dataBitCounter];
+						dataOut = outputBuffer[7 - dataBitCounter];
+						
+						outputBuffer = 8'd4;
+						readyToOutput = 2'b01; // 1 means command transfer
 					
-					outputBuffer = 8'd4;
-					readyToOutput = 2'b01; // 1 means command transfer
+						if (readyForTransferIn) begin
+							ns = TRANSFER;
+							clkOut = clk;
+						end
+						else begin
+							ns = STANDBY;
+							clkOut = 1'b0;
+						end
+					end
 					
 				end
 				else begin
 					ns = ACTIVE;
+					clkOut = 1'b0;
+					dataOut = 1'b0;
 				end
 			end
 			
 			STANDBY: begin
 				commandDoneBit = 1'b0;
+				clkOut = 1'b0;
 				dataOut = outputBuffer[7 - dataBitCounter];
 				if (readyForTransferIn)
 					ns = TRANSFER;
 				else if (localTransferInput == 2'b10) // 10 means other buffer is at 50%
-					ns = TRANSFER;
+					ns = IDLE;
 				else
 					ns = STANDBY;
 			end
@@ -79,11 +105,13 @@ module scanner (ps, outputDataBuffer, outputBuffer, clk, rst, readyForTransferIn
 				outputDataBuffer = {4'b0, dataBuffer}; // Setup an output for data
 				if (localTransferInput == 2'b10) begin // OTHER BUFFER REACHED 50%
 					ns = IDLE;
+					clkOut = 1'b0;
 				end
 				else begin
 					// TRANSFER THE DATA
 					outputBuffer = 8'd7;
 					readyToOutput = 2'b10; // 2 means data transfer
+					clkOut = clk;
 				end
 				
 				if (readyToOutput[0]) begin // Output a Command
@@ -126,11 +154,7 @@ module scanner (ps, outputDataBuffer, outputBuffer, clk, rst, readyForTransferIn
 				slowClk <= 1'b0;
 				
 			if (readyToOutput[0] | readyToOutput[1]) begin // Output Data Logic
-				clkOut <= clk;
 				dataBitCounter <= dataBitCounter + 1'b1;
-			end
-			else begin
-				clkOut <= 1'b0;
 			end
 		end
 	end
@@ -144,10 +168,10 @@ module scanner (ps, outputDataBuffer, outputBuffer, clk, rst, readyForTransferIn
 		else begin
 			ps <= ns;
 			
-			if (ps == ACTIVE && dataBuffer < 4'd9) begin // Fake Data Counter
+			if (ps == ACTIVE && dataBuffer < 4'd9 && ns != IDLE) begin // Fake Data Counter
 				dataBuffer <= dataBuffer + 1'b1;
 			end
-			else if (ps == TRANSFER && localTransferInput == 2'b10) begin
+			else if (ns == IDLE) begin
 				dataBuffer = 4'b0;
 			end
 			else begin

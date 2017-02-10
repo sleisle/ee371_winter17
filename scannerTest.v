@@ -1,5 +1,3 @@
-`include "scanner.v"
-
 module scannerTest;
 	reg clk, rst, readyForTransferIn;
 	reg [1:0] localTransferInput;
@@ -11,10 +9,10 @@ module scannerTest;
 
 	parameter ClockDelay = 10;
 
-	scanner dut (ps, outputDataBuffer, outputBuffer, clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOut, dataBuffer);
+	scanner dut (clk, rst, readyForTransferIn, localTransferInput, clkOut, dataOut, dataBuffer);
 	
 	initial begin // Set up the clock
-		clk <= 0;
+		clk <= 1'b0;
 		forever #(ClockDelay/2) clk <= ~clk;
 	end
 
@@ -23,7 +21,8 @@ module scannerTest;
 	initial begin
 		rst <= 1'b1; @(posedge clk); $display("%b %b %2b %4b %8b %8b", clkOut, dataOut, ps, dataBuffer, outputDataBuffer, outputBuffer);
 		rst <= 1'b0; @(posedge clk); $display("%b %b %2b %4b %8b %8b", clkOut, dataOut, ps, dataBuffer, outputDataBuffer, outputBuffer);
-		localTransferInput <= 2'b01; @(posedge clk); $display("%b %b %2b %4b %8b %8b", clkOut, dataOut, ps, dataBuffer, outputDataBuffer, outputBuffer);
+		localTransferInput <= 2'b01; 
+		readyForTransferIn <= 1'b0; @(posedge clk); $display("%b %b %2b %4b %8b %8b", clkOut, dataOut, ps, dataBuffer, outputDataBuffer, outputBuffer);
 		
 		for (i = 0; i < 50; i = i + 1) begin
 			@(posedge clk);$display("%b %b %2b %4b %8b %8b", clkOut, dataOut, ps, dataBuffer, outputDataBuffer, outputBuffer);
@@ -95,6 +94,14 @@ module scannerTest;
 		@(posedge clk); $display("%b %b %2b %4b %8b %8b", clkOut, dataOut, ps, dataBuffer, outputDataBuffer, outputBuffer);
 
 		@(posedge clk); $display("%b %b %2b %4b %8b %8b", clkOut, dataOut, ps, dataBuffer, outputDataBuffer, outputBuffer);
+		@(posedge clk);
+		@(posedge clk);
+		@(posedge clk);
+		@(posedge clk);
+		@(posedge clk);
+		@(posedge clk);
+		@(posedge clk);
+		@(posedge clk);
 
 		$stop;
 	end

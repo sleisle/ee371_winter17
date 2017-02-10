@@ -1,5 +1,5 @@
 Partition Merge report for DE1_SoC
-Thu Feb 09 12:10:36 2017
+Thu Feb 09 16:54:59 2017
 Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
 
 
@@ -41,16 +41,16 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Partition Merge Summary                                                      ;
 +---------------------------------+--------------------------------------------+
-; Partition Merge Status          ; Successful - Thu Feb 09 12:10:36 2017      ;
+; Partition Merge Status          ; Successful - Thu Feb 09 16:54:59 2017      ;
 ; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Web Edition ;
 ; Revision Name                   ; DE1_SoC                                    ;
 ; Top-level Entity Name           ; lab3TopLevel                               ;
 ; Family                          ; Cyclone V                                  ;
 ; Logic utilization (in ALMs)     ; N/A                                        ;
-; Total registers                 ; 699                                        ;
+; Total registers                 ; 655                                        ;
 ; Total pins                      ; 99                                         ;
 ; Total virtual pins              ; 0                                          ;
-; Total block memory bits         ; 3,072                                      ;
+; Total block memory bits         ; 1,536                                      ;
 ; Total DSP Blocks                ; 0                                          ;
 ; Total HSSI RX PCSs              ; 0                                          ;
 ; Total HSSI PMA RX Deserializers ; 0                                          ;
@@ -94,10 +94,10 @@ agreement for further details.
 ; auto_signaltap_0|gnd                            ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND             ; N/A     ;
 ; auto_signaltap_0|gnd                            ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND             ; N/A     ;
 ; auto_signaltap_0|gnd                            ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND             ; N/A     ;
-; auto_signaltap_0|vcc                            ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC             ; N/A     ;
-; auto_signaltap_0|vcc                            ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC             ; N/A     ;
-; auto_signaltap_0|vcc                            ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC             ; N/A     ;
-; auto_signaltap_0|vcc                            ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC             ; N/A     ;
+; auto_signaltap_0|gnd                            ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND             ; N/A     ;
+; auto_signaltap_0|gnd                            ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND             ; N/A     ;
+; auto_signaltap_0|gnd                            ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND             ; N/A     ;
+; auto_signaltap_0|gnd                            ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~GND             ; N/A     ;
 ; auto_signaltap_0|vcc                            ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC             ; N/A     ;
 ; auto_signaltap_0|vcc                            ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC             ; N/A     ;
 ; auto_signaltap_0|vcc                            ; post-fitting ; connected ; sld_signaltap:auto_signaltap_0 ; post-synthesis    ; sld_signaltap:auto_signaltap_0|~VCC             ; N/A     ;
@@ -167,42 +167,42 @@ agreement for further details.
 +---------------------------------------------+------+------------------+--------------------------------+--------------------------------+
 ; Statistic                                   ; Top  ; sld_hub:auto_hub ; sld_signaltap:auto_signaltap_0 ; hard_block:auto_generated_inst ;
 +---------------------------------------------+------+------------------+--------------------------------+--------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 56   ; 60               ; 300                            ; 0                              ;
+; Estimate of Logic utilization (ALMs needed) ; 55   ; 60               ; 286                            ; 0                              ;
 ;                                             ;      ;                  ;                                ;                                ;
-; Combinational ALUT usage for logic          ; 109  ; 91               ; 237                            ; 0                              ;
-;     -- 7 input functions                    ; 2    ; 1                ; 0                              ; 0                              ;
-;     -- 6 input functions                    ; 19   ; 9                ; 62                             ; 0                              ;
-;     -- 5 input functions                    ; 5    ; 24               ; 49                             ; 0                              ;
-;     -- 4 input functions                    ; 20   ; 16               ; 21                             ; 0                              ;
-;     -- <=3 input functions                  ; 63   ; 41               ; 105                            ; 0                              ;
+; Combinational ALUT usage for logic          ; 112  ; 91               ; 223                            ; 0                              ;
+;     -- 7 input functions                    ; 0    ; 1                ; 0                              ; 0                              ;
+;     -- 6 input functions                    ; 29   ; 8                ; 64                             ; 0                              ;
+;     -- 5 input functions                    ; 10   ; 25               ; 50                             ; 0                              ;
+;     -- 4 input functions                    ; 25   ; 18               ; 22                             ; 0                              ;
+;     -- <=3 input functions                  ; 48   ; 39               ; 87                             ; 0                              ;
 ; Memory ALUT usage                           ; 0    ; 0                ; 0                              ; 0                              ;
 ;     -- 64-address deep                      ; 0    ; 0                ; 0                              ; 0                              ;
 ;     -- 32-address deep                      ; 0    ; 0                ; 0                              ; 0                              ;
 ;                                             ;      ;                  ;                                ;                                ;
-; Dedicated logic registers                   ; 49   ; 90               ; 560                            ; 0                              ;
+; Dedicated logic registers                   ; 24   ; 90               ; 541                            ; 0                              ;
 ;                                             ;      ;                  ;                                ;                                ;
 ;                                             ;      ;                  ;                                ;                                ;
 ; I/O pins                                    ; 99   ; 0                ; 0                              ; 0                              ;
 ; I/O registers                               ; 0    ; 0                ; 0                              ; 0                              ;
-; Total block memory bits                     ; 0    ; 0                ; 3072                           ; 0                              ;
+; Total block memory bits                     ; 0    ; 0                ; 1536                           ; 0                              ;
 ; Total block memory implementation bits      ; 0    ; 0                ; 0                              ; 0                              ;
 ; JTAG                                        ; 0    ; 0                ; 0                              ; 1                              ;
 ;                                             ;      ;                  ;                                ;                                ;
 ; Connections                                 ;      ;                  ;                                ;                                ;
-;     -- Input Connections                    ; 32   ; 133              ; 932                            ; 1                              ;
-;     -- Registered Input Connections         ; 0    ; 109              ; 627                            ; 0                              ;
-;     -- Output Connections                   ; 397  ; 249              ; 33                             ; 419                            ;
-;     -- Registered Output Connections        ; 342  ; 248              ; 0                              ; 0                              ;
+;     -- Input Connections                    ; 32   ; 133              ; 911                            ; 1                              ;
+;     -- Registered Input Connections         ; 0    ; 109              ; 606                            ; 0                              ;
+;     -- Output Connections                   ; 386  ; 247              ; 33                             ; 411                            ;
+;     -- Registered Output Connections        ; 26   ; 246              ; 0                              ; 0                              ;
 ;                                             ;      ;                  ;                                ;                                ;
 ; Internal Connections                        ;      ;                  ;                                ;                                ;
-;     -- Total Connections                    ; 1018 ; 881              ; 3303                           ; 428                            ;
-;     -- Registered Connections               ; 550  ; 702              ; 2140                           ; 0                              ;
+;     -- Total Connections                    ; 1034 ; 881              ; 3154                           ; 420                            ;
+;     -- Registered Connections               ; 262  ; 701              ; 2077                           ; 0                              ;
 ;                                             ;      ;                  ;                                ;                                ;
 ; External Connections                        ;      ;                  ;                                ;                                ;
-;     -- Top                                  ; 64   ; 1                ; 364                            ; 0                              ;
-;     -- sld_hub:auto_hub                     ; 1    ; 20               ; 239                            ; 122                            ;
-;     -- sld_signaltap:auto_signaltap_0       ; 364  ; 239              ; 64                             ; 298                            ;
-;     -- hard_block:auto_generated_inst       ; 0    ; 122              ; 298                            ; 0                              ;
+;     -- Top                                  ; 64   ; 1                ; 353                            ; 0                              ;
+;     -- sld_hub:auto_hub                     ; 1    ; 20               ; 237                            ; 122                            ;
+;     -- sld_signaltap:auto_signaltap_0       ; 353  ; 237              ; 64                             ; 290                            ;
+;     -- hard_block:auto_generated_inst       ; 0    ; 122              ; 290                            ; 0                              ;
 ;                                             ;      ;                  ;                                ;                                ;
 ; Partition Interface                         ;      ;                  ;                                ;                                ;
 ;     -- Input Ports                          ; 18   ; 21               ; 130                            ; 4                              ;
@@ -214,9 +214,9 @@ agreement for further details.
 ;     -- Registered Output Ports              ; 0    ; 28               ; 49                             ; 0                              ;
 ;                                             ;      ;                  ;                                ;                                ;
 ; Port Connectivity                           ;      ;                  ;                                ;                                ;
-;     -- Input Ports driven by GND            ; 0    ; 1                ; 12                             ; 0                              ;
+;     -- Input Ports driven by GND            ; 0    ; 1                ; 16                             ; 0                              ;
 ;     -- Output Ports driven by GND           ; 0    ; 1                ; 1                              ; 0                              ;
-;     -- Input Ports driven by VCC            ; 0    ; 0                ; 20                             ; 0                              ;
+;     -- Input Ports driven by VCC            ; 0    ; 0                ; 16                             ; 0                              ;
 ;     -- Output Ports driven by VCC           ; 0    ; 0                ; 1                              ; 0                              ;
 ;     -- Input Ports with no Source           ; 0    ; 1                ; 26                             ; 0                              ;
 ;     -- Output Ports with no Source          ; 0    ; 0                ; 0                              ; 0                              ;
@@ -651,25 +651,25 @@ Note: Resource usage numbers presented for Partitions containing post-synthesis 
 +---------------------------------------------+--------------------------+
 ; Resource                                    ; Usage                    ;
 +---------------------------------------------+--------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 411                      ;
+; Estimate of Logic utilization (ALMs needed) ; 396                      ;
 ;                                             ;                          ;
-; Combinational ALUT usage for logic          ; 437                      ;
-;     -- 7 input functions                    ; 3                        ;
-;     -- 6 input functions                    ; 90                       ;
-;     -- 5 input functions                    ; 78                       ;
-;     -- 4 input functions                    ; 57                       ;
-;     -- <=3 input functions                  ; 209                      ;
+; Combinational ALUT usage for logic          ; 426                      ;
+;     -- 7 input functions                    ; 1                        ;
+;     -- 6 input functions                    ; 101                      ;
+;     -- 5 input functions                    ; 85                       ;
+;     -- 4 input functions                    ; 65                       ;
+;     -- <=3 input functions                  ; 174                      ;
 ;                                             ;                          ;
-; Dedicated logic registers                   ; 699                      ;
+; Dedicated logic registers                   ; 655                      ;
 ;                                             ;                          ;
 ; I/O pins                                    ; 99                       ;
 ; Total MLAB memory bits                      ; 0                        ;
-; Total block memory bits                     ; 3072                     ;
+; Total block memory bits                     ; 1536                     ;
 ; Total DSP Blocks                            ; 0                        ;
 ; Maximum fan-out node                        ; altera_internal_jtag~TDO ;
-; Maximum fan-out                             ; 408                      ;
-; Total fan-out                               ; 4554                     ;
-; Average fan-out                             ; 3.26                     ;
+; Maximum fan-out                             ; 400                      ;
+; Total fan-out                               ; 4434                     ;
+; Average fan-out                             ; 3.30                     ;
 +---------------------------------------------+--------------------------+
 
 
@@ -678,7 +678,7 @@ Note: Resource usage numbers presented for Partitions containing post-synthesis 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
 ; Name                                                                                                                                                                                                  ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
-; sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|altsyncram:\stp_non_zero_ram_gen:stp_buffer_ram|altsyncram_s484:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 128          ; 24           ; 128          ; 24           ; 3072 ; None ;
+; sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|altsyncram:\stp_non_zero_ram_gen:stp_buffer_ram|altsyncram_q484:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 64           ; 24           ; 64           ; 24           ; 1536 ; None ;
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
 
 
@@ -688,7 +688,7 @@ Note: Resource usage numbers presented for Partitions containing post-synthesis 
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Partition Merge
     Info: Version 14.0.0 Build 200 06/17/2014 SJ Web Edition
-    Info: Processing started: Thu Feb 09 12:10:35 2017
+    Info: Processing started: Thu Feb 09 16:54:58 2017
 Info: Command: quartus_cdb --read_settings_files=off --write_settings_files=off DE1_SoC -c DE1_SoC --merge=on
 Info (35007): Using synthesis netlist for partition "Top"
 Info (35007): Using synthesis netlist for partition "sld_hub:auto_hub"
@@ -697,15 +697,15 @@ Info (35024): Succesfully connected in-system debug instance "auto_signaltap_0" 
 Info (35002): Resolved and merged 3 partition(s)
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 9 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1038 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1011 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 18 input pins
     Info (21059): Implemented 53 output pins
     Info (21060): Implemented 32 bidirectional pins
-    Info (21061): Implemented 910 logic cells
+    Info (21061): Implemented 883 logic cells
     Info (21064): Implemented 24 RAM segments
 Info: Quartus II 64-Bit Partition Merge was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 632 megabytes
-    Info: Processing ended: Thu Feb 09 12:10:36 2017
+    Info: Processing ended: Thu Feb 09 16:54:59 2017
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
