@@ -97,25 +97,21 @@ Warning (332049): Ignored set_output_delay at DE1_SoC.sdc(93): Argument <targets
 Warning (332049): Ignored set_output_delay at DE1_SoC.sdc(93): Argument -clock is not an object ID
 Warning (332049): Ignored set_output_delay at DE1_SoC.sdc(94): Argument <targets> is an empty collection
 Warning (332049): Ignored set_output_delay at DE1_SoC.sdc(94): Argument -clock is not an object ID
-Warning (332060): Node: KEY[0] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: SW[6] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: scanner:localScanner|slowClk was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: clock_divider:cdiv|divided_clocks[23] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: transferCenterNew:localTransfer|bitCounter[0] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: GPIO_0[5] was determined to be a clock but was found without an associated clock assignment.
-Warning (332060): Node: KEY[0] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: SW[6] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: scanner:localScanner|slowClk was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: clock_divider:cdiv|divided_clocks[23] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: transferCenterNew:localTransfer|bitCounter[0] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: GPIO_0[5] was determined to be a clock but was found without an associated clock assignment.
-Warning (332060): Node: KEY[0] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: SW[6] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: scanner:localScanner|slowClk was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: clock_divider:cdiv|divided_clocks[23] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: transferCenterNew:localTransfer|bitCounter[0] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: GPIO_0[5] was determined to be a clock but was found without an associated clock assignment.
-Warning (332060): Node: KEY[0] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: SW[6] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: scanner:localScanner|slowClk was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: clock_divider:cdiv|divided_clocks[23] was determined to be a clock but was found without an associated clock assignment.

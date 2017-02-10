@@ -34,10 +34,10 @@ module lab3TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	assign stationToScanner[0] = outFromTransfer[0] | SW[6];
 	
 	// Initialize internals
-	seg7 h0 (dataBufferScanner, HEX0);
+	seg7 h1 (dataBufferScanner, HEX1);
 	seg7 h2 (dataBufferTransfer[3:0], HEX2);
 	
-	seg7 h1 (4'b0, HEX1);
+	seg7 h0 (4'b0, HEX0);
 	seg7 h3 (4'b0, HEX3);
 	seg7 h4 (commandBuffer[3:0], HEX4);
 	seg7 h5 (shiftReg[3:0], HEX5);

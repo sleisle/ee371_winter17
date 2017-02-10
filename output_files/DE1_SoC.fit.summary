@@ -1,4 +1,4 @@
-Fitter Status : Successful - Fri Feb 10 01:24:55 2017
+Fitter Status : Successful - Fri Feb 10 01:33:38 2017
 Quartus II 64-Bit Version : 14.0.0 Build 200 06/17/2014 SJ Web Edition
 Revision Name : DE1_SoC
 Top-level Entity Name : lab3TopLevel
@@ -6,7 +6,7 @@ Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
 Logic utilization (in ALMs) : 358 / 32,070 ( 1 % )
-Total registers : 610
+Total registers : 616
 Total pins : 99 / 457 ( 22 % )
 Total virtual pins : 0
 Total block memory bits : 1,920 / 4,065,280 ( < 1 % )
