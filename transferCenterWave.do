@@ -2,16 +2,18 @@ onerror {resume}
 quietly WaveActivateNextPane {} 0
 add wave -noupdate /transferCenterTest/dut/clk
 add wave -noupdate /transferCenterTest/dut/rst
-add wave -noupdate /transferCenterTest/dut/localScannerOut
-add wave -noupdate /transferCenterTest/dut/readyForTransferIn
-add wave -noupdate /transferCenterTest/dut/readyForTransferOut
-add wave -noupdate /transferCenterTest/dut/dataIn
-add wave -noupdate /transferCenterTest/dut/byteCounter
-add wave -noupdate /transferCenterTest/dut/readData
+add wave -noupdate -expand -group Old /transferCenterTest/dut/localScannerOut
+add wave -noupdate -expand -group Old /transferCenterTest/dut/readyForTransferIn
+add wave -noupdate -expand -group Old /transferCenterTest/dut/readyForTransferOut
+add wave -noupdate -expand -group Old /transferCenterTest/dut/dataIn
 add wave -noupdate /transferCenterTest/dut/dataBuffer
-add wave -noupdate /transferCenterTest/dut/byteIn
+add wave -noupdate /transferCenterTest/dut/bitCounter
+add wave -noupdate /transferCenterTest/dut/shiftReg
+add wave -noupdate /transferCenterTest/dataBuffer
+add wave -noupdate /transferCenterTest/localScannerOut
+add wave -noupdate /transferCenterTest/commandBuffer
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {145 ps} 0}
+WaveRestoreCursors {{Cursor 1} {110 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 100

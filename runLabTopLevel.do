@@ -7,7 +7,7 @@ vlib work
 vlog "./lab3TopLevel.v"
 vlog "./lab3TopLevelTest.v"
 vlog "./scanner.v"
-vlog "./transferCenter.v"
+vlog "./transferCenterNew.v"
 vlog "./clock_divider.v"
 vlog "./seg7.v"
 

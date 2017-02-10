@@ -13,17 +13,17 @@ add wave -noupdate -expand -group Scanner /lab3TopLevelTest/dut/localScanner/dat
 add wave -noupdate -expand -group Scanner /lab3TopLevelTest/dut/localScanner/outputBuffer
 add wave -noupdate -expand -group Scanner /lab3TopLevelTest/dut/localScanner/readyForTransferIn
 add wave -noupdate -expand -group {Transfer Center} /lab3TopLevelTest/dut/localTransfer/clk
+add wave -noupdate -expand -group {Transfer Center} /lab3TopLevelTest/dut/localTransfer/rst
 add wave -noupdate -expand -group {Transfer Center} /lab3TopLevelTest/dut/localTransfer/dataIn
+add wave -noupdate -expand -group {Transfer Center} /lab3TopLevelTest/dut/localTransfer/readyForTransferOut
+add wave -noupdate -expand -group {Transfer Center} /lab3TopLevelTest/dut/localTransfer/localScannerOut
 add wave -noupdate -expand -group {Transfer Center} /lab3TopLevelTest/dut/localTransfer/dataBuffer
-add wave -noupdate -expand -group {Transfer Center} /lab3TopLevelTest/dut/localTransfer/byteIn
-add wave -noupdate -expand -group {Transfer Center} /lab3TopLevelTest/dut/localTransfer/readData
-add wave -noupdate /lab3TopLevelTest/dut/localTransfer/resetByteCounter
-add wave -noupdate /lab3TopLevelTest/dut/localTransfer/resetByteCounter2
-add wave -noupdate /lab3TopLevelTest/dut/localTransfer/readyForTransferOut
-add wave -noupdate /lab3TopLevelTest/dut/localTransfer/byteCounter
-add wave -noupdate /lab3TopLevelTest/dut/localTransfer/resetByteCounter
+add wave -noupdate -expand -group {Transfer Center} /lab3TopLevelTest/dut/localTransfer/commandBuffer
+add wave -noupdate -expand -group {Transfer Center} /lab3TopLevelTest/dut/localTransfer/bitCounter
+add wave -noupdate -expand -group {Transfer Center} /lab3TopLevelTest/dut/localTransfer/shiftReg
+add wave -noupdate -expand -group {Transfer Center} /lab3TopLevelTest/dut/localTransfer/dataNext
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {2083 ps} 0}
+WaveRestoreCursors {{Cursor 1} {2027 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 100
