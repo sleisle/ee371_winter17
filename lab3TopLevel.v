@@ -30,7 +30,7 @@ module lab3TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	assign clkOut = /*CLOCK_50; // CHANGE WHEN IT IS FINISHED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! --->*/ clkMain[whichClock];
 	clock_divider cdiv (CLOCK_50, clkMain);
 	
-	assign stationToScanner[1] = outFromTransfer[1] & SW[7];
+	assign stationToScanner[1] = outFromTransfer[1] | SW[7];
 	assign stationToScanner[0] = outFromTransfer[0] | SW[6];
 	
 	// Initialize internals
@@ -39,7 +39,7 @@ module lab3TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	
 	seg7 h1 (4'b0, HEX1);
 	seg7 h3 (4'b0, HEX3);
-	seg7 h4 (commandBuffer, HEX4);
+	seg7 h4 (commandBuffer[3:0], HEX4);
 	seg7 h5 (4'b0, HEX5);
 	
 	scanner localScanner (clkOut, rst, GPIO_0[6], stationToScanner, GPIO_0[1], GPIO_0[0], dataBufferScanner); // CHANGE 5 to 1 and 4 to 0 and 2 to 6
