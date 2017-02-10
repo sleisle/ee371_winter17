@@ -17,10 +17,13 @@ add wave -noupdate -expand -group {Transfer Center} /lab3TopLevelTest/dut/localT
 add wave -noupdate -expand -group {Transfer Center} /lab3TopLevelTest/dut/localTransfer/dataBuffer
 add wave -noupdate -expand -group {Transfer Center} /lab3TopLevelTest/dut/localTransfer/byteIn
 add wave -noupdate -expand -group {Transfer Center} /lab3TopLevelTest/dut/localTransfer/readData
+add wave -noupdate /lab3TopLevelTest/dut/localTransfer/resetByteCounter
+add wave -noupdate /lab3TopLevelTest/dut/localTransfer/resetByteCounter2
 add wave -noupdate /lab3TopLevelTest/dut/localTransfer/readyForTransferOut
 add wave -noupdate /lab3TopLevelTest/dut/localTransfer/byteCounter
+add wave -noupdate /lab3TopLevelTest/dut/localTransfer/resetByteCounter
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {820 ps} 0}
+WaveRestoreCursors {{Cursor 1} {2083 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 100
@@ -36,4 +39,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {555 ps} {1025 ps}
+WaveRestoreZoom {1999 ps} {2469 ps}

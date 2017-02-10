@@ -1,9 +1,10 @@
-module transferCenter (byteCounter, clk, rst, dataIn, readyForTransferIn, readyForTransferOut, localScannerOut, dataBuffer);
+module transferCenter (outputByteIn, byteIn, byteCounter, clk, rst, dataIn, readyForTransferIn, readyForTransferOut, localScannerOut, dataBuffer);
 	input wire clk, rst, dataIn, readyForTransferIn;
 	output reg readyForTransferOut;
 	output reg [1:0] localScannerOut;
 	output reg [7:0] dataBuffer;
-	reg [7:0] byteIn;
+	output reg [7:0] byteIn;
+	output reg [3:0] outputByteIn;
 	output reg [2:0] byteCounter;
 	reg readData;
 	
@@ -13,7 +14,7 @@ module transferCenter (byteCounter, clk, rst, dataIn, readyForTransferIn, readyF
 	always @(posedge clk or posedge rst) begin: dataComingIn
 		if (rst) begin
 			byteIn <= 8'b0;
-			byteCounter <= 3'd7;
+			byteCounter <= 3'd0;
 		end
 		else begin
 			byteIn[0] <= dataIn;
@@ -45,7 +46,7 @@ module transferCenter (byteCounter, clk, rst, dataIn, readyForTransferIn, readyF
 				
 				end
 				else begin
-					$display("Case");
+					outputByteIn = byteIn[3:0];
 					case(byteIn)
 						8'd1: begin // Buffer 50%
 							localScannerOut = 2'b10; // Tell local scanner to flush if waiting
@@ -79,7 +80,6 @@ module transferCenter (byteCounter, clk, rst, dataIn, readyForTransferIn, readyF
 						
 						8'd8: begin // ASCII Data Follows
 
-							readData = 1'b1;
 						end
 						
 					endcase

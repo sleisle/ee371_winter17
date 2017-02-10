@@ -39,6 +39,24 @@ module lab3TopLevelTest;
 		for (i = 0; i < 40; i = i + 1) begin
 			@(posedge clk);
 		end
+		
+		SW[9] <= 1'b0;
+		
+		for (i = 0; i < 40; i = i + 1) begin
+			@(posedge clk);
+		end
+		
+		for (i = 0; i < 40; i = i + 1) begin
+			@(posedge clk);
+		end
+		
+		SW[9] <= 1'b1;
+		
+		for (i = 0; i < 40; i = i + 1) begin
+			@(posedge clk);
+		end
+		
+		
 	
 		$stop;
 	end
