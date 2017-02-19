@@ -6,7 +6,7 @@ module lab4TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	output wire [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5; // Seven Segment Display
 	output wire [9:0] LEDR; // LEDs
 	
-	wire rst;
+	wire rst, clk;
 	wire [31:0] clkMain;
 	
 	parameter whichClock = 23;
@@ -14,11 +14,11 @@ module lab4TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	assign rst = ~KEY[0];
 	
 	// Initialize clock divider
-	assign LEDR[9] = clkOut;
+	assign LEDR[9] = clk;
 	assign LEDR[8] = rst;
-	assign LEDR[7] = stationToScanner[1];
-	assign LEDR[6] = stationToScanner[0];
-	assign clkOut = /*CLOCK_50; // CHANGE WHEN IT IS FINISHED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! --->*/ clkMain[whichClock];
+	assign clk = /*CLOCK_50; // CHANGE FOR SIMULATION --->*/ clkMain[whichClock];
 	clock_divider cdiv (CLOCK_50, clkMain);
+	
+	
 	
 endmodule
