@@ -1,0 +1,16 @@
+
+State Machine - |lab3TopLevel|scanner:localScanner|ps
+Name ps~5 ps~4 
+ps.IDLE 0 0 
+ps.ACTIVE 0 1 
+ps.STANDBY 1 0 
+ps.TRANSFER 1 1 
+
+State Machine - |lab3TopLevel|nios_systemv3:u0|nios_systemv3_nios2_qsys_0:nios2_qsys_0|nios_systemv3_nios2_qsys_0_nios2_oci:the_nios_systemv3_nios2_qsys_0_nios2_oci|nios_systemv3_nios2_qsys_0_jtag_debug_module_wrapper:the_nios_systemv3_nios2_qsys_0_jtag_debug_module_wrapper|nios_systemv3_nios2_qsys_0_jtag_debug_module_tck:the_nios_systemv3_nios2_qsys_0_jtag_debug_module_tck|DRsize
+Name DRsize~5 DRsize~4 DRsize~3 
+DRsize.000 0 0 0 
+DRsize.001 0 0 1 
+DRsize.010 0 1 0 
+DRsize.011 0 1 1 
+DRsize.100 1 0 0 
+DRsize.101 1 0 1 
