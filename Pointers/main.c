@@ -16,7 +16,7 @@ int main()
     float *fp = &f1;
     char *cp = &c1;
     printf("%d, %f, %c\n", *ip, *fp, *cp);
-    
+
     // Switch pointer values, print dereferenced again
     ip = &int2;
     fp = &f2;
@@ -25,7 +25,7 @@ int main()
 
     // Integers defined
     int A = 22;
-    int B = 22;
+    int B = 17;
     int C = 6;
     int D = 4;
     int E = 9;
