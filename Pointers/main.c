@@ -3,6 +3,8 @@
 
 int main()
 {
+    // Part 1
+    printf("Part 1\n");
     // Two variables of each type
     int int1 = 1;
     int int2 = 2;
@@ -23,6 +25,8 @@ int main()
     cp = &c2;
     printf("%d, %f, %c\n", *ip, *fp, *cp);
 
+    // Part 2
+    printf("Part 2\n");
     // Integers defined
     int A = 22;
     int B = 17;
