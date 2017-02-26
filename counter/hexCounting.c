@@ -9,13 +9,13 @@ int main(int argc, char **argv) {
 	uint32_t *leds;
 	int fd;
     
-    // Open /dev/mem
+    	// Open /dev/mem
 	if( ( fd = open( "/dev/mem", ( O_RDWR | O_SYNC ) ) ) == -1 ) {
 		printf( "ERROR: could not open \"/dev/mem\"...\n" );
 		return( 1 );
 	}
     
-    // Get virtual base address that maps to physical
+    	// Get virtual base address that maps to physical
 	virtual_base = mmap( NULL, HW_REGS_SPAN, ( PROT_READ | PROT_WRITE ), MAP_SHARED, fd, HW_REGS_BASE );	
 	if( virtual_base == MAP_FAILED ) {
 		printf( "ERROR: mmap() failed...\n" );
@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
 	leds = (unsigned int *)(virtual_base + (( LED_BASE ) & ( HW_REGS_MASK ) ));
 	
 	// Initialize hexes
-    hex_t hexes[6];
+    	hex_t hexes[6];
 	int i;
 	for (i = 0; i < 6; i++) {
 		hexes[i] = allocateHex(i, virtual_base);
