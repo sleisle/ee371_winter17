@@ -1,9 +1,11 @@
-module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyToTransferIn, readyToTransferOut, sendBuffer, receiveBuffer, startTransfer);
-	input wire clk, rst, clkIn, dataIn, readyToTransferIn, startTransfer;
-	output reg dataOut, readyToTransferOut;
-	input wire [255:0] receiveBuffer, sendBuffer;
+module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForReceive, sendBuffer, receiveBuffer, startTransfer);
+	input wire clk, rst, clkIn, dataIn, readyForSend, startTransfer;
+	output reg dataOut, readyForReceive;
+	input wire [255:0] sendBuffer;
+	output reg [255:0] receiveBuffer;
 	output reg clkOut;
 	reg [8:0] dataBitCounter;
+	reg [7:0] dataInCounter;
 	
 	reg [2:0] cdiv;
 	wire clkOutWire;
@@ -12,6 +14,21 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyToTransferIn, ready
 	assign clkOutWire = cdiv[2];
 	
 	// Transfer if startTransfer | dataBitCounter != 255
+		
+	// Sending Data
+	always @(posedge startTransfer or posedge dataBitCounter[8] or posedge rst) begin: trans
+		if (rst) begin
+			transfer <= 1'b0;
+		end 
+		else begin
+			if (startTransfer) begin
+				transfer <= readyForSend;
+			end
+			else begin
+				transfer <= 1'b0;
+			end
+		end
+	end
 	
 	always @(posedge clk or posedge rst) begin: divide // Divide clk by 8 to make clkOut sig
 		if (rst) begin
@@ -20,7 +37,7 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyToTransferIn, ready
 		else begin
 			cdiv <= cdiv + 1'b1;
 			clkOut <= clkOutWire & transfer;
-			transfer <= startTransfer | ~(dataBitCounter[8]);
+			//transfer <= (startTransfer & readyForSend) | ~(dataBitCounter[8]);
 		end
 	end
 	
@@ -37,15 +54,31 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyToTransferIn, ready
 		end
 	end
 	
+	// Receiving Data
+	always @(posedge clkIn or posedge rst) begin: receiveData
+		if (rst) begin
+			receiveBuffer <= 256'b0;
+			dataInCounter <= 8'b0;
+		end
+		else begin
+			dataInCounter <= dataInCounter + 1'b1;
+			receiveBuffer[dataInCounter] <= dataIn;
+		end
+	end
 	
 endmodule
 
 module commsTestBench();
-	reg clk, rst, dataIn, clkIn, readyToTransferIn, startTransfer;
-	wire dataOut, readyToTransferOut, clkOut;
-	reg [255:0] receiveBuffer, sendBuffer;
-
-	comms dut (clk, rst, clkIn, dataIn, clkOut, dataOut, readyToTransferIn, readyToTransferOut, sendBuffer, receiveBuffer, startTransfer);
+	reg clk, rst, readyForSend, startTransfer;
+	wire dataOut, readyForReceive, clkOut;
+	reg [255:0] sendBuffer;
+	wire [255:0] receiveBuffer;
+	wire connectData, connectClk;
+	
+	buf #1 b0 (connectData, dataOut);
+	buf #1 b1 (connectClk, clkOut);
+	
+	comms dut (clk, rst, connectClk, connectData, clkOut, dataOut, readyForSend, readyForReceive, sendBuffer, receiveBuffer, startTransfer);
 	
 	parameter ClockDelay = 5;
 	integer i;
@@ -60,7 +93,8 @@ module commsTestBench();
 		rst <= 1'b0;						@(posedge clk);
 		sendBuffer <= (256'b1 << 255) + 1'b1;	@(posedge clk);
 												@(posedge clk);
-		startTransfer <= 1'b1;			@(posedge clk);
+		startTransfer <= 1'b1;
+		readyForSend <= 1'b1;			@(posedge clk);
 												@(posedge clk);
 		startTransfer <= 1'b0;			@(posedge clk);
 		
@@ -69,6 +103,25 @@ module commsTestBench();
 		end
 		
 												@(posedge clk);
+												
+		for (i = 0; i < 256; i = i + 1) begin
+			if (i % 2 == 0) begin
+				sendBuffer = ((sendBuffer << 2) + 1'b1);
+			end
+		end
+												@(posedge clk);
+		startTransfer <= 1'b1;			@(posedge clk);
+												@(posedge clk);
+		startTransfer <= 1'b0;			@(posedge clk);
+		
+		for (i = 0; i < 2500; i = i + 1) begin
+			@(posedge clk);
+			if (i == 1200) begin
+				rst <= 1'b1; @(posedge clk);
+				rst <= 1'b0; @(posedge clk);
+			end
+		end
+		
 		startTransfer <= 1'b1;			@(posedge clk);
 												@(posedge clk);
 		startTransfer <= 1'b0;			@(posedge clk);

@@ -1,20 +1,21 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
-add wave -noupdate /commsTestBench/clk
-add wave -noupdate /commsTestBench/rst
-add wave -noupdate /commsTestBench/dataIn
-add wave -noupdate /commsTestBench/clkIn
-add wave -noupdate /commsTestBench/readyToTransferIn
-add wave -noupdate /commsTestBench/startTransfer
-add wave -noupdate /commsTestBench/dataOut
-add wave -noupdate /commsTestBench/readyToTransferOut
-add wave -noupdate /commsTestBench/clkOut
+add wave -noupdate /commsTestBench/dut/clk
+add wave -noupdate /commsTestBench/dut/rst
+add wave -noupdate /commsTestBench/dut/readyForSend
+add wave -noupdate /commsTestBench/dut/readyForReceive
+add wave -noupdate /commsTestBench/dut/startTransfer
 add wave -noupdate /commsTestBench/dut/transfer
+add wave -noupdate /commsTestBench/dut/dataIn
+add wave -noupdate /commsTestBench/dut/clkIn
+add wave -noupdate /commsTestBench/dut/dataOut
+add wave -noupdate /commsTestBench/dut/clkOut
 add wave -noupdate /commsTestBench/dut/dataBitCounter
-add wave -noupdate /commsTestBench/receiveBuffer
-add wave -noupdate /commsTestBench/sendBuffer
+add wave -noupdate /commsTestBench/dut/sendBuffer
+add wave -noupdate /commsTestBench/dut/dataInCounter
+add wave -noupdate -expand /commsTestBench/dut/receiveBuffer
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {7 ps} 0}
+WaveRestoreCursors {{Cursor 1} {30 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 100
