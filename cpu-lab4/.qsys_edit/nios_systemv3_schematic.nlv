@@ -1,0 +1,21 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst nios_systemv3.startScanning -pg 1 -lvl 3 -y 210
+preplace inst nios_systemv3.nios2_qsys_0 -pg 1 -lvl 2 -y 110
+preplace inst nios_systemv3.clk_0 -pg 1 -lvl 1 -y 170
+preplace inst nios_systemv3.readyToTransfer -pg 1 -lvl 3 -y 410
+preplace inst nios_systemv3.onchip_memory2_0 -pg 1 -lvl 3 -y 130
+preplace inst nios_systemv3.jtag_uart_0 -pg 1 -lvl 3 -y 30
+preplace inst nios_systemv3.transfer -pg 1 -lvl 3 -y 310
+preplace inst nios_systemv3 -pg 1 -lvl 1 -y 40 -regy -20
+preplace netloc EXPORT<net_container>nios_systemv3</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)nios_systemv3.reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>nios_systemv3</net_container>(SLAVE)startScanning.external_connection,(SLAVE)nios_systemv3.startscanning) 1 0 3 NJ 240 NJ 240 NJ
+preplace netloc EXPORT<net_container>nios_systemv3</net_container>(SLAVE)nios_systemv3.transfer,(SLAVE)transfer.external_connection) 1 0 3 NJ 340 NJ 340 NJ
+preplace netloc FAN_OUT<net_container>nios_systemv3</net_container>(SLAVE)readyToTransfer.clk,(SLAVE)startScanning.clk,(MASTER)clk_0.clk,(SLAVE)jtag_uart_0.clk,(SLAVE)nios2_qsys_0.clk,(SLAVE)onchip_memory2_0.clk1,(SLAVE)transfer.clk) 1 1 2 320 360 650
+preplace netloc INTERCONNECT<net_container>nios_systemv3</net_container>(SLAVE)readyToTransfer.reset,(SLAVE)startScanning.reset,(MASTER)clk_0.clk_reset,(SLAVE)nios2_qsys_0.reset_n,(SLAVE)jtag_uart_0.reset,(MASTER)nios2_qsys_0.jtag_debug_module_reset,(SLAVE)onchip_memory2_0.reset1,(SLAVE)transfer.reset) 1 1 2 340 460 670
+preplace netloc EXPORT<net_container>nios_systemv3</net_container>(SLAVE)clk_0.clk_in,(SLAVE)nios_systemv3.clk) 1 0 1 NJ
+preplace netloc EXPORT<net_container>nios_systemv3</net_container>(SLAVE)readyToTransfer.external_connection,(SLAVE)nios_systemv3.readytotransfer) 1 0 3 NJ 440 NJ 440 NJ
+preplace netloc INTERCONNECT<net_container>nios_systemv3</net_container>(SLAVE)readyToTransfer.s1,(SLAVE)jtag_uart_0.avalon_jtag_slave,(MASTER)nios2_qsys_0.data_master,(SLAVE)transfer.s1,(MASTER)nios2_qsys_0.instruction_master,(SLAVE)onchip_memory2_0.s1,(SLAVE)nios2_qsys_0.jtag_debug_module,(SLAVE)startScanning.s1) 1 1 2 360 480 610
+preplace netloc POINT_TO_POINT<net_container>nios_systemv3</net_container>(SLAVE)jtag_uart_0.irq,(MASTER)nios2_qsys_0.d_irq) 1 2 1 630
+levelinfo -pg 1 0 110 880
+levelinfo -hier nios_systemv3 120 150 390 720 870
