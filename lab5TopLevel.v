@@ -45,6 +45,33 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	assign GPIO_0[2] = readyForReceive; //AD17
 	assign readyForSend = GPIO_0[6] | SW[0]; //AK19
 	
+	
+    nios_system_checkers u0 (
+        .clk_clk             (CLOCK_50),             //          clk.clk
+        .reset_reset_n       (~rst),       //        reset.reset_n
+        .sendstate_export    (),    //    sendstate.export
+        .receivestate_export (), // receivestate.export
+        .newdata_export      (),      //      newdata.export
+        .row8_in_port        (),        //         row8.in_port
+        .row8_out_port       (),       //             .out_port
+        .row7_in_port        (),        //         row7.in_port
+        .row7_out_port       (),       //             .out_port
+        .row6_in_port        (),        //         row6.in_port
+        .row6_out_port       (),       //             .out_port
+        .row5_in_port        (),        //         row5.in_port
+        .row5_out_port       (),       //             .out_port
+        .row4_in_port        (),        //         row4.in_port
+        .row4_out_port       (),       //             .out_port
+        .row3_in_port        (),        //         row3.in_port
+        .row3_out_port       (),       //             .out_port
+        .row2_in_port        (),        //         row2.in_port
+        .row2_out_port       (),       //             .out_port
+        .row1_in_port        (),        //         row1.in_port
+        .row1_out_port       ()        //             .out_port
+    );
+
+	
+	
 	comms com (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForReceive, sendBuffer, receiveBuffer, startTransfer);
 	
 	// Hex displays
