@@ -13,17 +13,24 @@ module board (boardBuffer, x, y, r, g, b);
 	assign g = color[15:8];
 	assign b = color[7:0];
 	
-	assign xBoard = x / 60;
+	assign xBoard = (x + 80) / 60;
 	assign yBoard = y / 60;
 	assign drawWhite = ((xBoard % 2) ^ (yBoard % 2));
 	
 	always @(*) begin: boardOut
-		// Draw checkered pattern
-		if (drawWhite) begin
-			color <= WHITE;
+		if (x < 80 || x > 560) begin
+			color = BLACK;
 		end
 		else begin
-			color <= BLACK;
+	
+			// Draw checkered pattern
+			if (drawWhite) begin
+				color <= WHITE;
+			end
+			else begin
+				color <= BLACK;
+			end
+		
 		end
 		
 	end
