@@ -11,16 +11,16 @@ module board (boardBuffer, x, y, r, g, b);
 	
 	parameter WHITE = ~(24'b0), BLACK = 24'b0, RED = {8'd255, 16'd0}, GREEN = {8'd0, 8'd255, 8'd0};
 	
-	integer X_OFFSET = 100;
+//	integer X_OFFSET = 100;
 	integer RADIUS = 25;
 	
 	assign r = color[23:16];
 	assign g = color[15:8];
 	assign b = color[7:0];
 	
-	assign xAdjusted = (x - X_OFFSET) % 60;
+	assign xAdjusted = (x) % 60;
 	assign yAdjusted = y % 60;
-	assign xBoard = ((x + X_OFFSET) / 60) - 1;
+	assign xBoard = ((x) / 60) - 1;
 	assign yBoard = y / 60;
 	assign drawWhite = ((xBoard % 2) ^ (yBoard % 2));
 	
@@ -28,22 +28,30 @@ module board (boardBuffer, x, y, r, g, b);
 	assign bufferStartPoint = 4 * (xBoard + 8 * yBoard);
 	
 	always @(*) begin: boardOut
-		if (x < 80 || x > 560) begin // Maybe change this to < X_OFFSET || > 640 - X_OFFSET
+		if (x > 480) begin // Maybe change this to < X_OFFSET || > 640 - X_OFFSET
 			color <= BLACK;
 		end
 		else begin
 			if (bufferStartPoint) begin // There is a piece there
-			
-			// Uncomment this if and else pair after testing the piece detection
-			
+//			
+//			// Uncomment this if and else pair after testing the piece detection
+//			
 //				if ((yAdjusted * yAdjusted) == ((RADIUS * RADIUS) - (xAdjusted * xAdjusted))) begin
-
-
+//
+//
 					if (boardBuffer[bufferStartPoint + 1]) begin // Piece belongs to red
-						color <= RED;
+						color <= GREEN;
+					end
+					else if (~boardBuffer[bufferStartPoint + 1]) begin
+						color <= RED; // Piece belongs to green
 					end
 					else begin
-						color <= GREEN; // Piece belongs to green
+						if (drawWhite) begin
+							color <= WHITE;
+						end
+						else begin
+							color <= BLACK;
+						end
 					end
 					
 					
@@ -67,6 +75,7 @@ module board (boardBuffer, x, y, r, g, b);
 					color <= BLACK;
 				end
 			end
+
 		end
 		
 	end
