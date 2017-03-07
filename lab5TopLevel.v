@@ -6,14 +6,17 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	
 	output wire [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5; // Seven Segment Display
 	output wire [9:0] LEDR; // LEDs
-	output wire VGA_R, VGA_G, VGA_B, VGA_BLANK_N, VGA_CLK, VGA_HS, VGA_SYNC_N, VGA_VS;
+	output wire VGA_BLANK_N, VGA_CLK, VGA_HS, VGA_SYNC_N, VGA_VS;
+	output wire [7:0] VGA_R;
+	output wire [7:0] VGA_G;
+	output wire [7:0] VGA_B;
 	
 	wire [9:0] x;
 	wire [8:0] y;
 	wire [7:0] r, g, b;
 	
 	wire [255:0] receiveBuffer;
-	reg [255:0] sendBuffer;
+	wire [255:0] sendBuffer;
 
 	// Clock Divider
 	wire clk, rst;
@@ -31,17 +34,20 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	assign LEDR[7] = dataOut;
 	assign LEDR[9] = clkIn;
 	
-	// Control Lines
+//	// Control Lines
 	wire clkOut, clkIn, dataOut, dataIn, readyForSend, readyForReceive, turnStartOff;
-	reg startTransfer;
-	always @(negedge KEY[3] or posedge turnStartOff) begin: starting
-		if (turnStartOff)
-			startTransfer <= 1'b0;
-		else
-			startTransfer <= ~KEY[3];
-	end
-	
-	assign turnStartOff = ~KEY[3] & clk;
+	wire startTransfer;
+	wire plzSend, newData;
+//	always @(negedge KEY[3] or posedge turnStartOff) begin: starting
+//		if (turnStartOff)
+//			startTransfer <= 1'b0;
+//		else
+//			startTransfer <= ~KEY[3];
+//	end
+//	
+//	assign turnStartOff = ~KEY[3] & clk;
+
+	assign startTransfer = SW[2];
 	
 	assign GPIO_0[1] = clkOut; //Y17
 	assign clkIn = GPIO_0[5]; //AK18
@@ -54,28 +60,34 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
     nios_system_checkers u0 (
         .clk_clk             (CLOCK_50),             //          clk.clk
         .reset_reset_n       (~rst),       //        reset.reset_n
-        .sendstate_export    (),    //    sendstate.export
-        .receivestate_export (), // receivestate.export
-        .newdata_export      (),      //      newdata.export
-        .row8_in_port        (),        //         row8.in_port
-        .row8_out_port       (),       //             .out_port
-        .row7_in_port        (),        //         row7.in_port
-        .row7_out_port       (),       //             .out_port
-        .row6_in_port        (),        //         row6.in_port
-        .row6_out_port       (),       //             .out_port
-        .row5_in_port        (),        //         row5.in_port
-        .row5_out_port       (),       //             .out_port
-        .row4_in_port        (),        //         row4.in_port
-        .row4_out_port       (),       //             .out_port
-        .row3_in_port        (),        //         row3.in_port
-        .row3_out_port       (),       //             .out_port
-        .row2_in_port        (),        //         row2.in_port
-        .row2_out_port       (),       //             .out_port
-        .row1_in_port        (),        //         row1.in_port
-        .row1_out_port       ()        //             .out_port
+        .sendstate_export    (plzSend),    //    sendstate.export
+        .receivestate_export (readyForReceive), // receivestate.export
+        .newdata_export      (newData),      //      newdata.export
+        .row8_in_port        (receiveBuffer[255:224]),        //         row8.in_port
+        .row8_out_port       (sendBuffer[255:224]),       //             .out_port
+        .row7_in_port        (receiveBuffer[223:192]),        //         row7.in_port
+        .row7_out_port       (sendBuffer[223:192]),       //             .out_port
+        .row6_in_port        (receiveBuffer[191:160]),        //         row6.in_port
+        .row6_out_port       (sendBuffer[191:160]),       //             .out_port
+        .row5_in_port        (receiveBuffer[159:128]),        //         row5.in_port
+        .row5_out_port       (sendBuffer[159:128]),       //             .out_port
+        .row4_in_port        (receiveBuffer[127:96]),        //         row4.in_port
+        .row4_out_port       (sendBuffer[127:96]),       //             .out_port
+        .row3_in_port        (receiveBuffer[95:64]),        //         row3.in_port
+        .row3_out_port       (sendBuffer[95:64]),       //             .out_port
+        .row2_in_port        (receiveBuffer[63:32]),        //         row2.in_port
+        .row2_out_port       (sendBuffer[63:32]),       //             .out_port
+        .row1_in_port        (receiveBuffer[31:0]),        //         row1.in_port
+        .row1_out_port       (sendBuffer[31:0])        //             .out_port
     );
 
-	
+//    nios_systemv3 u0 (
+//        .clk_clk                (CLOCK_50),                //             clk.clk
+//        .readytotransfer_export (rdySend), // readytotransfer.export
+//        .reset_reset_n          (~rst),          //           reset.reset_n
+//        .startscanning_export   (transfer),   //   startscanning.export
+//        .transfer_export        (z3)         //        transfer.export
+//    );
 	
 	comms com (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForReceive, sendBuffer, receiveBuffer, startTransfer);
 	video_driver vga (CLOCK_50, rst, x, y, r, g, b, VGA_R, VGA_G, VGA_B, VGA_BLANK_N, VGA_CLK, VGA_HS, VGA_SYNC_N, VGA_VS);
@@ -90,19 +102,19 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	seg7 h5 (receiveBuffer[240:238], HEX5);
 	
 	// Set sendData
-	integer i;
-	
-	always @(posedge clk) begin:sendData
-		if (SW[1]) begin
-			sendBuffer <= (256'b1 << 255) + 1'b1;
-		end
-		else begin
-			for (i = 0; i < 256; i = i + 1) begin
-				if (i % 2 == 0) begin
-					sendBuffer = ((sendBuffer << 3) + 1'b1);
-				end
-			end
-		end
-	end
+//	integer i;
+//	
+//	always @(posedge clk) begin:sendData
+//		if (SW[1]) begin
+//			sendBuffer <= (256'b1 << 255) + 1'b1;
+//		end
+//		else begin
+//			for (i = 0; i < 256; i = i + 1) begin
+//				if (i % 2 == 0) begin
+//					sendBuffer = ((sendBuffer << 3) + 1'b1);
+//				end
+//			end
+//		end
+//	end
 
 endmodule

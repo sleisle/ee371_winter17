@@ -4,7 +4,7 @@ module board (boardBuffer, x, y, r, g, b);
 	input wire [8:0] y;
 	output wire [7:0] r, g, b;
 	reg [23:0] color;
-	wire [2:0] xBoard, yBoard;
+	wire [31:0] xBoard, yBoard;
 	wire drawWhite;
 	
 	parameter WHITE = ~(24'b0), BLACK = 24'b0, RED = {8'd255, 16'd0}, GREEN = {8'd0, 8'd255, 8'd0};
@@ -13,13 +13,14 @@ module board (boardBuffer, x, y, r, g, b);
 	assign g = color[15:8];
 	assign b = color[7:0];
 	
-	assign xBoard = (x + 80) / 60;
+	assign xBoard = (x + 100) / 60;
+	// assign xBoard = (x + 80) / 60;
 	assign yBoard = y / 60;
 	assign drawWhite = ((xBoard % 2) ^ (yBoard % 2));
 	
 	always @(*) begin: boardOut
 		if (x < 80 || x > 560) begin
-			color = BLACK;
+			color <= BLACK;
 		end
 		else begin
 	
