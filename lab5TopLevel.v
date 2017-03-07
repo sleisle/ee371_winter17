@@ -22,13 +22,13 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	// Clock Divider
 	wire clk, rst;
 	wire [31:0] clkMain;
-	parameter whichClock = 17;
+	parameter whichClock = 20;
 	clock_divider cdiv (CLOCK_50, clkMain);
 	assign clk = clkMain[whichClock];
 	
 	assign rst = ~KEY[0];
 	
-	assign LEDR[0] = readyForSend;
+	assign LEDR[0] = readyForSend;o0
 	assign LEDR[1] = readyForReceive;
 	assign LEDR[2] = startTransfer;
 	assign LEDR[6] = dataIn;
@@ -63,8 +63,8 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	assign clkIn = GPIO_0[5]; //AK18
 	assign GPIO_0[0] = dataOut; //AC18
 	assign dataIn = GPIO_0[4]; //AK16
-	assign GPIO_0[2] = readyForReceive; //AD17
-	assign readyForSend = GPIO_0[6] | SW[0]; //AK19
+	assign GPIO_0[2] = readyForReceive & SW[3]; //AD17
+	assign readyForSend = GPIO_0[6]; //AK19
 		
 //	// rst needs to reset the board state in C
 //    nios_system_checkers u0 (
@@ -99,7 +99,7 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 //        .transfer_export        (z3)         //        transfer.export
 //    );
 	
-	comms com (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForReceive, sendFromComms, receiveBuffer, startTransfer, newData);
+	comms com (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForReceive, sendBuffer, receiveBuffer, startTransfer, newData);
 	video_driver vga (CLOCK_50, rst, x, y, r, g, b, VGA_R, VGA_G, VGA_B, VGA_BLANK_N, VGA_CLK, VGA_HS, VGA_SYNC_N, VGA_VS);
 	board boardGen (testBuffer, x, y, r, g, b);
 	
@@ -116,7 +116,7 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	
 	always @(posedge clk) begin:sendData
 		if (SW[1]) begin
-			sendBuffer <= (256'b1 << 255) + 1'b1;
+			sendBuffer <= ~(256'b0);
 		end
 		else begin
 			for (i = 0; i < 256; i = i + 1) begin

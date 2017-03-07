@@ -13,8 +13,8 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForRe
 	wire clkOutWire;
 	reg transfer;
 	
-	assign clkOutWire = cdiv[0];
 	assign readyForReceive = 1'b1;
+	assign clkOutWire = cdiv[0];
 	
 	// Transfer if startTransfer | dataBitCounter != 255
 		
