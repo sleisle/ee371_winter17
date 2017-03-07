@@ -1,0 +1,106 @@
+#include <stdio.h>
+#define BOARD_SIZE 8
+
+typedef unsigned char Board[BOARD_SIZE][BOARD_SIZE / 2];
+
+void printBoard(Board b);
+
+char getSpot(Board b, int x, int y);
+
+void setSpot(Board b, int x, int y, char c);
+
+void initializeBoard(Board b);
+
+int movePiece(Board b, int x, int y, int nx, int ny);
+
+int main(int argc, char **argv) {
+  Board board;
+  initializeBoard(board);
+  printBoard(board);
+  long count = 0;
+  int x = 2;
+  int y = 2;
+  while (count < 500000000) {
+    count++;
+    if (count % 100000000 == 0) {
+      movePiece(board, x, y, ++x, ++y);
+      printBoard(board);
+    }
+  }
+  return 0;
+}
+
+void printBoard(Board b) {
+  for (int y = 0; y < BOARD_SIZE; y++) {
+    for (int x = 0; x < BOARD_SIZE; x++) {
+      printf("%c ", getSpot(b, x, y));
+    }
+    printf("\n");
+  }
+}
+
+char getSpot(Board b, int x, int y) {
+  if (x % 2 == 0) {
+    switch (b[y][x / 2] >> 4) {
+    case 0: return 'O'; break;
+    case 3: return 'r'; break;
+    case 1: return 'g'; break;
+    case 7: return 'R'; break;
+    case 5: return 'G'; break;
+    default: return 'O'; break;
+    }
+  } else {
+    switch (b[y][x / 2] & 0x0F) {
+    case 0: return 'O'; break;
+    case 3: return 'r'; break;
+    case 1: return 'g'; break;
+    case 7: return 'R'; break;
+    case 5: return 'G'; break;
+    default: return 'O'; break;
+    }
+  }
+}
+
+void setSpot(Board b, int x, int y, char c) {
+  unsigned char choice = 0;
+  switch (c) {
+  case 'r': choice = 3; break;
+  case 'g': choice = 1; break;
+  case 'R': choice = 7; break;
+  case 'G': choice = 5; break;
+  default: choice = 0; break;
+  }
+  if (x % 2 == 0) {
+    choice <<= 4;
+    b[y][x / 2] = (b[y][x / 2] & 0x0F) | choice;
+  } else {
+    b[y][x / 2] = (b[y][x / 2] & 0xF0) | choice;
+  }
+}
+
+void initializeBoard(Board b) {
+  for (int i = 0; i < BOARD_SIZE; i += 2) {
+    setSpot(b, i, 0, 'r');
+  }
+  for (int i = 1; i < BOARD_SIZE; i += 2) {
+    setSpot(b, i, 1, 'r');
+  }
+  for (int i = 0; i < BOARD_SIZE; i += 2) {
+    setSpot(b, i, 2, 'r');
+  }
+  for (int i = 1; i < BOARD_SIZE; i += 2) {
+    setSpot(b, i, 5, 'g');
+  }
+  for (int i = 0; i < BOARD_SIZE; i += 2) {
+    setSpot(b, i, 6, 'g');
+  }
+  for (int i = 1; i < BOARD_SIZE; i += 2) {
+    setSpot(b, i, 7, 'g');
+  }
+}
+
+int movePiece(Board b, int x, int y, int nx, int ny) {
+  setSpot(b, nx, ny, getSpot(b, x, y));
+  setSpot(b, x, y, 'O');
+  return 1;
+}
