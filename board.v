@@ -4,7 +4,7 @@ module board (boardBuffer, x, y, r, g, b);
 	input wire [8:0] y;
 	output wire [7:0] r, g, b;
 	reg [23:0] color;
-	wire [31:0] xBoard, yBoard;
+	wire [2:0] xBoard, yBoard;
 	wire drawWhite;
 	wire [7:0] bufferStartPoint;
 	wire [5:0] xAdjusted, yAdjusted;
@@ -27,29 +27,36 @@ module board (boardBuffer, x, y, r, g, b);
 	// Set bufferStartPoint = to start index of piece on board based on x and y
 	assign bufferStartPoint = 4 * (xBoard + 8 * yBoard);
 	
-	always @(*) begin: boardOut	
-		if (x < 80 || x > 560) begin
+	always @(*) begin: boardOut
+		if (x < 80 || x > 560) begin // Maybe change this to < X_OFFSET || > 640 - X_OFFSET
 			color <= BLACK;
 		end
 		else begin
 			if (bufferStartPoint) begin // There is a piece there
-				if ((yAdjusted * yAdjusted) == ((RADIUS * RADIUS) - (xAdjusted * xAdjusted))) begin
-					if (boardBuffer[bufferStartPoint + 1]) begin
+			
+			// Uncomment this if and else pair after testing the piece detection
+			
+//				if ((yAdjusted * yAdjusted) == ((RADIUS * RADIUS) - (xAdjusted * xAdjusted))) begin
+
+
+					if (boardBuffer[bufferStartPoint + 1]) begin // Piece belongs to red
 						color <= RED;
 					end
 					else begin
-						color <= GREEN;
+						color <= GREEN; // Piece belongs to green
 					end
-				end
-				else begin
-					// Draw checkered pattern
-					if (drawWhite) begin
-						color <= WHITE;
-					end
-					else begin
-						color <= BLACK;
-					end
-				end
+					
+					
+//				end
+//				else begin
+//					// Draw checkered pattern
+//					if (drawWhite) begin
+//						color <= WHITE;
+//					end
+//					else begin
+//						color <= BLACK;
+//					end
+//				end
 			end
 			else begin // No piece
 				// Draw checkered pattern

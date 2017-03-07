@@ -15,13 +15,12 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	wire [8:0] y;
 	wire [7:0] r, g, b;
 	
-	wire [255:0] receiveBuffer;
-	wire [255:0] sendBuffer;
+	wire [255:0] receiveBuffer, sendBuffer;
 
 	// Clock Divider
 	wire clk, rst;
 	wire [31:0] clkMain;
-	parameter whichClock = 0;
+	parameter whichClock = 10;
 	clock_divider cdiv (CLOCK_50, clkMain);
 	assign clk = clkMain[whichClock];
 	
@@ -36,18 +35,26 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	
 //	// Control Lines
 	wire clkOut, clkIn, dataOut, dataIn, readyForSend, readyForReceive, turnStartOff;
-	wire startTransfer;
+	reg startTransfer;
 	wire plzSend, newData;
-//	always @(negedge KEY[3] or posedge turnStartOff) begin: starting
-//		if (turnStartOff)
-//			startTransfer <= 1'b0;
-//		else
-//			startTransfer <= ~KEY[3];
+	
+	// Try this code, so that startTransfer goes low after a clock cycle
+	always @(posedge SW[2] or posedge turnStartOff) begin: starting
+		if (turnStartOff)
+			startTransfer <= 1'b0;
+		else
+			startTransfer <= SW[2];
+	end	
+	
+	assign turnStartOff = SW[2] & clk;
+	
+	// Throws error due to multiple writes
+//	always @(posedge rst) begin: resetSend
+//		// Starting state of checkers
+//		sendBuffer <= 256'h0303030330303030030303030000000000000000101010100101010110101010;
 //	end
-//	
-//	assign turnStartOff = ~KEY[3] & clk;
 
-	assign startTransfer = SW[2];
+//	assign startTransfer = ;
 	
 	assign GPIO_0[1] = clkOut; //Y17
 	assign clkIn = GPIO_0[5]; //AK18
@@ -56,11 +63,11 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	assign GPIO_0[2] = readyForReceive; //AD17
 	assign readyForSend = GPIO_0[6] | SW[0]; //AK19
 	
-	
+	// rst needs to reset the board state in C
     nios_system_checkers u0 (
         .clk_clk             (CLOCK_50),             //          clk.clk
-        .reset_reset_n       (~rst),       //        reset.reset_n
-        .sendstate_export    (plzSend),    //    sendstate.export
+        .reset_reset_n       (~rst),       //        reset.reset_n  		Is this an active-low?
+        .sendstate_export    (plzSend),    //    sendstate.export  		Make sure to tie low after a clock cycle or so
         .receivestate_export (readyForReceive), // receivestate.export
         .newdata_export      (newData),      //      newdata.export
         .row8_in_port        (receiveBuffer[255:224]),        //         row8.in_port
@@ -89,7 +96,7 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 //        .transfer_export        (z3)         //        transfer.export
 //    );
 	
-	comms com (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForReceive, sendBuffer, receiveBuffer, startTransfer);
+	comms com (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForReceive, sendFromComms, receiveBuffer, startTransfer);
 	video_driver vga (CLOCK_50, rst, x, y, r, g, b, VGA_R, VGA_G, VGA_B, VGA_BLANK_N, VGA_CLK, VGA_HS, VGA_SYNC_N, VGA_VS);
 	board boardGen (receiveBuffer, x, y, r, g, b);
 	

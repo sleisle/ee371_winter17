@@ -379,7 +379,7 @@ set_location_assignment PIN_D11 -to VGA_VS
 #============================================================
 
 
-set_global_assignment -name LAST_QUARTUS_VERSION 14.0
+set_global_assignment -name LAST_QUARTUS_VERSION 16.0.0
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
@@ -395,6 +395,7 @@ set_global_assignment -name USE_SIGNALTAP_FILE stp1.stp
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name NUM_PARALLEL_PROCESSORS 4
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_CS_N
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_DIN
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_DOUT
