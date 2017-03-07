@@ -5,11 +5,11 @@ cModel Technology
 Z0 dD:\Schoolwork\Winter_17\EE371\lab5\ee371_winter17
 vboard
 !i10b 1
-!s100 J[efF?bfM9X@jZk58J[JO1
-Ie;>eK5O^TaU@N7:XcB1Wb0
+!s100 4dNJfEWG>c=hbiXUBHHQ51
+I1G6]oP6V;O?M_YaEUmE=z2
 Z1 V]GDGPJN1R5E[6mDBG9laO1
 Z2 dD:\Schoolwork\Winter_17\EE371\lab5\ee371_winter17
-Z3 w1488834939
+Z3 w1488863133
 Z4 8./board.v
 Z5 F./board.v
 L0 1
@@ -17,21 +17,21 @@ Z6 OV;L;10.1e;51
 r1
 !s85 0
 31
-Z7 !s108 1488834942.513000
+Z7 !s108 1488863135.538000
 Z8 !s107 ./board.v|
 Z9 !s90 -reportprogress|300|./board.v|
 !s101 -O0
 o-O0
 vboardTestBench
 !i10b 1
-Z10 !s100 ZW_BX5fHQAh=L56C3IhSf1
-Z11 Ii=WMQRg8g0S^ccG=P_7`Z3
-Z12 VgSMM:;LNPKz`h8JNGNc_h0
+!s100 iS0DPbOg>@h`j0RcQ_mLC2
+I`71W=B@AMfXl4R>E:ml8;2
+Z10 VgSMM:;LNPKz`h8JNGNc_h0
 R2
 R3
 R4
 R5
-L0 33
+L0 69
 R6
 r1
 !s85 0
@@ -41,63 +41,63 @@ R8
 R9
 !s101 -O0
 o-O0
-Z13 nboard@test@bench
+Z11 nboard@test@bench
 vcomms
-Z14 !s100 1[6Fm^ZYm[;kjJ`E@=kZ>1
-Z15 IbNho;MLbN:M>WHYQ2ShzE2
-Z16 VbCIHE@AzPdm3LAA<k^Fo12
+Z12 !s100 1[6Fm^ZYm[;kjJ`E@=kZ>1
+Z13 IbNho;MLbN:M>WHYQ2ShzE2
+Z14 VbCIHE@AzPdm3LAA<k^Fo12
 R2
-Z17 w1488492715
-Z18 8./comms.v
-Z19 F./comms.v
+Z15 w1488492715
+Z16 8./comms.v
+Z17 F./comms.v
 L0 1
 R6
 r1
 31
-Z20 !s108 1488492740.282000
-Z21 !s107 ./comms.v|
-Z22 !s90 -reportprogress|300|./comms.v|
+Z18 !s108 1488492740.282000
+Z19 !s107 ./comms.v|
+Z20 !s90 -reportprogress|300|./comms.v|
 o-O0
 !i10b 1
 !s85 0
 !s101 -O0
 vcommsTestBench
-Z23 I5T[h_8gJ;cD8Sf]>A3:V<2
-Z24 VIVMLFAke^VJGYe?=3mVX=2
+Z21 I5T[h_8gJ;cD8Sf]>A3:V<2
+Z22 VIVMLFAke^VJGYe?=3mVX=2
 R2
+R15
+R16
 R17
-R18
-R19
 L0 71
 R6
 r1
 31
+R18
+R19
 R20
-R21
-R22
 o-O0
-Z25 ncomms@test@bench
-Z26 !s100 ?<=Og6;96;`bL6]lko4Ql1
+Z23 ncomms@test@bench
+Z24 !s100 ?<=Og6;96;`bL6]lko4Ql1
 !i10b 1
 !s85 0
 !s101 -O0
 vDFlipFlop
-Z27 !s100 7zSHl1KXlKa3`eQCB_`z?3
-Z28 Ig@z_N]_zOle_1bd[5<1jn2
-Z29 VmebQhg8PS3TNHCQ9;PYUP0
+Z25 !s100 7zSHl1KXlKa3`eQCB_`z?3
+Z26 Ig@z_N]_zOle_1bd[5<1jn2
+Z27 VmebQhg8PS3TNHCQ9;PYUP0
 R2
-Z30 w1486767018
-Z31 8./DFlipFlop.v
-Z32 F./DFlipFlop.v
+Z28 w1486767018
+Z29 8./DFlipFlop.v
+Z30 F./DFlipFlop.v
 L0 2
 R6
 r1
 31
-Z33 !s90 -reportprogress|300|./DFlipFlop.v|
+Z31 !s90 -reportprogress|300|./DFlipFlop.v|
 o-O0
-Z34 n@d@flip@flop
-Z35 !s108 1488492740.513000
-Z36 !s107 ./DFlipFlop.v|
+Z32 n@d@flip@flop
+Z33 !s108 1488492740.513000
+Z34 !s107 ./DFlipFlop.v|
 !i10b 1
 !s85 0
 !s101 -O0
