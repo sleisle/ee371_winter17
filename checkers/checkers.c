@@ -7,10 +7,29 @@
 #define GREEN   "\x1b[32m"
 #define RESET   "\x1b[0m"
 
+#define DIR_TL 0
+#define DIR_TR 1
+#define DIR_BL 2
+#define DIR_BR 3
+
 // Red is 1, Green is 0
 // Team Red goes first
 
 typedef unsigned char Board[BOARD_SIZE][BOARD_SIZE / 2];
+
+typedef struct point {
+  unsigned char x;
+  unsigned char y;
+}Point;
+
+typedef struct stack {
+  Point points[6];
+  int index;
+}Stack;
+
+void pushStack(Stack *s, unsigned char x, unsigned char y);
+
+Point popStack(Stack *s);
 
 void printBoard(Board b);
 
@@ -24,12 +43,16 @@ int movePiece(Board b, int x, int y, int nx, int ny);
 
 int checkMove(Board b, int x, int y, int nx, int ny);
 
-int jump(Board b, char piece, int x, int y, int nx, int ny);
+int jump(Board b, char piece, int x, int y, int nx, int ny, int dir);
+
+static Stack stack;
 
 int main(int argc, char **argv) {
   Board board;
   initializeBoard(board);
   setSpot(board, 4, 4, 'r');
+  setSpot(board, 5, 5, 'G');
+  setSpot(board, 6, 4, 'r');
   setSpot(board, 5, 1, 'O');
   printBoard(board);
   int x = -1;
@@ -175,49 +198,105 @@ int checkMove(Board b, int x, int y, int nx, int ny) {
     if (y - ny == 1 && (x - nx == 1 || nx - x == 1)) {
       return 1;
     }
-    return jump(b, piece, x, y, nx, ny);
+    int ret = jump(b, piece, x, y, nx, ny, - 1);
+    if (ret) {
+      while (stack.index > 0) {
+	Point p = popStack(&stack);
+	setSpot(b, p.x, p.y, 'O');
+      }
+    }
+    return ret;
   } else if (piece == 'G') {
     if ((y - ny == 1 || ny - y == 1) && (x - nx == 1 || nx - x == 1)) {
       return 1;
     }
-    return jump(b, piece, x, y, nx, ny);
+    int ret =  jump(b, piece, x, y, nx, ny, - 1);
+    if (ret) {
+      while (stack.index > 0) {
+	Point p = popStack(&stack);
+	setSpot(b, p.x, p.y, 'O');
+      }
+    }
+    return ret;
   } else {
     return 0;
   }
   return 1;
 }
 
-int jump(Board b, char piece, int x, int y, int nx, int ny) {
+int jump(Board b, char piece, int x, int y, int nx, int ny, int dir) {
+  if (x < 0 || x > 7 || y < 0 || y > 7 ||
+      nx < 0 || nx > 7 || ny < 0 || ny > 7) {
+    return 0;
+  }
   if (x == nx && y == ny) {
     return 1;
   }
+  printf("%d, %d\n", x, y);
   int tl = 0;
   int tr = 0;
   int bl = 0;
   int br = 0;
-  if (x < BOARD_SIZE - 2 && x > 1 && y > 1) {
     if ((getSpot(b, x + 1, y - 1) == 'r' ||
 	 getSpot(b, x + 1, y - 1) == 'R') &&
-	getSpot(b, x + 2, y - 2) == 'O') {
-      tr = jump(b, piece, x + 2, y - 2, nx, ny);
+	 getSpot(b, x + 2, y - 2) == 'O' &&
+	 dir != DIR_BL) {
+      pushStack(&stack, x + 1, y - 1);
+      tr = jump(b, piece, x + 2, y - 2, nx, ny, DIR_TR);
+      if (!tr) {
+	popStack(&stack);
+      } else {
+	return tr;
+      }
     }
     if ((getSpot(b, x - 1, y - 1) == 'r' ||
 	 getSpot(b, x - 1, y - 1) == 'R') &&
-	getSpot(b, x - 2, y - 2) == 'O') {
-      tl = jump(b, piece, x - 2, y - 2, nx, ny);
+	 getSpot(b, x - 2, y - 2) == 'O' &&
+	 dir != DIR_BR) {
+      pushStack(&stack, x - 1, y - 1);
+      tl = jump(b, piece, x - 2, y - 2, nx, ny, DIR_TL);
+      if (!tl) {
+	popStack(&stack);
+      } else {
+	return tl;
+      }
     }
-    if (piece == 'G' && y < BOARD_SIZE - 1) {
+    if (piece == 'G') {
       if ((getSpot(b, x + 1, y + 1) == 'r' ||
-	 getSpot(b, x + 1, y + 1) == 'R') &&
-	getSpot(b, x + 2, y + 2) == 'O') {
-	br = jump(b, piece, x + 2, y + 2, nx, ny);
+	   getSpot(b, x + 1, y + 1) == 'R') &&
+	   getSpot(b, x + 2, y + 2) == 'O' &&
+	   dir != DIR_TL) {
+	pushStack(&stack, x + 1, y + 1);
+	br = jump(b, piece, x + 2, y + 2, nx, ny, DIR_BR);
+	if (!br) {
+	popStack(&stack);
+	} else {
+	  return br;
+	}
       }
       if ((getSpot(b, x - 1, y + 1) == 'r' ||
 	   getSpot(b, x - 1, y + 1) == 'R') &&
-	  getSpot(b, x - 2, y + 2) == 'O') {
-	bl = jump(b, piece, x - 2, y + 2, nx, ny);
+	   getSpot(b, x - 2, y + 2) == 'O' &&
+	   dir != DIR_TR) {
+	pushStack(&stack, x - 1, y + 1);
+	bl = jump(b, piece, x - 2, y + 2, nx, ny, DIR_BL);
+	if (!bl) {
+	  popStack(&stack);
+	} else {
+	  return bl;
+	}
       }
     }
-  }
   return tr || tl || br || bl;
+}
+
+void pushStack(Stack *s, unsigned char x, unsigned char y) {
+  s->points[s->index].x = x;
+  s->points[s->index].y = y;
+  (s->index)++;
+}
+
+Point popStack(Stack *s) {
+  (s->index)--;
+  return s->points[s->index];
 }
