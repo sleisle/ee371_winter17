@@ -1,4 +1,22 @@
+/*
+ * "Checkers testing".
+ */
+
+#define sendData (volatile char *) 0x00090a0
+#define newData (volatile char *) 0x0009080
+
+#define row8 (volatile char *) 0x0009070
+#define row7 (volatile char *) 0x0009060
+#define row6 (volatile char *) 0x0009050
+#define row5 (volatile char *) 0x0009040
+#define row4 (volatile char *) 0x0009030
+#define row3 (volatile char *) 0x0009020
+#define row2 (volatile char *) 0x0009010
+#define row1 (volatile char *) 0x0009000
+
 #include <stdio.h>
+#include "sys/alt_stdio.h"
+#include "sys/unistd.h"
 
 #define BOARD_SIZE 8
 #define DEBUG 0
@@ -83,13 +101,14 @@ int main(int argc, char **argv) {
 
 void printBoard(Board b) {
   printf("  ");
-  for (int x = 0; x < BOARD_SIZE; x++) {
+  int x, y;
+  for (x = 0; x < BOARD_SIZE; x++) {
     printf("%d ", x);
   }
   printf("\n");
-  for (int y = 0; y < BOARD_SIZE; y++) {
+  for (y = 0; y < BOARD_SIZE; y++) {
     printf("%d ", y);
-    for (int x = 0; x < BOARD_SIZE; x++) {
+    for (x = 0; x < BOARD_SIZE; x++) {
       char piece = getSpot(b, x, y);
       if (piece == 'r' || piece == 'R') {
 	printf(RED "%c " RESET, piece);
@@ -143,27 +162,28 @@ void setSpot(Board b, int x, int y, char c) {
 }
 
 void initializeBoard(Board b) {
-  for (int i = 0; i < BOARD_SIZE; i++) {
-    for (int j = 0; j < BOARD_SIZE; j++) {
+  int i, j;
+  for (i = 0; i < BOARD_SIZE; i++) {
+    for (j = 0; j < BOARD_SIZE; j++) {
       setSpot(b, i, j, 'O');
     }
   }
-  for (int i = 0; i < BOARD_SIZE; i += 2) {
+  for (i = 0; i < BOARD_SIZE; i += 2) {
     setSpot(b, i, 0, 'r');
   }
-  for (int i = 1; i < BOARD_SIZE; i += 2) {
+  for (i = 1; i < BOARD_SIZE; i += 2) {
     setSpot(b, i, 1, 'r');
   }
-  for (int i = 0; i < BOARD_SIZE; i += 2) {
+  for (i = 0; i < BOARD_SIZE; i += 2) {
     setSpot(b, i, 2, 'r');
   }
-  for (int i = 1; i < BOARD_SIZE; i += 2) {
+  for (i = 1; i < BOARD_SIZE; i += 2) {
     setSpot(b, i, 5, 'g');
   }
-  for (int i = 0; i < BOARD_SIZE; i += 2) {
+  for (i = 0; i < BOARD_SIZE; i += 2) {
     setSpot(b, i, 6, 'g');
   }
-  for (int i = 1; i < BOARD_SIZE; i += 2) {
+  for (i = 1; i < BOARD_SIZE; i += 2) {
     setSpot(b, i, 7, 'g');
   }
 }
@@ -186,7 +206,7 @@ int checkMove(Board b, int x, int y, int nx, int ny) {
       nx < 0 || nx > 7 || ny < 0 || ny > 7) {
     return 0;
   }
-  
+
   // Can't move to a spot that already has a piece
   if (getSpot(b, nx, ny) != 'O') {
     return 0;
@@ -300,3 +320,4 @@ Point popStack(Stack *s) {
   (s->index)--;
   return s->points[s->index];
 }
+
