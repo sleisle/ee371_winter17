@@ -1,9 +1,11 @@
-module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForReceive, sendBuffer, receiveBuffer, startTransfer);
+module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForReceive, sendBuffer, receiveBuffer, startTransfer, newData);
 	input wire clk, rst, clkIn, dataIn, readyForSend, startTransfer;
-	output reg dataOut, readyForReceive;
+	output reg dataOut, newData;
 	input wire [255:0] sendBuffer;
 	output reg [255:0] receiveBuffer;
 	output reg clkOut;
+	output wire readyForReceive;
+	
 	reg [8:0] dataBitCounter;
 	reg [7:0] dataInCounter;
 	
@@ -11,7 +13,8 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForRe
 	wire clkOutWire;
 	reg transfer;
 	
-	assign clkOutWire = cdiv[2];
+	assign readyForReceive = 1'b1;
+	assign clkOutWire = cdiv[0];
 	
 	// Transfer if startTransfer | dataBitCounter != 255
 		
@@ -57,13 +60,23 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForRe
 	// Receiving Data
 	always @(posedge clkIn or posedge rst) begin: receiveData
 		if (rst) begin
-			receiveBuffer <= 256'b0;
+			receiveBuffer <= 8'b0;
 			dataInCounter <= 8'b0;
 		end
 		else begin
-			dataInCounter <= dataInCounter + 1'b1;
-			receiveBuffer[dataInCounter] <= dataIn;
+			//if (readyForReceive) begin
+				dataInCounter <= dataInCounter + 1'b1;
+				receiveBuffer[dataInCounter] <= dataIn;
+//			end
+//			else begin
+//				dataInCounter <= 8'b0;
+//				receiveBuffer <= sendBuffer;
+//			end
 		end
+	end
+	
+	always @(negedge dataInCounter[7]) begin: newDataIn
+		newData <= 1'b1;
 	end
 	
 endmodule

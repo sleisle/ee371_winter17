@@ -4,14 +4,14 @@ editor if you plan to continue editing the block that represents it in
 the Block Editor! File corruption is VERY likely to occur.
 */
 /*
-Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
+Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
 Your use of Altera Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
 to the terms and conditions of the Altera Program License 
-Subscription Agreement, the Altera Quartus II License Agreement,
+Subscription Agreement, the Altera Quartus Prime License Agreement,
 the Altera MegaCore Function License Agreement, or other 
 applicable license agreement, including, without limitation, 
 that your use is for the sole purpose of programming logic 
@@ -206,7 +206,7 @@ agreement for further details.
 		(text "row1" (rect 86 635 196 1283)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "in_port" (rect 117 659 276 1328)(font "Arial" (color 0 0 0)))
 		(text "out_port" (rect 117 675 282 1360)(font "Arial" (color 0 0 0)))
-		(text " nios_system_checkers " (rect 185 696 502 1402)(font "Arial" ))
+		(text " system " (rect 253 696 554 1402)(font "Arial" ))
 		(line (pt 112 32)(pt 176 32)(line_width 1))
 		(line (pt 176 32)(pt 176 696)(line_width 1))
 		(line (pt 112 696)(pt 176 696)(line_width 1))
