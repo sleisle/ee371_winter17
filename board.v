@@ -4,13 +4,13 @@ module board (boardBuffer, x, y, r, g, b);
 	input wire [8:0] y;
 	output wire [7:0] r, g, b;
 	reg [23:0] color;
-	wire [2:0] xBoard, yBoard;
+	wire [4:0] xBoard, yBoard;
 	wire drawWhite;
-	wire [7:0] bufferStartPoint;
-	wire [5:0] xAdjusted, yAdjusted;
+	wire [31:0] bufferStartPoint;
+	wire [31:0] xAdjusted, yAdjusted;
 	
 	parameter WHITE = ~(24'b0), BLACK = 24'b0, RED = {8'd255, 16'd0}, GREEN = {8'd0, 8'd255, 8'd0};
-	
+	parameter GREY = {8'd169, 8'd169, 8'd169};
 //	integer X_OFFSET = 100;
 	integer RADIUS = 25;
 	
@@ -20,23 +20,25 @@ module board (boardBuffer, x, y, r, g, b);
 	
 	assign xAdjusted = (x) % 60;
 	assign yAdjusted = y % 60;
-	assign xBoard = ((x) / 60) - 1;
+	//assign xBoard = ((x) / 60) - 1;
+	assign xBoard = ((x) / 60);
 	assign yBoard = y / 60;
 	assign drawWhite = ((xBoard % 2) ^ (yBoard % 2));
 	
 	// Set bufferStartPoint = to start index of piece on board based on x and y
+	//assign bufferStartPoint = 4 * (xBoard + 8 * yBoard);
 	assign bufferStartPoint = 4 * (xBoard + 8 * yBoard);
 	
 	always @(*) begin: boardOut
-		if (x > 480) begin // Maybe change this to < X_OFFSET || > 640 - X_OFFSET
-			color <= BLACK;
+		if (x > 478) begin // Maybe change this to < X_OFFSET || > 640 - X_OFFSET
+			color <= GREY;
 		end
 		else begin
-			if (bufferStartPoint) begin // There is a piece there
+			if (boardBuffer[bufferStartPoint]) begin // There is a piece there
 //			
 //			// Uncomment this if and else pair after testing the piece detection
 //			
-//				if ((yAdjusted * yAdjusted) == ((RADIUS * RADIUS) - (xAdjusted * xAdjusted))) begin
+	//			if ((yAdjusted * yAdjusted) == ((RADIUS * RADIUS) - (xAdjusted * xAdjusted))) begin
 //
 //
 					if (boardBuffer[bufferStartPoint + 1]) begin // Piece belongs to red
@@ -55,7 +57,7 @@ module board (boardBuffer, x, y, r, g, b);
 					end
 					
 					
-//				end
+	//			end
 //				else begin
 //					// Draw checkered pattern
 //					if (drawWhite) begin
@@ -91,25 +93,40 @@ module boardTestBench ();
 	board dut (boardBuffer, x, y, r, g, b);
 	
 	parameter d = 10; // delay
+	integer i;
+	integer result;
 	
 	initial begin
 		#d;
 		boardBuffer <= 255'b0000001100000011000000110000001100110000001100000011000000110000000000110000001100000011000000110000000000000000000000000000000000000000000000000000000000000000000100000001000000010000000100000000000100000001000000010000000100010000000100000001000000010000;
-		x <= 10'd0;
-		y <= 9'd0;
-		#d;
-		x <= 10'd65;
-		y <= 9'd0;
-		#d;
-		x <= 10'd65;
-		y <= 9'd80;
-		#d;
-		x <= 10'd150;
-		y <= 9'd150;
-		#d;
-		x <= 10'd150;
-		y <= 9'd80;
-		#d;
+
+		for (i=0; i<9; i=i+1) begin
+			result = i * 10'd60;
+			x <= 10'd30 + result;
+			y <= 9'd30;
+			#d;
+		end
+		
+		for (i=0; i<9; i=i+1) begin
+			result = i * 10'd60;
+			x <= 10'd30 + result;
+			y <= 9'd90;
+			#d;
+		end
+		
+		for (i=0; i<9; i=i+1) begin
+			result = i * 10'd60;
+			x <= 10'd30 + result;
+			y <= 9'd150;
+			#d;
+		end
+		
+		for (i=0; i<9; i=i+1) begin
+			result = i * 10'd60;
+			x <= 10'd30 + result;
+			y <= 9'd210;
+			#d;
+		end
 	
 		$stop;
 	end

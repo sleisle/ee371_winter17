@@ -14,7 +14,7 @@ add wave -noupdate -radix unsigned /boardTestBench/dut/bufferStartPoint
 add wave -noupdate -radix unsigned /boardTestBench/dut/xAdjusted
 add wave -noupdate -radix unsigned /boardTestBench/dut/yAdjusted
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {0 ps} 0}
+WaveRestoreCursors {{Cursor 1} {14 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 83
@@ -30,4 +30,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {105 ps}
+WaveRestoreZoom {0 ps} {91 ps}
