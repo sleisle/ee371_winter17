@@ -2,28 +2,40 @@
  * "Checkers testing".
  */
 
-#define sendData (volatile char *) 0x00090a0
-#define newData (volatile char *) 0x0009080
+#define sendData (volatile char *) 0x0041120
+#define newData (volatile char *) 0x0041100
 
-#define row8 (volatile char *) 0x0009070
-#define row7 (volatile char *) 0x0009060
-#define row6 (volatile char *) 0x0009050
-#define row5 (volatile char *) 0x0009040
-#define row4 (volatile char *) 0x0009030
-#define row3 (volatile char *) 0x0009020
-#define row2 (volatile char *) 0x0009010
-#define row1 (volatile char *) 0x0009000
+#define row7 (volatile unsigned long *) 0x0041070
+#define row6 (volatile unsigned long *) 0x0041060
+#define row5 (volatile unsigned long *) 0x0041050
+#define row4 (volatile unsigned long *) 0x0041040
+#define row3 (volatile unsigned long *) 0x0041030
+#define row2 (volatile unsigned long *) 0x0041020
+#define row1 (volatile unsigned long *) 0x0041010
+#define row0 (volatile unsigned long *) 0x0041000
 
+/*
+ * "Checkers testing".
+ */
 #include <stdio.h>
-#include "sys/alt_stdio.h"
-#include "sys/unistd.h"
 
-#define BOARD_SIZE 8
-#define DEBUG 0
+// Set to 1 to put on board
+#define ON_BOARD 1
 
+#if ON_BOARD == 0
 #define RED     "\x1b[31m"
 #define GREEN   "\x1b[32m"
 #define RESET   "\x1b[0m"
+#else
+#define RED     ""
+#define GREEN   ""
+#define RESET   ""
+#include "sys/alt_stdio.h"
+#include "sys/unistd.h"
+#endif
+
+#define BOARD_SIZE 8
+#define DEBUG 0
 
 #define DIR_TL 0
 #define DIR_TR 1
@@ -63,6 +75,8 @@ int checkMove(Board b, int x, int y, int nx, int ny);
 
 int jump(Board b, char piece, int x, int y, int nx, int ny, int dir);
 
+void boardToBuffer(Board b);
+
 static Stack stack;
 
 int main(int argc, char **argv) {
@@ -77,6 +91,7 @@ int main(int argc, char **argv) {
   int y = -1;
   int nx = -1;
   int ny = -1;
+  boardToBuffer(board);
   while (1) {
     int res = 0;
     while (!res) {
@@ -94,9 +109,52 @@ int main(int argc, char **argv) {
       getchar();
       res = movePiece(board, x, y, nx, ny);
     }
+    boardToBuffer(board);
     printBoard(board);
+
   }
   return 0;
+}
+
+void boardToBuffer(Board b) {
+	/*
+	printf("%x \n", b[0]);
+	*row8 = b[0];
+	printf("%x \n", b[1]);
+	*row7 = b[1];
+	printf("%x \n", b[2]);
+	*row6 = b[2];
+	printf("%x \n", b[3]);
+	*row5 = b[3];
+	printf("%x \n", b[4]);
+	*row4 = 808464432;
+	printf("%x \n", b[5]);
+	*row3 = b[5];
+	printf("%x \n", b[6]);
+	*row2 = b[6];
+	printf("%x \n", b[7]);
+	*row1 = 5;
+	*/
+	//*row8 &= 0b00000000000000000000000000000000;
+	//*row8 |= 0b00110000001100000011000000110000;
+	*row7 = 0b00110000001100000011000000110000;
+	*row6 = 0b00110000001100000011000000110000;
+	*row5 = 2;
+	*row4 = 0b1000000010000000100000001;
+	*row3 = 2;
+	*row2 = 0b00010000000100000001000000010000;
+	*row1 = 9;
+	*row0 = 0b1000000010000000100000001;
+	printf("%x \n", *row7);
+	printf("%x \n", *row6);
+	printf("%x \n", *row5);
+	printf("%x \n", *row4);
+	printf("%x \n", *row3);
+	printf("%x \n", *row2);
+	printf("%x \n", *row1);
+	printf("%x \n", *row0);
+	*sendData = 1;
+	*sendData = 0;
 }
 
 void printBoard(Board b) {
@@ -320,4 +378,6 @@ Point popStack(Stack *s) {
   (s->index)--;
   return s->points[s->index];
 }
+
+
 
