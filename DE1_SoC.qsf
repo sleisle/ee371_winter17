@@ -379,7 +379,7 @@ set_location_assignment PIN_D11 -to VGA_VS
 #============================================================
 
 
-set_global_assignment -name LAST_QUARTUS_VERSION 14.0
+set_global_assignment -name LAST_QUARTUS_VERSION 16.0.0
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
@@ -967,8 +967,9 @@ set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_WE_N
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_RESET_N
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_P
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_N
-set_global_assignment -name VERILOG_FILE "cpu-lab4/nios_system_checkersv3/synthesis/nios_system_checkersv3.v"
-set_global_assignment -name QIP_FILE "cpu-lab4/nios_system_checkersv3/synthesis/nios_system_checkersv3.qip"
+set_global_assignment -name VERILOG_FILE "cpu-lab4/nios_system_checkersv4/synthesis/nios_system_checkersv4.v"
+set_global_assignment -name QIP_FILE "cpu-lab4/nios_system_checkersv4/synthesis/nios_system_checkersv4.qip"
+set_global_assignment -name VERILOG_FILE comms.v
 set_global_assignment -name SYSTEMVERILOG_FILE video_driver.sv
 set_global_assignment -name VERILOG_FILE altera_up_avalon_video_vga_timing.v
 set_global_assignment -name SDC_FILE DE1_SoC.sdc

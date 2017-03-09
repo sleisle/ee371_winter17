@@ -4,7 +4,7 @@ module board (boardBuffer, x, y, r, g, b);
 	input wire [8:0] y;
 	output wire [7:0] r, g, b;
 	reg [23:0] color;
-	wire [4:0] xBoard, yBoard;
+	wire [4:0] xBoard, yBoard, xBoardPre, yBoardPre;
 	wire drawWhite;
 	wire [31:0] bufferStartPoint;
 	wire [31:0] xAdjusted, yAdjusted;
@@ -21,9 +21,12 @@ module board (boardBuffer, x, y, r, g, b);
 	assign xAdjusted = (x) % 60;
 	assign yAdjusted = y % 60;
 	//assign xBoard = ((x) / 60) - 1;
-	assign xBoard = ((x) / 60);
-	assign yBoard = y / 60;
+	assign xBoardPre = (x / 60);
+	assign yBoardPre = y / 60;
 	assign drawWhite = ((xBoard % 2) ^ (yBoard % 2));
+	
+	assign xBoard = {xBoardPre[4:1], ~xBoardPre[0]};
+	assign yBoard = yBoardPre;
 	
 	// Set bufferStartPoint = to start index of piece on board based on x and y
 	//assign bufferStartPoint = 4 * (xBoard + 8 * yBoard);
@@ -42,10 +45,10 @@ module board (boardBuffer, x, y, r, g, b);
 //
 //
 					if (boardBuffer[bufferStartPoint + 1]) begin // Piece belongs to red
-						color <= GREEN;
+						color <= RED;
 					end
 					else if (~boardBuffer[bufferStartPoint + 1]) begin
-						color <= RED; // Piece belongs to green
+						color <= GREEN; // Piece belongs to green
 					end
 					else begin
 						if (drawWhite) begin

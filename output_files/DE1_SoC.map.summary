@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Wed Mar 08 01:35:04 2017
-Quartus II 64-Bit Version : 14.0.0 Build 200 06/17/2014 SJ Web Edition
+Analysis & Synthesis Status : Successful - Wed Mar 08 17:28:41 2017
+Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Standard Edition
 Revision Name : DE1_SoC
 Top-level Entity Name : lab5TopLevel
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 1230
+Total registers : 2414
 Total pins : 128
 Total virtual pins : 0
 Total block memory bits : 1,059,840
