@@ -9,7 +9,7 @@ module board (boardBuffer, x, y, r, g, b);
 	wire [31:0] bufferStartPoint;
 	wire [31:0] xAdjusted, yAdjusted;
 	
-	parameter WHITE = ~(24'b0), BLACK = 24'b0, RED = {8'd255, 16'd0}, GREEN = {8'd0, 8'd255, 8'd0};
+	parameter WHITE = ~(24'b0), BLACK = 24'b0, RED = {8'd255, 16'd0}, GREEN = {8'd0, 8'd255, 8'd0}, YELLOW = {8'd255, 8'd255, 8'd0};
 	parameter GREY = {8'd169, 8'd169, 8'd169};
 //	integer X_OFFSET = 100;
 	integer RADIUS = 25;
@@ -38,22 +38,43 @@ module board (boardBuffer, x, y, r, g, b);
 			if (boardBuffer[bufferStartPoint]) begin // There is a piece there
 						
 				if ((RADIUS * RADIUS) > ((yAdjusted * yAdjusted) + (xAdjusted * xAdjusted))) begin
-
-					if (boardBuffer[bufferStartPoint + 1]) begin // Piece belongs to red
-						color <= RED;
-					end
-					else if (~boardBuffer[bufferStartPoint + 1]) begin
-						color <= GREEN; // Piece belongs to green
+				
+					if (boardBuffer[bufferStartPoint + 2]) begin // Piece is a king
+					
+						if (boardBuffer[bufferStartPoint + 1]) begin // Piece belongs to red
+							color <= YELLOW;
+						end
+						else if (~boardBuffer[bufferStartPoint + 1]) begin
+							color <= YELLOW; // Piece belongs to green
+						end
+						
+						else begin
+							if (drawWhite) begin
+								color <= WHITE;
+							end
+							else begin
+								color <= BLACK;
+							end
+						end
 					end
 					else begin
-						if (drawWhite) begin
-							color <= WHITE;
+
+						if (boardBuffer[bufferStartPoint + 1]) begin // Piece belongs to red
+							color <= RED;
+						end
+						else if (~boardBuffer[bufferStartPoint + 1]) begin
+							color <= GREEN; // Piece belongs to green
 						end
 						else begin
-							color <= BLACK;
+							if (drawWhite) begin
+								color <= WHITE;
+							end
+							else begin
+								color <= BLACK;
+							end
 						end
-					end
 					
+					end
 					
 				end
 				else begin
