@@ -13,8 +13,12 @@ add wave -noupdate /boardTestBench/dut/drawWhite
 add wave -noupdate -radix unsigned /boardTestBench/dut/bufferStartPoint
 add wave -noupdate -radix unsigned /boardTestBench/dut/xAdjusted
 add wave -noupdate -radix unsigned /boardTestBench/dut/yAdjusted
+add wave -noupdate -expand -group Checks -radix decimal /boardTestBench/dut/RADIUS2
+add wave -noupdate -expand -group Checks -radix decimal /boardTestBench/dut/xAdjusted2
+add wave -noupdate -expand -group Checks -radix decimal /boardTestBench/dut/yAdjusted2
+add wave -noupdate -expand -group Checks -radix decimal /boardTestBench/dut/radCheck
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {0 ps} 0}
+WaveRestoreCursors {{Cursor 1} {1 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 83

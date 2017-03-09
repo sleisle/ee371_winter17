@@ -1,5 +1,5 @@
 EDA Netlist Writer report for DE1_SoC
-Tue Mar 07 15:13:43 2017
+Wed Mar 08 13:36:53 2017
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Tue Mar 07 15:13:43 2017 ;
+; EDA Netlist Writer Status ; Successful - Wed Mar 08 13:36:53 2017 ;
 ; Revision Name             ; DE1_SoC                               ;
 ; Top-level Entity Name     ; lab5TopLevel                          ;
 ; Family                    ; Cyclone V                             ;
@@ -82,12 +82,12 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
-    Info: Processing started: Tue Mar 07 15:13:42 2017
+    Info: Processing started: Wed Mar 08 13:36:51 2017
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off DE1_SoC -c DE1_SoC
 Info (204019): Generated file DE1_SoC.svo in folder "C:/Users/sleisle/Desktop/ee371_winter17/simulation/modelsim/" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 848 megabytes
-    Info: Processing ended: Tue Mar 07 15:13:44 2017
+    Info: Peak virtual memory: 852 megabytes
+    Info: Processing ended: Wed Mar 08 13:36:53 2017
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 

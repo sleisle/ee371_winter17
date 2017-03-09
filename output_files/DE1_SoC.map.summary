@@ -1,27 +1,14 @@
-<<<<<<< HEAD
-Analysis & Synthesis Status : Successful - Mon Mar 06 21:07:33 2017
-Quartus II 64-Bit Version : 14.0.0 Build 200 06/17/2014 SJ Web Edition
-=======
-Analysis & Synthesis Status : Successful - Tue Mar 07 15:12:41 2017
+Analysis & Synthesis Status : Successful - Wed Mar 08 13:35:44 2017
 Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Standard Edition
->>>>>>> ed6b2a3bda83f4a927b5fecd2b6453b603e369ec
 Revision Name : DE1_SoC
 Top-level Entity Name : lab5TopLevel
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-<<<<<<< HEAD
-Total registers : 2128
-Total pins : 128
-Total virtual pins : 0
-Total block memory bits : 142,336
-Total DSP Blocks : 4
-=======
-Total registers : 162
+Total registers : 179
 Total pins : 128
 Total virtual pins : 0
 Total block memory bits : 0
-Total DSP Blocks : 0
->>>>>>> ed6b2a3bda83f4a927b5fecd2b6453b603e369ec
+Total DSP Blocks : 3
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
 Total HSSI TX PCSs : 0

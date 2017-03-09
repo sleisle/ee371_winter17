@@ -17,7 +17,7 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	
 	wire [255:0] receiveBuffer, testBuffer;
 	reg [255:0] sendBuffer;
-	assign testBuffer = 256'b0000001100000011000000110000001100110000001100000011000000110000000000110000001100000011000000110000000000000000000000000000000000000000000000000000000000000000000100000001000000010000000100000000000100000001000000010000000100010000000100000001000000010000;
+	assign testBuffer = 256'h0303030330303030030303030000000000000000101010100101010110101010;
 
 	// Clock Divider
 	wire clk, rst;
@@ -28,13 +28,26 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	
 	assign rst = ~KEY[0];
 	
-	assign LEDR[0] = readyForSend;o0
+	assign LEDR[0] = readyForSend;
 	assign LEDR[1] = readyForReceive;
 	assign LEDR[2] = startTransfer;
+	assign LEDR[5] = turnOnIfCLKDetect;
 	assign LEDR[6] = dataIn;
 	assign LEDR[7] = dataOut;
 	assign LEDR[8] = clkOut;
 	assign LEDR[9] = clkIn;
+	
+	reg turnOnIfCLKDetect;
+	always @(posedge clkIn or posedge rst) begin:testApp
+	
+		if (rst) begin
+			turnOnIfCLKDetect = 1'b0;
+		end
+		else begin
+			turnOnIfCLKDetect = 1'b1;
+		end
+	
+	end
 	
 //	// Control Lines
 	wire clkOut, clkIn, dataOut, dataIn, readyForSend, readyForReceive, turnStartOff;
@@ -63,8 +76,8 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	assign clkIn = GPIO_0[5]; //AK18
 	assign GPIO_0[0] = dataOut; //AC18
 	assign dataIn = GPIO_0[4]; //AK16
-	assign GPIO_0[2] = readyForReceive & SW[3]; //AD17
-	assign readyForSend = GPIO_0[6]; //AK19
+	assign GPIO_0[6] = readyForReceive & SW[3]; //AD17
+	assign readyForSend = GPIO_0[2]; //AK19
 		
 //	// rst needs to reset the board state in C
 //    nios_system_checkers u0 (
@@ -104,12 +117,12 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	board boardGen (testBuffer, x, y, r, g, b);
 	
 	// Hex displays
-	seg7 h0 (receiveBuffer[255:253], HEX0);
-	seg7 h1 (receiveBuffer[252:250], HEX1);
-	seg7 h2 (receiveBuffer[249:247], HEX2);
-	seg7 h3 (receiveBuffer[246:244], HEX3);
-	seg7 h4 (receiveBuffer[243:241], HEX4);
-	seg7 h5 (sendBuffer[255:253], HEX5);
+	seg7 h0 (receiveBuffer[3:0], HEX0);
+	seg7 h1 (receiveBuffer[7:4], HEX1);
+	seg7 h2 (receiveBuffer[11:8], HEX2);
+	seg7 h3 (receiveBuffer[15:12], HEX3);
+	seg7 h4 (receiveBuffer[19:16], HEX4);
+	seg7 h5 (receiveBuffer[23:20], HEX5);
 	
 	// Set sendData
 	integer i;

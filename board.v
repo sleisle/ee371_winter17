@@ -7,27 +7,33 @@ module board (boardBuffer, x, y, r, g, b);
 	wire [2:0] xBoard, yBoard;
 	wire drawWhite;
 	wire [7:0] bufferStartPoint;
-	wire [5:0] xAdjusted, yAdjusted;
-	wire [31:0] RADIUS2, xAdjusted2, yAdjusted2, radCheck;
+	reg [5:0] xAdjusted, yAdjusted;
+	wire [5:0] xPre, yPre;
 	
 	parameter WHITE = ~(24'b0), BLACK = 24'b0, RED = {8'd255, 16'd0}, GREEN = {8'd0, 8'd255, 8'd0};
 	
 //	integer X_OFFSET = 100;
 	integer RADIUS = 25;
-	assign RADIUS2 = RADIUS * RADIUS;
-	assign xAdjusted2 = xAdjusted * xAdjusted;
-	assign yAdjusted2 = yAdjusted * yAdjusted;
-	assign radCheck = xAdjusted2 + yAdjusted2;
 	
 	assign r = color[23:16];
 	assign g = color[15:8];
 	assign b = color[7:0];
 	
-	assign xAdjusted = ((x) % 60) - 29;
-	assign yAdjusted = (y % 60) - 29;
+	assign xPre = (x % 60) - 29;
+	assign yPre = (y % 60) - 29;
 	assign xBoard = ((x) / 60) - 1;
 	assign yBoard = y / 60;
 	assign drawWhite = ((xBoard % 2) ^ (yBoard % 2));
+	
+//	always @(*) begin: changeAdj
+//		xAdjusted = (xPre < 0) ? xPre : -xPre;
+//		yAdjusted = (yPre < 0) ? yPre : -yPre;
+//	end
+	
+	always @(*) begin: changeAdj
+		xAdjusted = (xPre < 0) ? xPre : -xPre;
+		yAdjusted = (yPre < 0) ? yPre : -yPre;
+	end
 	
 	// Set bufferStartPoint = to start index of piece on board based on x and y
 	assign bufferStartPoint = 4 * (xBoard + 8 * yBoard);
@@ -41,7 +47,7 @@ module board (boardBuffer, x, y, r, g, b);
 //			
 //			// Uncomment this if and else pair after testing the piece detection
 //			
-				if ((RADIUS * RADIUS) > ((xAdjusted * xAdjusted) + (yAdjusted * yAdjusted))) begin
+				if ((RADIUS * RADIUS) > ((xAdjusted * xAdjusted) + (yAdjusted * (yAdjusted)))) begin
 //
 //
 					if (boardBuffer[bufferStartPoint + 1]) begin // Piece belongs to red

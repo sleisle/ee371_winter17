@@ -3,101 +3,101 @@ K3
 z0
 13
 cModel Technology
-Z0 dD:\Schoolwork\Winter_17\EE371\lab5\ee371_winter17
+dD:\Schoolwork\Winter_17\EE371\lab5\ee371_winter17
 vboard
+Z0 !s110 1489004541
 !i10b 1
-!s100 4dNJfEWG>c=hbiXUBHHQ51
-I1G6]oP6V;O?M_YaEUmE=z2
-V]GDGPJN1R5E[6mDBG9laO1
-R0
-Z1 w1488863133
-Z2 8./board.v
-Z3 F./board.v
+!s100 ?c?;T[On_[eG<c8Ej7^o32
+I1<3X;4Y]FHLg8d<^dY@?J1
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Users/sleisle/Desktop/ee371_winter17
+Z3 w1489004537
+Z4 8./board.v
+Z5 F./board.v
 L0 1
-Z4 OV;L;10.1e;51
+Z6 OV;L;10.4d;61
 r1
 !s85 0
 31
-Z5 !s108 1488863135.538000
-Z6 !s107 ./board.v|
-Z7 !s90 -reportprogress|300|./board.v|
-!s101 -O0
-o-O0
+Z7 !s108 1489004541.000000
+Z8 !s107 ./board.v|
+Z9 !s90 -reportprogress|300|./board.v|
+!i113 1
 vboardTestBench
-!i10b 1
-!s100 iS0DPbOg>@h`j0RcQ_mLC2
-I`71W=B@AMfXl4R>E:ml8;2
-VgSMM:;LNPKz`h8JNGNc_h0
 R0
+!i10b 1
+!s100 f=o8zkToG3]biVIKbik8K3
+IMmoXZjmC;_L;BNoZk33J80
 R1
 R2
 R3
-L0 69
 R4
+R5
+L0 90
+R6
 r1
 !s85 0
 31
-R5
-R6
 R7
-!s101 -O0
-o-O0
+R8
+R9
+!i113 1
 nboard@test@bench
 vcomms
-Z8 !s110 1488926267
+Z10 !s110 1488998461
 !i10b 1
-!s100 Ym]?FAkM6YTcVfLzl9;902
-I9e=GS9c0H`MIHbE0McoRz3
-Z9 VDg1SIo80bB@j0V0VzS_@n1
-Z10 dC:/Users/sleisle/Desktop/ee371_winter17
-Z11 w1488926089
+!s100 Q=gV7]LYE^Ek75?ijJiKS3
+IDJjo^NdT[7=L_KTHFc^dX2
+R1
+R2
+Z11 w1488997856
 Z12 8./comms.v
 Z13 F./comms.v
 L0 1
-Z14 OV;L;10.4d;61
+R6
 r1
 !s85 0
 31
-Z15 !s108 1488926267.000000
-Z16 !s107 ./comms.v|
-Z17 !s90 -reportprogress|300|./comms.v|
+Z14 !s108 1488998461.000000
+Z15 !s107 ./comms.v|
+Z16 !s90 -reportprogress|300|./comms.v|
 !i113 1
 vcommsTestBench
-R8
+R10
 !i10b 1
 !s100 _A;>6h?XV;Icd1Pm2:I?]0
 IT7gT`E9Y9YoOF>`;MKW8_1
-R9
-R10
+R1
+R2
 R11
 R12
 R13
 L0 84
-R14
+R6
 r1
 !s85 0
 31
+R14
 R15
 R16
-R17
 !i113 1
 ncomms@test@bench
 vDFlipFlop
-R8
+R10
 !i10b 1
 !s100 H7D=[<?17mehIIV:naaJL1
 IT]X=]IS:8YoI_Fzg82=GG3
-R9
-R10
-w1488916490
+R1
+R2
+R11
 8./DFlipFlop.v
 F./DFlipFlop.v
 L0 2
-R14
+R6
 r1
 !s85 0
 31
-R15
+R14
 !s107 ./DFlipFlop.v|
 !s90 -reportprogress|300|./DFlipFlop.v|
 !i113 1
