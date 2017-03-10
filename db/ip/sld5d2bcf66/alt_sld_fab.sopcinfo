@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="alt_sld_fab" kind="alt_sld_fab" version="1.0" fabric="QSYS">
  <!-- Format version 16.0 211 (Future versions may contain additional information.) -->
- <!-- 2017.03.09.15:27:35 -->
+ <!-- 2017.03.09.20:08:13 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_DEVICE_FAMILY">
   <type>java.lang.String</type>
@@ -56,7 +56,7 @@
 the requested settings for a module instance. -->
   <parameter name="DESIGN_HASH">
    <type>java.lang.String</type>
-   <value>140d7ed90f0414882029</value>
+   <value>14d0958a1f9398b4b381</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -104,7 +104,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="EP_INFOS">
    <type>java.lang.String</type>
-   <value>{hpath {nios_system_checkersv4:u0|nios_system_checkersv4_jtag_uart_0:jtag_uart_0|alt_jtag_atlantic:nios_system_checkersv4_jtag_uart_0_alt_jtag_atlantic|altera_sld_agent_endpoint:inst|altera_fabric_endpoint:ep} } {hpath {nios_system_checkersv4:u0|nios_system_checkersv4_nios2_qsys_0:nios2_qsys_0|nios_system_checkersv4_nios2_qsys_0_nios2_oci:the_nios_system_checkersv4_nios2_qsys_0_nios2_oci|nios_system_checkersv4_nios2_qsys_0_jtag_debug_module_wrapper:the_nios_system_checkersv4_nios2_qsys_0_jtag_debug_module_wrapper|sld_virtual_jtag_basic:nios_system_checkersv4_nios2_qsys_0_jtag_debug_module_phy|sld_virtual_jtag_impl:sld_virtual_jtag_impl_inst} } </value>
+   <value>{hpath {nios_system_checkersv3:u0|nios_system_checkersv3_jtag_uart_0:jtag_uart_0|alt_jtag_atlantic:nios_system_checkersv3_jtag_uart_0_alt_jtag_atlantic|altera_sld_agent_endpoint:inst|altera_fabric_endpoint:ep} } {hpath {nios_system_checkersv3:u0|nios_system_checkersv3_nios2_qsys_0:nios2_qsys_0|nios_system_checkersv3_nios2_qsys_0_nios2_oci:the_nios_system_checkersv3_nios2_qsys_0_nios2_oci|nios_system_checkersv3_nios2_qsys_0_jtag_debug_module_wrapper:the_nios_system_checkersv3_nios2_qsys_0_jtag_debug_module_wrapper|sld_virtual_jtag_basic:nios_system_checkersv3_nios2_qsys_0_jtag_debug_module_phy|sld_virtual_jtag_impl:sld_virtual_jtag_impl_inst} } </value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -2173,7 +2173,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="DESIGN_HASH">
    <type>java.lang.String</type>
-   <value>140d7ed90f0414882029</value>
+   <value>14d0958a1f9398b4b381</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>

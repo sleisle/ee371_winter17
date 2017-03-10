@@ -8,8 +8,7 @@
    <inputclock preferredWidth="141" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Project,Library,Library/Processors and Peripherals/Peripherals,Library/Interface Protocols/PCI Express,Library/Processors and Peripherals,Library/Interface Protocols/PCI Express/QSYS Example Designs,Library/Interface Protocols" />
+ <library expandedCategories="Project,Library" />
  <window width="974" height="1167" x="953" y="0" />
  <hdlexample language="VERILOG" />
 </preferences>
