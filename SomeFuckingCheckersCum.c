@@ -32,14 +32,14 @@ RawBlameHistory
 #define row1 (volatile unsigned int *) 0x0041020
 #define row0 (volatile unsigned int *) 0x0041000
 
-#define rowRead7 (volatile unsigned int *) 0x0
-#define rowRead6 (volatile unsigned int *) 0x0
-#define rowRead5 (volatile unsigned int *) 0x0
-#define rowRead4 (volatile unsigned int *) 0x0
-#define rowRead3 (volatile unsigned int *) 0x0
-#define rowRead2 (volatile unsigned int *) 0x0
-#define rowRead1 (volatile unsigned int *) 0x0
-#define rowRead0 (volatile unsigned int *) 0x0
+#define rowRead7 (volatile unsigned int *) 0x0041170
+#define rowRead6 (volatile unsigned int *) 0x0041160
+#define rowRead5 (volatile unsigned int *) 0x0041150
+#define rowRead4 (volatile unsigned int *) 0x0041140
+#define rowRead3 (volatile unsigned int *) 0x0041130
+#define rowRead2 (volatile unsigned int *) 0x0041120
+#define rowRead1 (volatile unsigned int *) 0x0041110
+#define rowRead0 (volatile unsigned int *) 0x0041100
 
 /*
  * "Checkers testing".
