@@ -11,7 +11,6 @@ module board (boardBuffer, x, y, r, g, b);
 	
 	parameter WHITE = ~(24'b0), BLACK = 24'b0, RED = {8'd255, 16'd0}, GREEN = {8'd0, 8'd255, 8'd0}, YELLOW = {8'd255, 8'd255, 8'd0};
 	parameter GREY = {8'd169, 8'd169, 8'd169};
-//	integer X_OFFSET = 100;
 	integer RADIUS = 25;
 	
 	assign r = color[23:16];
@@ -24,7 +23,7 @@ module board (boardBuffer, x, y, r, g, b);
 	assign yBoardPre = y / 60;
 	assign drawWhite = ((xBoard % 2) ^ (yBoard % 2));
 	
-	assign xBoard = {xBoardPre[4:1], ~xBoardPre[0]};
+	assign xBoard = xBoardPre;//{xBoardPre[4:1], ~xBoardPre[0]};
 	assign yBoard = yBoardPre;
 	
 	// Set bufferStartPoint = to start index of piece on board based on x and y
@@ -41,20 +40,14 @@ module board (boardBuffer, x, y, r, g, b);
 				
 					if (boardBuffer[bufferStartPoint + 2]) begin // Piece is a king
 					
-						if (boardBuffer[bufferStartPoint + 1]) begin // Piece belongs to red
+						if ((xAdjusted * xAdjusted < 25) || (yAdjusted * yAdjusted < 25)) begin
 							color <= YELLOW;
 						end
-						else if (~boardBuffer[bufferStartPoint + 1]) begin
-							color <= YELLOW; // Piece belongs to green
+						else if (boardBuffer[bufferStartPoint + 1]) begin // Piece belongs to red
+							color <= RED;
 						end
-						
-						else begin
-							if (drawWhite) begin
-								color <= WHITE;
-							end
-							else begin
-								color <= BLACK;
-							end
+						else if (~boardBuffer[bufferStartPoint + 1]) begin
+							color <= GREEN; // Piece belongs to green
 						end
 					end
 					else begin

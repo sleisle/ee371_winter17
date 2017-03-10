@@ -1,5 +1,6 @@
 m255
 K3
+z0
 13
 cModel Technology
 Z0 dC:\Users\Keegan Griffee\Desktop\ee371_winter17-lab5(2)\ee371_winter17-lab5
@@ -7,97 +8,156 @@ vboard
 !i10b 1
 !s100 9]F>K6o0cF4EBUazn6=EO3
 I:fcUTMh2W6?]0I58M?YUh3
-Z1 V]GDGPJN1R5E[6mDBG9laO1
-Z2 dC:\Users\Keegan Griffee\Desktop\ee371_winter17-lab5(2)\ee371_winter17-lab5
-Z3 w1488943373
-Z4 8./board.v
-Z5 F./board.v
+V]GDGPJN1R5E[6mDBG9laO1
+R0
+Z1 w1488943373
+Z2 8./board.v
+Z3 F./board.v
 L0 1
-Z6 OV;L;10.1e;51
+Z4 OV;L;10.1e;51
 r1
 !s85 0
 31
-Z7 !s108 1488943605.828000
-Z8 !s107 ./board.v|
-Z9 !s90 -reportprogress|300|./board.v|
+Z5 !s108 1488943605.828000
+Z6 !s107 ./board.v|
+Z7 !s90 -reportprogress|300|./board.v|
 !s101 -O0
 o-O0
 vboardTestBench
 !i10b 1
 !s100 ]9DJZ5FJ]Ej2PWhU?MmF12
 InzHDR[@iEJY7oTM=^6>G70
-Z10 VgSMM:;LNPKz`h8JNGNc_h0
+VgSMM:;LNPKz`h8JNGNc_h0
+R0
+R1
 R2
 R3
-R4
-R5
 L0 87
-R6
+R4
 r1
 !s85 0
 31
+R5
+R6
 R7
-R8
-R9
 !s101 -O0
 o-O0
-Z11 nboard@test@bench
-vlab3TopLevel
-Z12 IOfZL?Ocg_NYZz?WBA75n[0
-Z13 VZm]oTGM>S`mmfE>jbO^mE1
-R2
-Z14 w1488928868
-Z15 8./lab3TopLevel.v
-Z16 F./lab3TopLevel.v
+nboard@test@bench
+vcomms
+Z8 !s110 1489105718
+!i10b 1
+!s100 Ae56;ZVhiWB>ET@EAM3nE0
+IX7DYf3CZ>0K7PfVD7[4n^1
+Z9 VDg1SIo80bB@j0V0VzS_@n1
+Z10 dC:/Users/acf8/Desktop/ee371_winter17
+Z11 w1489105715
+Z12 8./comms.v
+Z13 F./comms.v
 L0 1
-R6
+Z14 OV;L;10.4d;61
+r1
+!s85 0
+31
+Z15 !s108 1489105718.000000
+Z16 !s107 ./comms.v|
+Z17 !s90 -reportprogress|300|./comms.v|
+!i113 1
+vcommsTestBench
+R8
+!i10b 1
+!s100 e9idPSLlc_XWjgRWN2BkZ2
+IdKN4?70Fh`i:RX6=AdGA11
+R9
+R10
+R11
+R12
+R13
+L0 84
+R14
+r1
+!s85 0
+31
+R15
+R16
+R17
+!i113 1
+ncomms@test@bench
+vDFlipFlop
+R8
+!i10b 1
+!s100 H7D=[<?17mehIIV:naaJL1
+IT]X=]IS:8YoI_Fzg82=GG3
+R9
+R10
+w1489101434
+8./DFlipFlop.v
+F./DFlipFlop.v
+L0 2
+R14
+r1
+!s85 0
+31
+R15
+!s107 ./DFlipFlop.v|
+!s90 -reportprogress|300|./DFlipFlop.v|
+!i113 1
+n@d@flip@flop
+vlab3TopLevel
+IOfZL?Ocg_NYZz?WBA75n[0
+VZm]oTGM>S`mmfE>jbO^mE1
+R0
+Z18 w1488928868
+8./lab3TopLevel.v
+F./lab3TopLevel.v
+L0 1
+R4
 r1
 31
 o-O0
-Z17 nlab3@top@level
-Z18 !s100 G_Pb?<9T4N<jQQa5AIUV^0
-Z19 !s108 1488942174.944000
-Z20 !s107 ./lab3TopLevel.v|
-Z21 !s90 -reportprogress|300|./lab3TopLevel.v|
+nlab3@top@level
+!s100 G_Pb?<9T4N<jQQa5AIUV^0
+!s108 1488942174.944000
+!s107 ./lab3TopLevel.v|
+!s90 -reportprogress|300|./lab3TopLevel.v|
 !i10b 1
 !s85 0
 !s101 -O0
 vlab3TopLevelTest
-Z22 I8gHz:N_c`F;1e`;UPJ6m90
-Z23 Vj=K9iC3Cd7YbA7Bj<<]zR0
-R2
-R14
-Z24 8./lab3TopLevelTest.v
-Z25 F./lab3TopLevelTest.v
+I8gHz:N_c`F;1e`;UPJ6m90
+Vj=K9iC3Cd7YbA7Bj<<]zR0
+R0
+R18
+8./lab3TopLevelTest.v
+F./lab3TopLevelTest.v
 L0 1
-R6
+R4
 r1
 31
 o-O0
-Z26 nlab3@top@level@test
-Z27 !s100 HRJV6h0eCC5DnbShh]jC@2
-Z28 !s108 1488942174.995000
-Z29 !s107 ./lab3TopLevelTest.v|
-Z30 !s90 -reportprogress|300|./lab3TopLevelTest.v|
+nlab3@top@level@test
+!s100 HRJV6h0eCC5DnbShh]jC@2
+!s108 1488942174.995000
+!s107 ./lab3TopLevelTest.v|
+!s90 -reportprogress|300|./lab3TopLevelTest.v|
 !i10b 1
 !s85 0
 !s101 -O0
 vscanner
-Z31 IPe6jhZX@M?ma4:9AUUkn_3
-Z32 VE;RV`VS^2l@NAETzzGc1c3
-R2
-R14
-Z33 8./scanner.v
-Z34 F./scanner.v
+IPe6jhZX@M?ma4:9AUUkn_3
+VE;RV`VS^2l@NAETzzGc1c3
+R0
+R18
+8./scanner.v
+F./scanner.v
 L0 1
-R6
+R4
 r1
 31
 o-O0
-Z35 !s100 GL_6H0=OKg0omeAE[[gS?3
-Z36 !s108 1488942175.052000
-Z37 !s107 ./scanner.v|
-Z38 !s90 -reportprogress|300|./scanner.v|
+!s100 GL_6H0=OKg0omeAE[[gS?3
+!s108 1488942175.052000
+!s107 ./scanner.v|
+!s90 -reportprogress|300|./scanner.v|
 !i10b 1
 !s85 0
 !s101 -O0

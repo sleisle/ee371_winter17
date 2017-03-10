@@ -308,6 +308,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "SW[9]",
+					"strict" : false
+				},
+				{
 					"name" : "SW[2]",
 					"strict" : false
 				},

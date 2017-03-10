@@ -16,7 +16,7 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForRe
 	assign readyForReceive = 1'b1;
 	assign clkOutWire = cdiv[0];
 	
-	// Transfer if startTransfer | dataBitCounter != 255
+	// Transfer if startTransfer | dataBitCounter ! = 255
 		
 	// Sending Data
 	always @(posedge startTransfer or posedge dataBitCounter[8] or posedge rst) begin: trans
@@ -64,14 +64,14 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForRe
 			dataInCounter <= 8'b0;
 		end
 		else begin
-			//if (readyForReceive) begin
+			if (readyForReceive) begin
 				dataInCounter <= dataInCounter + 1'b1;
 				receiveBuffer[dataInCounter] <= dataIn;
-//			end
-//			else begin
-//				dataInCounter <= 8'b0;
-//				receiveBuffer <= sendBuffer;
-//			end
+			end
+			else begin
+				dataInCounter <= 8'd0;
+				receiveBuffer <= sendBuffer;
+			end
 		end
 	end
 	
@@ -135,6 +135,15 @@ module commsTestBench();
 			end
 		end
 		
+		startTransfer <= 1'b1;			@(posedge clk);
+												@(posedge clk);
+		startTransfer <= 1'b0;			@(posedge clk);
+		
+		for (i = 0; i < 2500; i = i + 1) begin
+			@(posedge clk);
+		end
+		
+		sendBuffer <= 256'h0303030330303030030303030000000000000000101010100101010110101010;
 		startTransfer <= 1'b1;			@(posedge clk);
 												@(posedge clk);
 		startTransfer <= 1'b0;			@(posedge clk);
