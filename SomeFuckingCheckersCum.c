@@ -2,8 +2,8 @@
  * "Checkers testing".
  */
 
-#define sendData (volatile char *) 0x00411a0
-#define newData (volatile char *) 0x0041180
+#define sendData (volatile char *) 0x0041120
+#define newData (volatile char *) 0x0041100
 
 #define row7 (volatile unsigned int *) 0x00410e0
 #define row6 (volatile unsigned int *) 0x00410c0
@@ -14,14 +14,14 @@
 #define row1 (volatile unsigned int *) 0x0041020
 #define row0 (volatile unsigned int *) 0x0041000
 
-#define rowRead7 (volatile unsigned int *) 0x0041170
-#define rowRead6 (volatile unsigned int *) 0x0041160
-#define rowRead5 (volatile unsigned int *) 0x0041150
-#define rowRead4 (volatile unsigned int *) 0x0041140
-#define rowRead3 (volatile unsigned int *) 0x0041130
-#define rowRead2 (volatile unsigned int *) 0x0041120
-#define rowRead1 (volatile unsigned int *) 0x0041110
-#define rowRead0 (volatile unsigned int *) 0x0041100
+//#define rowRead7 (volatile unsigned int *) 0x0041170
+//#define rowRead6 (volatile unsigned int *) 0x0041160
+//#define rowRead5 (volatile unsigned int *) 0x0041150
+//#define rowRead4 (volatile unsigned int *) 0x0041140
+//#define rowRead3 (volatile unsigned int *) 0x0041130
+//#define rowRead2 (volatile unsigned int *) 0x0041120
+//#define rowRead1 (volatile unsigned int *) 0x0041110
+//#define rowRead0 (volatile unsigned int *) 0x0041100
 
 /*
  * "Checkers testing".
@@ -86,16 +86,19 @@ int jump(Board b, char piece, int x, int y, int nx, int ny, int dir);
 
 void boardToBuffer(Board b);
 
+void processBoard(Board b, int *canGo);
+
 static Stack stack;
 
 int main(int argc, char **argv) {
   Board board;
   int canGo = 0;
   initializeBoard(board);
-  setSpot(board, 4, 4, 'r');
+  /*setSpot(board, 4, 4, 'r');
   setSpot(board, 5, 5, 'G');
   setSpot(board, 6, 4, 'r');
   setSpot(board, 5, 1, 'O');
+  */
   printBoard(board);
   int x = -1;
   int y = -1;
@@ -104,6 +107,7 @@ int main(int argc, char **argv) {
   boardToBuffer(board);
   while (1) {
     if (*newData == 1) {
+      printf("NEW DATA\n");
       processBoard(board, &canGo);
     }
     if (canGo) {
@@ -130,33 +134,23 @@ int main(int argc, char **argv) {
   return 0;
 }
 
-processBoard(Board b, int *canGo) {
-  *(unsigned int *)b[0] = *rowRead0;
-  *(unsigned int *)b[1] = *rowRead1;
-  *(unsigned int *)b[2] = *rowRead2;
-  *(unsigned int *)b[3] = *rowRead3;
-  *(unsigned int *)b[4] = *rowRead4;
-  *(unsigned int *)b[5] = *rowRead5;
-  *(unsigned int *)b[6] = *rowRead6;
-  *(unsigned int *)b[7] = *rowRead7;
+void processBoard(Board b, int *canGo) {
+  *(unsigned int *)b[0] = *row0;
+  *(unsigned int *)b[1] = *row1;
+  *(unsigned int *)b[2] = *row2;
+  *(unsigned int *)b[3] = *row3;
+  *(unsigned int *)b[4] = *row4;
+  *(unsigned int *)b[5] = *row5;
+  *(unsigned int *)b[6] = *row6;
+  *(unsigned int *)b[7] = *row7;
   printBoard(b);
   boardToBuffer(b);
   *canGo = 1;
+  //*newData = 0;
 }
 
 
 void boardToBuffer(Board b) {
-	/*int x;
-	for (x = 0; x < BOARD_SIZE / 2; x++) {
-		*(row0 + x) = b[0][x];
-		*(row1 + x) = b[1][x];
-		*(row2 + x) = b[2][x];
-		*(row3 + x) = b[3][x];
-		*(row4 + x) = b[4][x];
-		*(row5 + x) = b[5][x];
-		*(row6 + x) = b[6][x];
-		*(row7 + x) = b[7][x];
-	}*/
 	*(row0) = *(unsigned int *)b[0];
 	*(row1) = *(unsigned int *)b[1];
 	*(row2) = *(unsigned int *)b[2];
@@ -173,8 +167,8 @@ void boardToBuffer(Board b) {
 	printf("%8x \n", *(int*)row5);
 	printf("%8x \n", *(int*)row6);
 	printf("%8x \n", *(int*)row7);
-	*sendData = 1;
-	*sendData = 0;
+	//*sendData = 1;
+	//*sendData = 0;
 }
 
 void printBoard(Board b) {
