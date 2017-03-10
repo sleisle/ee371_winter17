@@ -1,21 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @keegangriffee
- Sign out
- Unwatch 3
-  Star 0
-  Fork 0 sleisle/ee371_winter17
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs
-Branch: keeganvga Find file Copy pathee371_winter17/SomeFuckingCheckers.c
-dd32fa7  23 hours ago
-@sleisle sleisle Create SomeFuckingCheckers.c
-1 contributor
-RawBlameHistory     
-379 lines (340 sloc)  8.27 KB
 /*
  * "Checkers testing".
  */
@@ -422,8 +404,3 @@ Point popStack(Stack *s) {
   (s->index)--;
   return s->points[s->index];
 }
-
-
-
-Contact GitHub API Training Shop Blog About
-© 2017 GitHub, Inc. Terms Privacy Security Status Help
