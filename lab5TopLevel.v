@@ -16,7 +16,7 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	wire [7:0] r, g, b;
 	
 	wire [255:0] receiveBuffer;
-	reg [255:0] testBuffer, latchBuffer;
+	reg [255:0] testBuffer, latchBuffer, latchSend;
 	wire [255:0] sendBuffer;
 		
 	// Clock Divider
@@ -99,16 +99,27 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	
 	// Set sendData
 	
-	always @(posedge ~KEY[2]) begin: latchReceive
+	always @(posedge SW[7]) begin: latchReceive
 		latchBuffer <= receiveBuffer;
 	end
 	
-	always @(*) begin: testBuffffff
-		if (SW[9])
-			testBuffer <= receiveBuffer;
-		else
-			testBuffer <= sendBuffer;
+	always @(posedge SW[6]) begin: fdfd
+		latchSend <= sendBuffer;
+	end
 	
+	always @(*) begin: testBuffffff
+		if (SW[9]) begin
+			if (SW[8])
+				testBuffer <= receiveBuffer;
+			else
+				testBuffer <= latchBuffer;
+		end
+		else begin
+			if (SW[8])
+				testBuffer <= sendBuffer;
+			else
+				testBuffer <= latchSend;
+		end
 	end
 	
 endmodule

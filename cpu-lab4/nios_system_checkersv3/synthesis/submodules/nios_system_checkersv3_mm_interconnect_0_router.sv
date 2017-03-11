@@ -1,4 +1,4 @@
-// (C) 2001-2014 Altera Corporation. All rights reserved.
+// (C) 2001-2016 Altera Corporation. All rights reserved.
 // Your use of Altera Corporation's design tools, logic functions and other 
 // software and tools, and its AMPP partner logic functions, and any output 
 // files any of the foregoing (including device programming or simulation 
@@ -24,9 +24,9 @@
 // agreement for further details.
 
 
-// $Id: //acds/rel/14.0/ip/merlin/altera_merlin_router/altera_merlin_router.sv.terp#1 $
+// $Id: //acds/rel/16.0/ip/merlin/altera_merlin_router/altera_merlin_router.sv.terp#1 $
 // $Revision: #1 $
-// $Date: 2014/02/16 $
+// $Date: 2016/02/08 $
 // $Author: swbranch $
 
 // -------------------------------------------------------
@@ -58,26 +58,24 @@ module nios_system_checkersv3_mm_interconnect_0_router_default_decode
   assign default_destination_id = 
     DEFAULT_DESTID[83 - 80 : 0];
 
-  generate begin : default_decode
-    if (DEFAULT_CHANNEL == -1) begin
+  generate
+    if (DEFAULT_CHANNEL == -1) begin : no_default_channel_assignment
       assign default_src_channel = '0;
     end
-    else begin
+    else begin : default_channel_assignment
       assign default_src_channel = 14'b1 << DEFAULT_CHANNEL;
     end
-  end
   endgenerate
 
-  generate begin : default_decode_rw
-    if (DEFAULT_RD_CHANNEL == -1) begin
+  generate
+    if (DEFAULT_RD_CHANNEL == -1) begin : no_default_rw_channel_assignment
       assign default_wr_channel = '0;
       assign default_rd_channel = '0;
     end
-    else begin
+    else begin : default_rw_channel_assignment
       assign default_wr_channel = 14'b1 << DEFAULT_WR_CHANNEL;
       assign default_rd_channel = 14'b1 << DEFAULT_RD_CHANNEL;
     end
-  end
   endgenerate
 
 endmodule
