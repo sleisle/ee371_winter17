@@ -60,7 +60,7 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForRe
 	// Receiving Data
 	always @(posedge clkIn or posedge rst) begin: receiveData
 		if (rst) begin
-			receiveBuffer <= sendBuffer;
+			receiveBuffer <= 8'b0;
 			dataInCounter <= 8'b00000000;
 		end
 		else begin
