@@ -11,11 +11,11 @@ add wave -noupdate /commsTestBench/dut/clkIn
 add wave -noupdate /commsTestBench/dut/dataOut
 add wave -noupdate /commsTestBench/dut/clkOut
 add wave -noupdate /commsTestBench/dut/dataBitCounter
-add wave -noupdate /commsTestBench/dut/sendBuffer
+add wave -noupdate -radix hexadecimal /commsTestBench/dut/sendBuffer
 add wave -noupdate /commsTestBench/dut/dataInCounter
-add wave -noupdate -expand /commsTestBench/dut/receiveBuffer
+add wave -noupdate -radix hexadecimal -expand /commsTestBench/dut/receiveBuffer
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {30 ps} 0}
+WaveRestoreCursors {{Cursor 1} {29253 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 100
@@ -31,4 +31,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {1 ns}
+WaveRestoreZoom {29124 ps} {30124 ps}

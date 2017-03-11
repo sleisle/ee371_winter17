@@ -44,16 +44,24 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForRe
 		end
 	end
 	
-	always @ (posedge clkOut or posedge rst) begin: sendData // Set data wire if clkOut is going
+	always @(posedge clkOut or posedge rst) begin: sendData // Set data wire if clkOut is going
 		if (rst) begin
 			dataBitCounter <= 9'b000000000;
 		end
 		else begin
 			dataBitCounter <= dataBitCounter + 1'b1;
-			dataOut <= sendBuffer[dataBitCounter[7:0]];
 			if (dataBitCounter[8]) begin
 				dataBitCounter[8] <= 1'b0;
 			end
+		end
+	end
+	
+	always @(posedge rst or negedge clk) begin: setSendData
+		if (rst) begin
+			dataOut <= sendBuffer[0];
+		end
+		else begin
+			dataOut <= sendBuffer[dataBitCounter[7:0]];
 		end
 	end
 	
@@ -61,17 +69,25 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForRe
 	always @(posedge clkIn or posedge rst) begin: receiveData
 		if (rst) begin
 			receiveBuffer <= 8'b0;
-			dataInCounter <= 8'b00000000;
 		end
 		else begin
 			//if (readyForReceive) begin
-				dataInCounter <= dataInCounter + 1'b1;
+				
 				receiveBuffer[dataInCounter] <= dataIn;
 //			end
 //			else begin
 //				dataInCounter <= 8'b0;
 //				receiveBuffer <= sendBuffer;
 //			end
+		end
+	end
+	
+	always @(negedge clkIn or posedge rst) begin: receiveSafe
+		if (rst) begin
+			dataInCounter <= 8'b00000000;
+		end
+		else begin
+			dataInCounter <= dataInCounter + 1'b1;
 		end
 	end
 	
@@ -105,6 +121,8 @@ module commsTestBench();
 	initial begin
 		rst <= 1'b1;						@(posedge clk);
 		rst <= 1'b0;						@(posedge clk);
+		rst <= 1'b1;						@(posedge clk);
+		rst <= 1'b0;						@(posedge clk);
 		sendBuffer <= (256'b1 << 255) + 1'b1;	@(posedge clk);
 												@(posedge clk);
 		startTransfer <= 1'b1;
@@ -118,11 +136,7 @@ module commsTestBench();
 		
 												@(posedge clk);
 												
-		for (i = 0; i < 256; i = i + 1) begin
-			if (i % 2 == 0) begin
-				sendBuffer = ((sendBuffer << 2) + 1'b1);
-			end
-		end
+		sendBuffer <= 256'h3030303003030303303030300000000000000000010101011010101001010101;
 												@(posedge clk);
 		startTransfer <= 1'b1;			@(posedge clk);
 												@(posedge clk);
@@ -135,6 +149,8 @@ module commsTestBench();
 				rst <= 1'b0; @(posedge clk);
 			end
 		end
+		
+		sendBuffer <= 256'h3030303003030303303030300000000000000000010101011010101005050505;
 		
 		startTransfer <= 1'b1;			@(posedge clk);
 												@(posedge clk);

@@ -35,6 +35,9 @@ module nios_system_checkersv3_onchip_memory2_0 (
                                                )
 ;
 
+  parameter INIT_FILE = "nios_system_checkersv3_onchip_memory2_0.hex";
+
+
   output  [ 31: 0] readdata;
   input   [ 14: 0] address;
   input   [  3: 0] byteenable;
@@ -63,7 +66,7 @@ module nios_system_checkersv3_onchip_memory2_0 (
     );
 
   defparam the_altsyncram.byte_size = 8,
-           the_altsyncram.init_file = "UNUSED",
+           the_altsyncram.init_file = INIT_FILE,
            the_altsyncram.lpm_type = "altsyncram",
            the_altsyncram.maximum_depth = 32768,
            the_altsyncram.numwords_a = 32768,

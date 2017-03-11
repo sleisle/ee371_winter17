@@ -2,7 +2,7 @@ set_global_assignment -entity "nios_system_checkersv3" -library "nios_system_che
 set_global_assignment -entity "nios_system_checkersv3" -library "nios_system_checkersv3" -name IP_TOOL_VERSION "16.0"
 set_global_assignment -entity "nios_system_checkersv3" -library "nios_system_checkersv3" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "nios_system_checkersv3" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../nios_system_checkersv3.sopcinfo"]
-set_global_assignment -entity "nios_system_checkersv3" -library "nios_system_checkersv3" -name SLD_INFO "QSYS_NAME nios_system_checkersv3 HAS_SOPCINFO 1 GENERATION_ID 1489201611"
+set_global_assignment -entity "nios_system_checkersv3" -library "nios_system_checkersv3" -name SLD_INFO "QSYS_NAME nios_system_checkersv3 HAS_SOPCINFO 1 GENERATION_ID 1489259340"
 set_global_assignment -library "nios_system_checkersv3" -name MISC_FILE [file join $::quartus(qip_path) "../nios_system_checkersv3.cmp"]
 set_global_assignment -library "nios_system_checkersv3" -name SLD_FILE [file join $::quartus(qip_path) "nios_system_checkersv3.regmap"]
 set_global_assignment -library "nios_system_checkersv3" -name SLD_FILE [file join $::quartus(qip_path) "nios_system_checkersv3.debuginfo"]
@@ -16,7 +16,7 @@ set_global_assignment -entity "nios_system_checkersv3" -library "nios_system_che
 set_global_assignment -entity "nios_system_checkersv3" -library "nios_system_checkersv3" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "nios_system_checkersv3" -library "nios_system_checkersv3" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "nios_system_checkersv3" -library "nios_system_checkersv3" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "nios_system_checkersv3" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTQ4OTIwMTYxMQ==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "nios_system_checkersv3" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTQ4OTI1OTM0MA==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "nios_system_checkersv3" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBW::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "nios_system_checkersv3" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::NUNTRU1BNUYzMUM2::QXV0byBERVZJQ0U="
 set_global_assignment -entity "nios_system_checkersv3" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Ng==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
@@ -658,11 +658,12 @@ set_global_assignment -entity "nios_system_checkersv3_onchip_memory2_0" -library
 set_global_assignment -entity "nios_system_checkersv3_onchip_memory2_0" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "ZGF0YVdpZHRo::MzI=::U2xhdmUgUzEgRGF0YSB3aWR0aA=="
 set_global_assignment -entity "nios_system_checkersv3_onchip_memory2_0" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "ZGF0YVdpZHRoMg==::MzI=::U2xhdmUgUzIgRGF0YSB3aWR0aA=="
 set_global_assignment -entity "nios_system_checkersv3_onchip_memory2_0" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "ZHVhbFBvcnQ=::ZmFsc2U=::RHVhbC1wb3J0IGFjY2Vzcw=="
-set_global_assignment -entity "nios_system_checkersv3_onchip_memory2_0" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "aW5pdE1lbUNvbnRlbnQ=::ZmFsc2U=::SW5pdGlhbGl6ZSBtZW1vcnkgY29udGVudA=="
+set_global_assignment -entity "nios_system_checkersv3_onchip_memory2_0" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "aW5pdE1lbUNvbnRlbnQ=::dHJ1ZQ==::SW5pdGlhbGl6ZSBtZW1vcnkgY29udGVudA=="
 set_global_assignment -entity "nios_system_checkersv3_onchip_memory2_0" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "bWVtb3J5U2l6ZQ==::MTMxMDcy::VG90YWwgbWVtb3J5IHNpemU="
 set_global_assignment -entity "nios_system_checkersv3_onchip_memory2_0" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "c2ltQWxsb3dNUkFNQ29udGVudHNGaWxl::ZmFsc2U=::QWxsb3cgTVJBTSBjb250ZW50cyBmaWxlIGZvciBzaW11bGF0aW9u"
 set_global_assignment -entity "nios_system_checkersv3_onchip_memory2_0" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "c2ltTWVtSW5pdE9ubHlGaWxlbmFtZQ==::MA==::U2ltdWxhdGlvbiBtZW1pbml0IG9ubHkgaGFzIGZpbGVuYW1l"
 set_global_assignment -entity "nios_system_checkersv3_onchip_memory2_0" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "c2xhdmUxTGF0ZW5jeQ==::MQ==::U2xhdmUgczEgTGF0ZW5jeQ=="
+set_global_assignment -entity "nios_system_checkersv3_onchip_memory2_0" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "dXNlTm9uRGVmYXVsdEluaXRGaWxl::ZmFsc2U=::RW5hYmxlIG5vbi1kZWZhdWx0IGluaXRpYWxpemF0aW9uIGZpbGU="
 set_global_assignment -entity "nios_system_checkersv3_onchip_memory2_0" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "d3JpdGFibGU=::dHJ1ZQ==::VHlwZQ=="
 set_global_assignment -entity "nios_system_checkersv3_onchip_memory2_0" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "ZWNjX2VuYWJsZWQ=::ZmFsc2U=::RXh0ZW5kIHRoZSBkYXRhIHdpZHRoIHRvIHN1cHBvcnQgRUNDIGJpdHM="
 set_global_assignment -entity "nios_system_checkersv3_onchip_memory2_0" -library "nios_system_checkersv3" -name IP_COMPONENT_PARAMETER "cmVzZXRyZXF1ZXN0X2VuYWJsZWQ=::dHJ1ZQ==::UmVzZXQgUmVxdWVzdA=="
@@ -1066,6 +1067,7 @@ set_global_assignment -library "nios_system_checkersv3" -name SYSTEMVERILOG_FILE
 set_global_assignment -library "nios_system_checkersv3" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_merlin_master_translator.sv"]
 set_global_assignment -library "nios_system_checkersv3" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_checkersv3_sendState.v"]
 set_global_assignment -library "nios_system_checkersv3" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_checkersv3_row1.v"]
+set_global_assignment -library "nios_system_checkersv3" -name SOURCE_FILE [file join $::quartus(qip_path) "submodules/nios_system_checkersv3_onchip_memory2_0.hex"]
 set_global_assignment -library "nios_system_checkersv3" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_checkersv3_onchip_memory2_0.v"]
 set_global_assignment -library "nios_system_checkersv3" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nios_system_checkersv3_nios2_qsys_0.v"]
 set_global_assignment -library "nios_system_checkersv3" -name SDC_FILE [file join $::quartus(qip_path) "submodules/nios_system_checkersv3_nios2_qsys_0_cpu.sdc"]

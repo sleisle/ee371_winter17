@@ -44,13 +44,13 @@ R7
 o-O0
 nboard@test@bench
 vcomms
-Z8 !s110 1489105718
+Z8 !s110 1489265489
 !i10b 1
-!s100 Ae56;ZVhiWB>ET@EAM3nE0
-IX7DYf3CZ>0K7PfVD7[4n^1
+!s100 ;TQ?mlPobDNSMBa69G3ha2
+IPgK[3SbjKcJ`o<AP_zUAi2
 Z9 VDg1SIo80bB@j0V0VzS_@n1
-Z10 dC:/Users/acf8/Desktop/ee371_winter17
-Z11 w1489105715
+Z10 dC:/Users/sleisle/Desktop/ee371_winter17
+Z11 w1489264621
 Z12 8./comms.v
 Z13 F./comms.v
 L0 1
@@ -58,21 +58,21 @@ Z14 OV;L;10.4d;61
 r1
 !s85 0
 31
-Z15 !s108 1489105718.000000
+Z15 !s108 1489265489.000000
 Z16 !s107 ./comms.v|
 Z17 !s90 -reportprogress|300|./comms.v|
 !i113 1
 vcommsTestBench
 R8
 !i10b 1
-!s100 e9idPSLlc_XWjgRWN2BkZ2
-IdKN4?70Fh`i:RX6=AdGA11
+!s100 [:^i_W70C_42^Z4XnlnTN2
+IN@nRbcD9mH>P5_N5I=03M0
 R9
 R10
 R11
 R12
 R13
-L0 84
+L0 101
 R14
 r1
 !s85 0
@@ -83,13 +83,13 @@ R17
 !i113 1
 ncomms@test@bench
 vDFlipFlop
-R8
+Z18 !s110 1489263705
 !i10b 1
 !s100 H7D=[<?17mehIIV:naaJL1
 IT]X=]IS:8YoI_Fzg82=GG3
 R9
 R10
-w1489101434
+w1489258483
 8./DFlipFlop.v
 F./DFlipFlop.v
 L0 2
@@ -97,7 +97,7 @@ R14
 r1
 !s85 0
 31
-R15
+Z19 !s108 1489263705.000000
 !s107 ./DFlipFlop.v|
 !s90 -reportprogress|300|./DFlipFlop.v|
 !i113 1
@@ -106,7 +106,7 @@ vlab3TopLevel
 IOfZL?Ocg_NYZz?WBA75n[0
 VZm]oTGM>S`mmfE>jbO^mE1
 R0
-Z18 w1488928868
+Z20 w1488928868
 8./lab3TopLevel.v
 F./lab3TopLevel.v
 L0 1
@@ -126,7 +126,7 @@ vlab3TopLevelTest
 I8gHz:N_c`F;1e`;UPJ6m90
 Vj=K9iC3Cd7YbA7Bj<<]zR0
 R0
-R18
+R20
 8./lab3TopLevelTest.v
 F./lab3TopLevelTest.v
 L0 1
@@ -146,7 +146,7 @@ vscanner
 IPe6jhZX@M?ma4:9AUUkn_3
 VE;RV`VS^2l@NAETzzGc1c3
 R0
-R18
+R20
 8./scanner.v
 F./scanner.v
 L0 1
@@ -161,3 +161,23 @@ o-O0
 !i10b 1
 !s85 0
 !s101 -O0
+vtestLogic
+R18
+!i10b 1
+!s100 ?aEC^LBPYkV?jW>HBLo3;2
+I22ScAJScnmU@SJJ[B@L>`2
+R9
+R10
+w1489263702
+8./testLogic.v
+F./testLogic.v
+L0 1
+R14
+r1
+!s85 0
+31
+R19
+!s107 ./testLogic.v|
+!s90 -reportprogress|300|./testLogic.v|
+!i113 1
+ntest@logic
