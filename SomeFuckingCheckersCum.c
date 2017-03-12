@@ -146,7 +146,7 @@ void processBoard(Board b, int *canGo) {
   printBoard(b);
   boardToBuffer(b);
   *canGo = 1;
-  //*newData = 0;
+  *newData = 0;
 }
 
 
@@ -167,8 +167,13 @@ void boardToBuffer(Board b) {
 	printf("%8x \n", *(int*)row5);
 	printf("%8x \n", *(int*)row6);
 	printf("%8x \n", *(int*)row7);
-	//*sendData = 1;
-	//*sendData = 0;
+	*sendData = 1;
+	int wait = 0;
+	while (wait < 100000) {
+		wait++;
+	}
+	wait = 0;
+	*sendData = 0;
 }
 
 void printBoard(Board b) {
