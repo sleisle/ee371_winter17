@@ -22,48 +22,43 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	// Clock Divider
 	wire clk, rst, d1Out, sendMe;
 	wire [31:0] clkMain;
-	parameter whichClock = 17;
+	parameter whichClock = 0;
 	clock_divider cdiv (CLOCK_50, clkMain);
 	assign clk = clkMain[whichClock];
 	
 	assign rst = ~KEY[0];
-//	assign sendMe = ~KEY[1];
 	
 	DFlipFlop d1 (d1Out, , ~KEY[1], clk, ~rst);
 	DFlipFlop d2 (sendMe, , d1Out, clk, ~rst);
 	
 	assign LEDR[0] = readyForSend;
 	assign LEDR[1] = readyForReceive;
-	assign LEDR[2] = startTransfer;
 	assign LEDR[6] = dataIn;
 	assign LEDR[7] = dataOut;
-	assign LEDR[8] = clkOut;
-	assign LEDR[9] = clkIn;
+	assign LEDR[8] = clkIn;
+	assign LEDR[9] = clkOut;
 	
 	wire trans;
-	assign trans = (sendMe ^ ~KEY[1]) & ~KEY[1];
+	assign trans = (sendMe ^ plzSend) & ~plzSend;
 	
 //	// Control Lines
 	wire clkOut, clkIn, dataOut, dataIn, readyForSend, readyForReceive, turnStartOff;
-	wire startTransfer;
 	wire plzSend, newData;	
-	
-	assign startTransfer = SW[2];
-	
+		
 	assign GPIO_0[1] = clkOut; //Y17
 	assign clkIn = GPIO_0[5]; //AK18
 	assign GPIO_0[0] = dataOut; //AC18
 	assign dataIn = GPIO_0[4]; //AK16
-	assign GPIO_0[6] = readyForReceive & SW[3]; //AD17
+	assign GPIO_0[6] = readyForReceive; //AD17
 	assign readyForSend = GPIO_0[2]; //AK19
-
+	assign readyForReceive = SW[3];
 	
     nios_system_checkersv3 u0 (
         .clk_clk             (clk),             //          clk.clk
         .reset_reset_n       (~rst),       //        reset.reset_n
         .sendstate_export    (plzSend),    //    sendstate.export
-        .receivestate_export (test2), // receivestate.export
-        .newdata_export      (~KEY[2]),      //      newdata.export
+        .receivestate_export (), // receivestate.export
+        .newdata_export      (newData),      //      newdata.export
         .row8_in_port        (receiveFromReg[255:224]),        //         row8.in_port
         .row8_out_port       (sendFromReg[255:224]),       //             .out_port
         .row7_in_port        (receiveFromReg[223:192]),        //         row7.in_port
@@ -88,45 +83,26 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	board boardGen (testBuffer, x, y, r, g, b);
 	
 	// Hex displays
-	seg7 h0 (receiveBuffer[3:0], HEX0);
-	seg7 h1 (receiveBuffer[7:4], HEX1);
-	seg7 h2 (receiveBuffer[11:8], HEX2);
-	seg7 h3 (receiveBuffer[15:12], HEX3);
-	seg7 h4 (receiveBuffer[19:16], HEX4);
-	seg7 h5 (receiveBuffer[23:20], HEX5);
-
-	always @(posedge ~KEY[2]) begin: latchReceive
-		receiveFromReg <= receiveBuffer;
-	end
-
-	wire [1:0] setSendBuffer;
-	assign setSendBuffer = {SW[1], SW[0]};
-
-	always @(*) begin: assignSend
-		case(setSendBuffer)
-			2'b00: begin
-				sendBuffer <= 256'h3030303003030303303030300000000000000000010101011010101001010101;
-			end
-			2'b01: begin
-				sendBuffer <= 256'h3030303003030303003030300300000000000000010101011010101001010101;
-			end
-			2'b10: begin
-				sendBuffer <= sendFromReg;
-			end
-			2'b11: begin
-				sendBuffer <= receiveFromReg;
-			end
-		endcase
-	end
-		
-	// Set sendData
-	
-	always @(*) begin: testBuffffff
-		if (SW[9]) begin
+	seg7 h0 (receiveBuffer[235:232], HEX0);
+	seg7 h1 (receiveBuffer[239:236], HEX1);
+	seg7 h2 (receiveBuffer[243:240], HEX2);
+	seg7 h3 (receiveBuffer[247:244], HEX3);
+	seg7 h4 (receiveBuffer[251:248], HEX4);
+	seg7 h5 (receiveBuffer[255:252], HEX5);
+			
+	always @(posedge newData or posedge trans or posedge rst) begin: testBufferSet
+		if (rst) begin
+			sendBuffer <= 256'h1010101001010101101010100000000000000000030303033030303003030303;
+			receiveFromReg <= 256'h1010101001010101101010100000000000000000030303033030303003030303;
+			testBuffer <= 256'h1010101001010101101010100000000000000000030303033030303003030303;
+		end
+		else if (newData) begin
 			testBuffer <= receiveBuffer;
+			receiveFromReg <= receiveBuffer;
 		end
 		else begin
-			testBuffer <= sendBuffer;
+			testBuffer <= sendFromReg;
+			sendBuffer <= sendFromReg;
 		end
 	end
 	

@@ -4,7 +4,7 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForRe
 	input wire [255:0] sendBuffer;
 	output reg [255:0] receiveBuffer;
 	output reg clkOut;
-	output wire readyForReceive;
+	input wire readyForReceive;
 	
 	reg [8:0] dataBitCounter;
 	reg [7:0] dataInCounter;
@@ -13,7 +13,6 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForRe
 	wire clkOutWire;
 	reg transfer;
 	
-	assign readyForReceive = 1'b1;
 	assign clkOutWire = cdiv[0];
 	
 	// Transfer if startTransfer | dataBitCounter != 255
@@ -35,7 +34,7 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForRe
 	
 	always @(posedge clk or posedge rst) begin: divide // Divide clk by 8 to make clkOut sig
 		if (rst) begin
-			cdiv <= 3'b000;
+			cdiv <= 3'b0;
 		end
 		else begin
 			cdiv <= cdiv + 1'b1;
@@ -46,7 +45,7 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForRe
 	
 	always @(posedge clkOut or posedge rst) begin: sendData // Set data wire if clkOut is going
 		if (rst) begin
-			dataBitCounter <= 9'b000000000;
+			dataBitCounter <= 9'b0;
 		end
 		else begin
 			dataBitCounter <= dataBitCounter + 1'b1;
@@ -71,20 +70,21 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForRe
 			receiveBuffer <= 8'b0;
 		end
 		else begin
-			//if (readyForReceive) begin
-				
+			if (readyForReceive) begin
 				receiveBuffer[dataInCounter] <= dataIn;
-//			end
-//			else begin
-//				dataInCounter <= 8'b0;
-//				receiveBuffer <= sendBuffer;
-//			end
+			end
+			else begin
+				receiveBuffer <= sendBuffer;
+			end
 		end
 	end
 	
-	always @(negedge clkIn or posedge rst) begin: receiveSafe
+	always @(negedge clkIn or posedge rst or negedge readyForReceive) begin: receiveSafe
 		if (rst) begin
-			dataInCounter <= 8'b00000000;
+			dataInCounter <= 8'b0;
+		end
+		else if (~readyForReceive) begin
+			dataInCounter <= 8'b0;
 		end
 		else begin
 			dataInCounter <= dataInCounter + 1'b1;
@@ -92,8 +92,9 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForRe
 	end
 	
 	always @(negedge dataInCounter[7]) begin: newDataIn
-		if (~newData)
+		if (~newData) begin
 			newData <= 1'b1;
+		end
 	end
 	
 endmodule
