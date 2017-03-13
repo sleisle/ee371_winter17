@@ -22,7 +22,7 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	// Clock Divider
 	wire clk, rst, d1Out;
 	wire [31:0] clkMain;
-	parameter whichClock = 18;
+	parameter whichClock = 15;
 	clock_divider cdiv (CLOCK_50, clkMain);
 	assign clk = clkMain[whichClock];
 	

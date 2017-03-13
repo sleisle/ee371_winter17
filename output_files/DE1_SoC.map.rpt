@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE1_SoC
-Sun Mar 12 19:09:11 2017
+Mon Mar 13 11:31:51 2017
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
 
 
@@ -286,13 +286,13 @@ agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sun Mar 12 19:09:11 2017           ;
+; Analysis & Synthesis Status     ; Successful - Mon Mar 13 11:31:51 2017           ;
 ; Quartus Prime Version           ; 16.0.0 Build 211 04/27/2016 SJ Standard Edition ;
 ; Revision Name                   ; DE1_SoC                                         ;
 ; Top-level Entity Name           ; lab5TopLevel                                    ;
 ; Family                          ; Cyclone V                                       ;
 ; Logic utilization (in ALMs)     ; N/A                                             ;
-; Total registers                 ; 2578                                            ;
+; Total registers                 ; 2575                                            ;
 ; Total pins                      ; 128                                             ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 1,059,840                                       ;
@@ -524,16 +524,16 @@ agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 2049           ;
+; Estimate of Logic utilization (ALMs needed) ; 2047           ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 3284           ;
+; Combinational ALUT usage for logic          ; 3281           ;
 ;     -- 7 input functions                    ; 8              ;
 ;     -- 6 input functions                    ; 573            ;
 ;     -- 5 input functions                    ; 466            ;
 ;     -- 4 input functions                    ; 934            ;
-;     -- <=3 input functions                  ; 1303           ;
+;     -- <=3 input functions                  ; 1300           ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 2578           ;
+; Dedicated logic registers                   ; 2575           ;
 ;                                             ;                ;
 ; I/O pins                                    ; 128            ;
 ; Total MLAB memory bits                      ; 0              ;
@@ -542,8 +542,8 @@ agreement for further details.
 ; Total DSP Blocks                            ; 6              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 1808           ;
-; Total fan-out                               ; 26076          ;
+; Maximum fan-out                             ; 1805           ;
+; Total fan-out                               ; 26064          ;
 ; Average fan-out                             ; 4.07           ;
 +---------------------------------------------+----------------+
 
@@ -553,7 +553,7 @@ agreement for further details.
 +-----------------------------------------------------------------------------------------------------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------+------------------------+
 ; Compilation Hierarchy Node                                                                                                                    ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ; Entity Name                                                    ; Library Name           ;
 +-----------------------------------------------------------------------------------------------------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------+------------------------+
-; |lab5TopLevel                                                                                                                                 ; 3284 (577)        ; 2578 (448)   ; 1059840           ; 6          ; 128  ; 0            ; |lab5TopLevel                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ; lab5TopLevel                                                   ; work                   ;
+; |lab5TopLevel                                                                                                                                 ; 3281 (577)        ; 2575 (448)   ; 1059840           ; 6          ; 128  ; 0            ; |lab5TopLevel                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ; lab5TopLevel                                                   ; work                   ;
 ;    |DFlipFlop:d1|                                                                                                                             ; 1 (1)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |lab5TopLevel|DFlipFlop:d1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ; DFlipFlop                                                      ; work                   ;
 ;    |DFlipFlop:d2|                                                                                                                             ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |lab5TopLevel|DFlipFlop:d2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ; DFlipFlop                                                      ; work                   ;
 ;    |board:boardGen|                                                                                                                           ; 469 (207)         ; 0 (0)        ; 0                 ; 6          ; 0    ; 0            ; |lab5TopLevel|board:boardGen                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ; board                                                          ; work                   ;
@@ -573,7 +573,7 @@ agreement for further details.
 ;          |lpm_divide_b2m:auto_generated|                                                                                                      ; 61 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab5TopLevel|board:boardGen|lpm_divide:Mod1|lpm_divide_b2m:auto_generated                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ; lpm_divide_b2m                                                 ; work                   ;
 ;             |sign_div_unsign_ekh:divider|                                                                                                     ; 61 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab5TopLevel|board:boardGen|lpm_divide:Mod1|lpm_divide_b2m:auto_generated|sign_div_unsign_ekh:divider                                                                                                                                                                                                                                                                                                                                                                                                                                                  ; sign_div_unsign_ekh                                            ; work                   ;
 ;                |alt_u_div_2te:divider|                                                                                                        ; 61 (61)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |lab5TopLevel|board:boardGen|lpm_divide:Mod1|lpm_divide_b2m:auto_generated|sign_div_unsign_ekh:divider|alt_u_div_2te:divider                                                                                                                                                                                                                                                                                                                                                                                                                            ; alt_u_div_2te                                                  ; work                   ;
-;    |clock_divider:cdiv|                                                                                                                       ; 19 (19)           ; 19 (19)      ; 0                 ; 0          ; 0    ; 0            ; |lab5TopLevel|clock_divider:cdiv                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ; clock_divider                                                  ; work                   ;
+;    |clock_divider:cdiv|                                                                                                                       ; 16 (16)           ; 16 (16)      ; 0                 ; 0          ; 0    ; 0            ; |lab5TopLevel|clock_divider:cdiv                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ; clock_divider                                                  ; work                   ;
 ;    |comms:com|                                                                                                                                ; 435 (435)         ; 278 (278)    ; 0                 ; 0          ; 0    ; 0            ; |lab5TopLevel|comms:com                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ; comms                                                          ; work                   ;
 ;    |nios_system_checkersv3:u0|                                                                                                                ; 1527 (0)          ; 1634 (0)     ; 1059840           ; 0          ; 0    ; 0            ; |lab5TopLevel|nios_system_checkersv3:u0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ; nios_system_checkersv3                                         ; work                   ;
 ;       |altera_reset_controller:rst_controller|                                                                                                ; 7 (6)             ; 16 (10)      ; 0                 ; 0          ; 0    ; 0            ; |lab5TopLevel|nios_system_checkersv3:u0|altera_reset_controller:rst_controller                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ; altera_reset_controller                                        ; nios_system_checkersv3 ;
@@ -1374,14 +1374,14 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; nios_system_checkersv3:u0|nios_system_checkersv3_mm_interconnect_0:mm_interconnect_0|nios_system_checkersv3_mm_interconnect_0_cmd_mux_001:cmd_mux_002|share_count_zero_flag                                                                                                                                                                                          ; Stuck at VCC due to stuck port data_in                                                                                                                                                                                                                                                                                                                                           ;
 ; nios_system_checkersv3:u0|nios_system_checkersv3_mm_interconnect_0:mm_interconnect_0|nios_system_checkersv3_mm_interconnect_0_cmd_mux_001:cmd_mux_001|share_count[0]                                                                                                                                                                                                 ; Stuck at GND due to stuck port data_in                                                                                                                                                                                                                                                                                                                                           ;
 ; nios_system_checkersv3:u0|nios_system_checkersv3_mm_interconnect_0:mm_interconnect_0|nios_system_checkersv3_mm_interconnect_0_cmd_mux_001:cmd_mux_002|share_count[0]                                                                                                                                                                                                 ; Stuck at GND due to stuck port data_in                                                                                                                                                                                                                                                                                                                                           ;
-; clock_divider:cdiv|divided_clocks[19..31]                                                                                                                                                                                                                                                                                                                            ; Lost fanout                                                                                                                                                                                                                                                                                                                                                                      ;
+; clock_divider:cdiv|divided_clocks[16..31]                                                                                                                                                                                                                                                                                                                            ; Lost fanout                                                                                                                                                                                                                                                                                                                                                                      ;
 ; video_driver:vga|rout[3,5]                                                                                                                                                                                                                                                                                                                                           ; Merged with video_driver:vga|rout[0]                                                                                                                                                                                                                                                                                                                                             ;
 ; video_driver:vga|rout[2,4]                                                                                                                                                                                                                                                                                                                                           ; Merged with video_driver:vga|rout[1]                                                                                                                                                                                                                                                                                                                                             ;
 ; video_driver:vga|gout[3,5]                                                                                                                                                                                                                                                                                                                                           ; Merged with video_driver:vga|gout[0]                                                                                                                                                                                                                                                                                                                                             ;
 ; video_driver:vga|gout[2,4]                                                                                                                                                                                                                                                                                                                                           ; Merged with video_driver:vga|gout[1]                                                                                                                                                                                                                                                                                                                                             ;
 ; video_driver:vga|bout[3,5]                                                                                                                                                                                                                                                                                                                                           ; Merged with video_driver:vga|bout[0]                                                                                                                                                                                                                                                                                                                                             ;
 ; video_driver:vga|bout[2,4]                                                                                                                                                                                                                                                                                                                                           ; Merged with video_driver:vga|bout[1]                                                                                                                                                                                                                                                                                                                                             ;
-; Total Number of Removed Registers = 787                                                                                                                                                                                                                                                                                                                              ;                                                                                                                                                                                                                                                                                                                                                                                  ;
+; Total Number of Removed Registers = 790                                                                                                                                                                                                                                                                                                                              ;                                                                                                                                                                                                                                                                                                                                                                                  ;
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -1726,7 +1726,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 2578  ;
+; Total registers                              ; 2575  ;
 ; Number of registers using Synchronous Clear  ; 552   ;
 ; Number of registers using Synchronous Load   ; 421   ;
 ; Number of registers using Asynchronous Clear ; 1854  ;
@@ -2165,7 +2165,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------+-------+-----------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                ;
 +----------------+-------+-----------------------------------------------------+
-; whichClock     ; 18    ; Signed Integer                                      ;
+; whichClock     ; 15    ; Signed Integer                                      ;
 +----------------+-------+-----------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -6618,8 +6618,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port                   ; Type   ; Severity ; Details                                                                             ;
 +------------------------+--------+----------+-------------------------------------------------------------------------------------+
-; divided_clocks[31..19] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; divided_clocks[17..0]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; divided_clocks[31..16] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; divided_clocks[14..0]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +------------------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
@@ -6628,7 +6628,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 2495                        ;
+; arriav_ff             ; 2492                        ;
 ;     CLR               ; 735                         ;
 ;     CLR SCLR          ; 319                         ;
 ;     CLR SCLR SLD      ; 11                          ;
@@ -6642,12 +6642,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     ENA SLD           ; 9                           ;
 ;     SCLR              ; 47                          ;
 ;     SLD               ; 35                          ;
-;     plain             ; 132                         ;
+;     plain             ; 129                         ;
 ; arriav_io_obuf        ; 32                          ;
-; arriav_lcell_comb     ; 3172                        ;
-;     arith             ; 420                         ;
+; arriav_lcell_comb     ; 3169                        ;
+;     arith             ; 417                         ;
 ;         0 data inputs ; 29                          ;
-;         1 data inputs ; 187                         ;
+;         1 data inputs ; 184                         ;
 ;         2 data inputs ; 100                         ;
 ;         3 data inputs ; 83                          ;
 ;         4 data inputs ; 21                          ;
@@ -6678,7 +6678,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:07     ;
+; Top            ; 00:00:08     ;
 +----------------+--------------+
 
 
@@ -6688,7 +6688,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
-    Info: Processing started: Sun Mar 12 19:08:29 2017
+    Info: Processing started: Mon Mar 13 11:31:08 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC
 Info (20032): Parallel compilation is enabled and will use up to 4 processors
 Info (12021): Found 1 design units, including 1 entities, in source file cpu-lab4/nios_system_checkersv3/synthesis/nios_system_checkersv3.v
@@ -7051,7 +7051,7 @@ Info (10041): Inferred latch for "color[21]" at board.v(32) File: C:/Users/sleis
 Info (10041): Inferred latch for "color[22]" at board.v(32) File: C:/Users/sleisle/Desktop/ee371_winter17/board.v Line: 32
 Info (10041): Inferred latch for "color[23]" at board.v(32) File: C:/Users/sleisle/Desktop/ee371_winter17/board.v Line: 32
 Info (11170): Start IP generation for the debug fabric within sld_hub.
-Info (11172): 2017.03.12.19:08:52 Progress: Loading sld5d2bcf66/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2017.03.13.11:31:31 Progress: Loading sld5d2bcf66/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -7341,22 +7341,22 @@ Info (286031): Timing-Driven Synthesis is running on partition "Top"
 Warning (14632): Output pin "LEDR[0]" driven by bidirectional pin "GPIO_0[2]" cannot be tri-stated File: C:/Users/sleisle/Desktop/ee371_winter17/lab5TopLevel.v Line: 8
 Warning (14632): Output pin "LEDR[6]" driven by bidirectional pin "GPIO_0[4]" cannot be tri-stated File: C:/Users/sleisle/Desktop/ee371_winter17/lab5TopLevel.v Line: 8
 Warning (14632): Output pin "LEDR[8]" driven by bidirectional pin "GPIO_0[5]" cannot be tri-stated File: C:/Users/sleisle/Desktop/ee371_winter17/lab5TopLevel.v Line: 8
-Info (17049): 260 registers lost all their fanouts during netlist optimizations.
+Info (17049): 263 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Users/sleisle/Desktop/ee371_winter17/output_files/DE1_SoC.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 9 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 4804 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 4801 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 18 input pins
     Info (21059): Implemented 82 output pins
     Info (21060): Implemented 32 bidirectional pins
-    Info (21061): Implemented 4425 logic cells
+    Info (21061): Implemented 4422 logic cells
     Info (21064): Implemented 240 RAM segments
     Info (21062): Implemented 6 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 219 warnings
-    Info: Peak virtual memory: 1126 megabytes
-    Info: Processing ended: Sun Mar 12 19:09:11 2017
-    Info: Elapsed time: 00:00:42
-    Info: Total CPU time (on all processors): 00:01:10
+    Info: Peak virtual memory: 1125 megabytes
+    Info: Processing ended: Mon Mar 13 11:31:52 2017
+    Info: Elapsed time: 00:00:44
+    Info: Total CPU time (on all processors): 00:01:08
 
 
 +------------------------------------------+

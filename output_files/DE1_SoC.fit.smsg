@@ -89,7 +89,7 @@ Warning (332060): Node: KEY[2] was determined to be a clock but was found withou
 Warning (332060): Node: comms:com|dataInCounter[7] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: KEY[1] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: comms:com|clkOut was determined to be a clock but was found without an associated clock assignment.
-Warning (332060): Node: clock_divider:cdiv|divided_clocks[18] was determined to be a clock but was found without an associated clock assignment.
+Warning (332060): Node: clock_divider:cdiv|divided_clocks[15] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: comms:com|dataBitCounter[8] was determined to be a clock but was found without an associated clock assignment.
 Warning (332060): Node: KEY[0] was determined to be a clock but was found without an associated clock assignment.
 Extra Info (176247): Finished moving registers into I/O cells, DSP blocks, and RAM blocks
