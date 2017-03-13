@@ -17,19 +17,22 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	
 	wire [255:0] receiveBuffer, sendFromReg;
 	reg [255:0] testBuffer, receiveFromReg;
-	reg [255:0] sendBuffer;
+	wire [255:0] sendBuffer, receivePostNibble;
 		
 	// Clock Divider
-	wire clk, rst, d1Out, sendMe;
+	wire clk, rst, d1Out;
 	wire [31:0] clkMain;
-	parameter whichClock = 0;
+	parameter whichClock = 18;
 	clock_divider cdiv (CLOCK_50, clkMain);
 	assign clk = clkMain[whichClock];
 	
 	assign rst = ~KEY[0];
 	
+	wire sendMe;
 	DFlipFlop d1 (d1Out, , ~KEY[1], clk, ~rst);
 	DFlipFlop d2 (sendMe, , d1Out, clk, ~rst);
+	
+	assign trans = (sendMe ^ ~KEY[1]) & ~KEY[1];
 	
 	assign LEDR[0] = readyForSend;
 	assign LEDR[1] = readyForReceive;
@@ -39,7 +42,6 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	assign LEDR[9] = clkOut;
 	
 	wire trans;
-	assign trans = (sendMe ^ plzSend) & ~plzSend;
 	
 //	// Control Lines
 	wire clkOut, clkIn, dataOut, dataIn, readyForSend, readyForReceive, turnStartOff;
@@ -54,11 +56,11 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 	assign readyForReceive = SW[3];
 	
     nios_system_checkersv3 u0 (
-        .clk_clk             (clk),             //          clk.clk
+        .clk_clk             (CLOCK_50),             //          clk.clk
         .reset_reset_n       (~rst),       //        reset.reset_n
         .sendstate_export    (plzSend),    //    sendstate.export
-        .receivestate_export (), // receivestate.export
-        .newdata_export      (newData),      //      newdata.export
+        .receivestate_export (testWire), // receivestate.export
+        .newdata_export      (~KEY[2]),      //      newdata.export
         .row8_in_port        (receiveFromReg[255:224]),        //         row8.in_port
         .row8_out_port       (sendFromReg[255:224]),       //             .out_port
         .row7_in_port        (receiveFromReg[223:192]),        //         row7.in_port
@@ -79,31 +81,32 @@ module lab5TopLevel (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, SW
 
 	
 	comms com (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForReceive, sendBuffer, receiveBuffer, trans, newData);
+	
 	video_driver vga (CLOCK_50, rst, x, y, r, g, b, VGA_R, VGA_G, VGA_B, VGA_BLANK_N, VGA_CLK, VGA_HS, VGA_SYNC_N, VGA_VS);
 	board boardGen (testBuffer, x, y, r, g, b);
 	
-	// Hex displays
-	seg7 h0 (receiveBuffer[235:232], HEX0);
-	seg7 h1 (receiveBuffer[239:236], HEX1);
-	seg7 h2 (receiveBuffer[243:240], HEX2);
-	seg7 h3 (receiveBuffer[247:244], HEX3);
-	seg7 h4 (receiveBuffer[251:248], HEX4);
-	seg7 h5 (receiveBuffer[255:252], HEX5);
-			
-	always @(posedge newData or posedge trans or posedge rst) begin: testBufferSet
-		if (rst) begin
-			sendBuffer <= 256'h1010101001010101101010100000000000000000030303033030303003030303;
-			receiveFromReg <= 256'h1010101001010101101010100000000000000000030303033030303003030303;
-			testBuffer <= 256'h1010101001010101101010100000000000000000030303033030303003030303;
+	genvar i;
+	generate
+		for (i = 0; i < 255; i = i + 8) begin: genNibbles
+			assign sendBuffer[i + 7:i] = {sendFromReg[i + 3:i], sendFromReg[i + 7:i + 4]};
+			assign receivePostNibble[i + 7:i] = {receiveBuffer[i + 3:i], receiveBuffer[i + 7:i + 4]};
 		end
-		else if (newData) begin
-			testBuffer <= receiveBuffer;
-			receiveFromReg <= receiveBuffer;
-		end
-		else begin
-			testBuffer <= sendFromReg;
-			sendBuffer <= sendFromReg;
+	endgenerate
+				
+	always @(posedge ~KEY[2]) begin: setReceiveReg
+		if (newData) begin
+			receiveFromReg <= receivePostNibble;
 		end
 	end
 	
+	always @(posedge ~KEY[2] or posedge ~KEY[1]) begin: changeDisp
+		if (~KEY[2]) begin
+			testBuffer <= receiveBuffer;
+		end
+		else begin
+			testBuffer <= sendBuffer;
+		end
+	end
+	
+
 endmodule

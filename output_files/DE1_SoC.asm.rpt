@@ -1,5 +1,5 @@
 Assembler report for DE1_SoC
-Sun Mar 12 13:07:30 2017
+Sun Mar 12 19:11:05 2017
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
 
 
@@ -39,7 +39,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sun Mar 12 13:07:30 2017 ;
+; Assembler Status      ; Successful - Sun Mar 12 19:11:05 2017 ;
 ; Revision Name         ; DE1_SoC                               ;
 ; Top-level Entity Name ; lab5TopLevel                          ;
 ; Family                ; Cyclone V                             ;
@@ -79,8 +79,8 @@ agreement for further details.
 ; Option         ; Setting                                                                   ;
 +----------------+---------------------------------------------------------------------------+
 ; Device         ; 5CSEMA5F31C6                                                              ;
-; JTAG usercode  ; 0x01415C11                                                                ;
-; Checksum       ; 0x01415C11                                                                ;
+; JTAG usercode  ; 0x039C7795                                                                ;
+; Checksum       ; 0x039C7795                                                                ;
 +----------------+---------------------------------------------------------------------------+
 
 
@@ -90,12 +90,12 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
-    Info: Processing started: Sun Mar 12 13:07:20 2017
+    Info: Processing started: Sun Mar 12 19:10:55 2017
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off DE1_SoC -c DE1_SoC
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 946 megabytes
-    Info: Processing ended: Sun Mar 12 13:07:30 2017
+    Info: Peak virtual memory: 987 megabytes
+    Info: Processing ended: Sun Mar 12 19:11:05 2017
     Info: Elapsed time: 00:00:10
     Info: Total CPU time (on all processors): 00:00:10
 

@@ -9,7 +9,7 @@
   </columns>
  </systemtable>
  <library expandedCategories="Library,Project" />
- <window width="1100" height="800" x="469" y="228" />
+ <window width="1100" height="800" x="352" y="117" />
  <hdlexample language="VERILOG" />
  <generation path="_PROJECT_NAME_" />
 </preferences>

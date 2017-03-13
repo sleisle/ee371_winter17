@@ -91,8 +91,11 @@ module comms (clk, rst, clkIn, dataIn, clkOut, dataOut, readyForSend, readyForRe
 		end
 	end
 	
-	always @(negedge dataInCounter[7]) begin: newDataIn
-		if (~newData) begin
+	always @(negedge dataInCounter[7] or posedge rst) begin: newDataIn
+		if (rst) begin
+			newData <= 1'b0;
+		end		
+		else if (~newData) begin
 			newData <= 1'b1;
 		end
 	end

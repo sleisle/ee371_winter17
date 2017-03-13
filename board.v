@@ -23,7 +23,7 @@ module board (boardBuffer, x, y, r, g, b);
 	assign yBoardPre = y / 60;
 	assign drawWhite = ((xBoard % 2) ^ (yBoard % 2));
 	
-	assign xBoard = {xBoardPre[4:1], ~xBoardPre[0]};
+	assign xBoard = {xBoardPre[4:1], xBoardPre[0]};
 	assign yBoard = yBoardPre;
 	
 	// Set bufferStartPoint = to start index of piece on board based on x and y

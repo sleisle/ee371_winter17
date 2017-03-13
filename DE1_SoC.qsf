@@ -967,11 +967,12 @@ set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_WE_N
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_RESET_N
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_P
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_N
-set_global_assignment -name VERILOG_FILE "cpu-lab4/nios_systemv3/synthesis/nios_systemv3.v"
-set_global_assignment -name QIP_FILE "cpu-lab4/nios_systemv3/synthesis/nios_systemv3.qip"
+set_global_assignment -name VERILOG_FILE "cpu-lab4/nios_system_checkersv3/synthesis/nios_system_checkersv3.v"
+set_global_assignment -name QIP_FILE "cpu-lab4/nios_system_checkersv3/synthesis/nios_system_checkersv3.qip"
+set_global_assignment -name VERILOG_FILE sendBoard.v
+set_global_assignment -name VERILOG_FILE receiveBoard.v
 set_global_assignment -name VERILOG_FILE seg7.v
 set_global_assignment -name VERILOG_FILE DFlipFlop.v
-set_global_assignment -name VERILOG_FILE comms.v
 set_global_assignment -name SYSTEMVERILOG_FILE video_driver.sv
 set_global_assignment -name VERILOG_FILE altera_up_avalon_video_vga_timing.v
 set_global_assignment -name SDC_FILE DE1_SoC.sdc
